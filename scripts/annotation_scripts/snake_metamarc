@@ -1,0 +1,35 @@
+##--------------------------------------------------------------------------##
+## The list of samples to be processed
+##--------------------------------------------------------------------------##
+BASE="/workdir/users/agk85/CDC2"
+PRODIGAL=BASE + "/prodigal_excise/metagenomes"
+SAMPLES, = glob_wildcards(BASE + "/logs/finals/{NAME}_final_prodigal")
+NB_SAMPLES = len(SAMPLES)
+print (SAMPLES)
+
+rule final:
+	input:
+		expand(BASE+"/logs/finals/{NAME}_final_metamarc",NAME=SAMPLES),
+
+rule metamarc:
+	input:
+		scf=BASE+"/prodigal_excise/metagenomes/{NAME}/{NAME}_scaffold.fasta"
+	params:
+		n="metamarc_{NAME}",
+		out=BASE+"/metamarc/metagenomes",
+		outname="{NAME}_metamarc",
+	resources:
+		mem_mb= lambda wildcards, attempt: attempt * 20
+	output:
+		out=BASE+"/metamarc/metagenomes/{NAME}_metamarc.tblout.scan",
+		final=BASE + "/logs/finals/{NAME}_final_metamarc",
+	message:"""---metamarc"""
+	shell:
+		"""
+		if [ ! -d {params.out} ]; then mkdir -p {params.out}; fi
+		export PATH=/programs/hmmer-3.1b2-linux-intel-x86_64/binaries:$PATH
+		echo $PATH
+		/workdir/users/agk85/tools/meta-marc/bin/mmarc -i {input.scf} -o {params.out} -f {params.outname} -l 3 -t 6
+		touch {output.final}
+		"""
+

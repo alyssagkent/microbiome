@@ -1,0 +1,62 @@
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 1
+Rules claiming more threads will be scaled down.
+Unlimited resources: mem_mb
+Job counts:
+	count	jobs
+	6	bwa_index
+	1	final
+	7
+
+[Tue Aug 13 12:57:23 2019]
+Job 7: --- BWA INDEX
+
+[Tue Aug 13 13:01:54 2019]
+Finished job 7.
+1 of 7 steps (14%) done
+
+[Tue Aug 13 13:01:54 2019]
+Job 4: --- BWA INDEX
+
+[Tue Aug 13 13:05:49 2019]
+Finished job 4.
+2 of 7 steps (29%) done
+
+[Tue Aug 13 13:05:49 2019]
+Job 3: --- BWA INDEX
+
+[Tue Aug 13 13:09:38 2019]
+Finished job 3.
+3 of 7 steps (43%) done
+
+[Tue Aug 13 13:09:38 2019]
+Job 6: --- BWA INDEX
+
+[Tue Aug 13 13:13:28 2019]
+Finished job 6.
+4 of 7 steps (57%) done
+
+[Tue Aug 13 13:13:28 2019]
+Job 8: --- BWA INDEX
+
+[Tue Aug 13 13:16:40 2019]
+Finished job 8.
+5 of 7 steps (71%) done
+
+[Tue Aug 13 13:16:40 2019]
+Job 5: --- BWA INDEX
+
+[Tue Aug 13 13:20:01 2019]
+Finished job 5.
+6 of 7 steps (86%) done
+
+[Tue Aug 13 13:20:01 2019]
+localrule final:
+    input: /workdir/users/agk85/CDC2/hic/mapping/references/B331-2_scaffold.sa, /workdir/users/agk85/CDC2/hic/mapping/references/B320-2_scaffold.sa, /workdir/users/agk85/CDC2/hic/mapping/references/B357-2_scaffold.sa, /workdir/users/agk85/CDC2/hic/mapping/references/US3-10_scaffold.sa, /workdir/users/agk85/CDC2/hic/mapping/references/US3-12_scaffold.sa, /workdir/users/agk85/CDC2/hic/mapping/references/US3-8_scaffold.sa, /workdir/users/agk85/CDC2/hic/mapping/references/US8-3_scaffold.sa, /workdir/users/agk85/CDC2/hic/mapping/references/US8-4_scaffold.sa
+    jobid: 0
+
+[Tue Aug 13 13:20:01 2019]
+Finished job 0.
+7 of 7 steps (100%) done
+Complete log: /local/workdir/users/agk85/CDC2/scripts/mapping/.snakemake/log/2019-08-13T125723.631155.snakemake.log

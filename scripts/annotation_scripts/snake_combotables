@@ -1,0 +1,66 @@
+##--------------------------------------------------------------------------##
+## The list of samples to be processed
+##--------------------------------------------------------------------------##
+FOLDER="CDC2"
+BASE="/workdir/users/agk85/"+FOLDER
+PRODIGAL=BASE + "/prodigal_excise/metagenomes"
+SAMPLES, = glob_wildcards(BASE + "/logs/finals/{NAME}_final_excise_phage")
+NB_SAMPLES = len(SAMPLES)
+print (SAMPLES)
+
+rule final:
+	input:
+		expand(BASE+"/logs/finals/{NAME}_final_combo_table",NAME=SAMPLES)
+
+rule combo_tables:
+	input:
+		a=BASE+"/logs/finals/{NAME}_final_isescan",
+		b=BASE+"/logs/finals/{NAME}_final_phaster",
+		c=BASE+"/logs/finals/{NAME}_final_fullplasmids",
+		d=BASE+"/logs/finals/{NAME}_final_perfect",
+		e=BASE+"/logs/finals/{NAME}_final_aclame",
+		f=BASE+"/logs/finals/{NAME}_final_imme",
+		g=BASE+"/logs/finals/{NAME}_final_rnammer",
+		h=BASE+"/logs/finals/{NAME}_final_greengenes",
+		i=BASE+"/logs/finals/{NAME}_final_greengenes_taxa",
+		j=BASE+"/logs/finals/{NAME}_final_16S_ncbi",
+		k=BASE+"/logs/finals/{NAME}_final_ribosomes",
+		l=BASE+"/logs/finals/{NAME}_final_plasmidfinder",
+		m=BASE+"/logs/finals/{NAME}_final_card",
+		ae=BASE+"/logs/finals/{NAME}_final_plasmid_pfams",
+		o=BASE+"/logs/finals/{NAME}_final_mtphln",
+		p=BASE+"/logs/finals/{NAME}_final_gsmer",
+		q=BASE+"/logs/finals/{NAME}_final_amphora_blast",
+		r=BASE+"/logs/finals/{NAME}_final_campbell",
+		s=BASE+"/logs/finals/{NAME}_final_phaster_50",
+		t=BASE+"/logs/finals/{NAME}_final_aclame_50",
+		u=BASE+"/logs/finals/{NAME}_final_mobile_pfams",
+		v=BASE+"/logs/finals/{NAME}_final_vf",
+		w=BASE+"/logs/finals/{NAME}_final_pfam",
+		x=BASE+"/logs/finals/{NAME}_final_tigrfam",
+		y=BASE+"/logs/finals/{NAME}_final_resfams",
+		z=BASE+"/logs/finals/{NAME}_final_relaxase",
+		aa=BASE+"/logs/finals/{NAME}_final_tigrfam",
+		ab=BASE+"/logs/finals/{NAME}_final_amphora",
+		ac=BASE+"/gaemr/metagenomes/{NAME}/gaemr/table/{NAME}.blast_hit_taxonomy.table.txt",
+		ad=BASE+"/logs/finals/{NAME}_final_prodigal",
+	params:
+		n="combo_tables_{NAME}",
+		j="1",
+		name="{NAME}",
+		folder=FOLDER,
+		script="/workdir/users/agk85/press/scripts/master_scf_table17.py",
+		script2="/workdir/users/agk85/press/scripts/master_scf_table_binary.py",
+	resources:
+		mem_mb=lambda wildcards, attempt: attempt*5
+	output:
+		combo_table=BASE+"/combo_tables/metagenomes/{NAME}_master_scf_table.txt",
+		final=BASE+"/logs/finals/{NAME}_final_combo_table"
+	message:"""---combo_tables"""
+	shell:	
+		"""
+		patient=$(echo {params.name}|cut -d'-' -f1)
+		python {params.script} {params.folder} {params.name} $patient
+		python {params.script2} {params.folder} {params.name}
+		touch {output.final}
+		"""

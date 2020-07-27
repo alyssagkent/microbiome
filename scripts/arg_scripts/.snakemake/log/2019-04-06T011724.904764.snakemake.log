@@ -1,0 +1,5 @@
+Building DAG of jobs...
+MissingInputException in line 21 of /local/workdir/users/agk85/CDC2/scripts/arg_scripts/snake_arg_bwa:
+Missing input files for rule bwa:
+/workdir/data/CDC2/metagenomes/merged/unzip/B314-1.2.fastq
+/workdir/data/CDC2/metagenomes/merged/unzip/B314-1.1.fastq

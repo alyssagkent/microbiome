@@ -1,0 +1,19 @@
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 1
+Rules claiming more threads will be scaled down.
+Unlimited resources: mem_mb
+Job counts:
+	count	jobs
+	39	bwa
+	43	filter
+	1	final
+	39	primary_filter
+	43	rpkm
+	43	sam2bam
+	43	sortbam
+	251
+
+[Fri Oct 25 14:06:48 2019]
+Job 87: ---SAM2BAM
+

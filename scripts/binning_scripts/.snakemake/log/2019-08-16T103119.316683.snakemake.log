@@ -1,0 +1,95 @@
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 1
+Rules claiming more threads will be scaled down.
+Unlimited resources: mem_mb
+Job counts:
+	count	jobs
+	13	bwa
+	1	final
+	13	primary_filter
+	13	sam2bam
+	13	sorted
+	53
+
+[Fri Aug 16 10:31:19 2019]
+rule bwa:
+    input: /workdir/data/CDC/metagenomes/merged/unzip/B370-1.1.fastq, /workdir/data/CDC/metagenomes/merged/unzip/B370-1.2.fastq
+    output: /workdir/users/agk85/CDC2/mapping/mapping_t5/B370-1/B370-1.sam, /workdir/users/agk85/CDC2/mapping/mapping_t5/B370-1/mapped
+    jobid: 106
+    wildcards: NAME=B370-1
+    resources: mem_mb=30
+
+[Fri Aug 16 11:15:02 2019]
+Finished job 106.
+1 of 53 steps (2%) done
+
+[Fri Aug 16 11:15:02 2019]
+rule bwa:
+    input: /workdir/data/CDC/metagenomes/merged/unzip/B370-3.1.fastq, /workdir/data/CDC/metagenomes/merged/unzip/B370-3.2.fastq
+    output: /workdir/users/agk85/CDC2/mapping/mapping_t5/B370-3/B370-3.sam, /workdir/users/agk85/CDC2/mapping/mapping_t5/B370-3/mapped
+    jobid: 108
+    wildcards: NAME=B370-3
+    resources: mem_mb=30
+
+[Fri Aug 16 11:51:15 2019]
+Finished job 108.
+2 of 53 steps (4%) done
+
+[Fri Aug 16 11:51:15 2019]
+rule bwa:
+    input: /workdir/data/CDC/metagenomes/merged/unzip/B357-2.1.fastq, /workdir/data/CDC/metagenomes/merged/unzip/B357-2.2.fastq
+    output: /workdir/users/agk85/CDC2/mapping/mapping_t5/B357-2/B357-2.sam, /workdir/users/agk85/CDC2/mapping/mapping_t5/B357-2/mapped
+    jobid: 94
+    wildcards: NAME=B357-2
+    resources: mem_mb=30
+
+[Fri Aug 16 12:29:22 2019]
+Finished job 94.
+3 of 53 steps (6%) done
+
+[Fri Aug 16 12:29:22 2019]
+rule primary_filter:
+    input: /workdir/users/agk85/CDC2/mapping/mapping_t5/B357-2/B357-2.sam
+    output: /workdir/users/agk85/CDC2/mapping/mapping_t5/B357-2/B357-2.nss.sam, /workdir/users/agk85/CDC2/mapping/mapping_t5/B357-2/filtered
+    jobid: 67
+    wildcards: NAME=B357-2
+    resources: mem_mb=15
+
+[Fri Aug 16 12:38:20 2019]
+Finished job 67.
+4 of 53 steps (8%) done
+
+[Fri Aug 16 12:38:20 2019]
+Job 40: ---SAM2BAM
+
+[Fri Aug 16 13:30:18 2019]
+Finished job 40.
+5 of 53 steps (9%) done
+
+[Fri Aug 16 13:30:18 2019]
+rule bwa:
+    input: /workdir/data/CDC/metagenomes/merged/unzip/B370-2.1.fastq, /workdir/data/CDC/metagenomes/merged/unzip/B370-2.2.fastq
+    output: /workdir/users/agk85/CDC2/mapping/mapping_t5/B370-2/B370-2.sam, /workdir/users/agk85/CDC2/mapping/mapping_t5/B370-2/mapped
+    jobid: 107
+    wildcards: NAME=B370-2
+    resources: mem_mb=30
+
+Terminating processes on user request, this might take some time.
+[Fri Aug 16 13:30:22 2019]
+Error in rule bwa:
+    jobid: 107
+    output: /workdir/users/agk85/CDC2/mapping/mapping_t5/B370-2/B370-2.sam, /workdir/users/agk85/CDC2/mapping/mapping_t5/B370-2/mapped
+
+RuleException:
+CalledProcessError in line 27 of /local/workdir/users/agk85/CDC2/scripts/binning_scripts/snake_bwa_scaffold_t5:
+Command 'set -euo pipefail;  if [ ! -e /workdir/users/agk85/CDC2/mapping/mapping_t5/B370-2 ]; then mkdir -p /workdir/users/agk85/CDC2/mapping/mapping_t5/B370-2; fi
+		PATIENT=$(echo B370-2 | cut -d'-' -f1)
+		REF=/workdir/users/agk85/CDC2/hic/mapping/references/${PATIENT}-5_scaffold
+		/workdir/users/agk85/tools/bwa/bwa mem -a -t 8 $REF /workdir/data/CDC/metagenomes/merged/unzip/B370-2.1.fastq /workdir/data/CDC/metagenomes/merged/unzip/B370-2.2.fastq > /workdir/users/agk85/CDC2/mapping/mapping_t5/B370-2/B370-2.sam
+		touch /workdir/users/agk85/CDC2/mapping/mapping_t5/B370-2/mapped' died with <Signals.SIGINT: 2>.
+  File "/local/workdir/users/agk85/CDC2/scripts/binning_scripts/snake_bwa_scaffold_t5", line 27, in __rule_bwa
+  File "/usr/lib64/python3.6/concurrent/futures/thread.py", line 56, in run
+Removing output files of failed job bwa since they might be corrupted:
+/workdir/users/agk85/CDC2/mapping/mapping_t5/B370-2/B370-2.sam
+Complete log: /local/workdir/users/agk85/CDC2/scripts/binning_scripts/.snakemake/log/2019-08-16T103119.316683.snakemake.log

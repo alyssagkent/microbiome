@@ -1,0 +1,32 @@
+##-----------------------------------------------------------------------------------##
+## The list of samples to be processed
+##-----------------------------------------------------------------------------------##
+BASE="/workdir/users/agk85/CDC2"
+SAMPLES, = glob_wildcards(BASE + "/args/{NAME}_nr.fna.clstr")
+NB_SAMPLES = len(SAMPLES)
+print (SAMPLES)
+
+rule final:
+	input:
+		expand(BASE+"/logs/finals/{NAME}_final_args_index", NAME=SAMPLES)
+
+rule index:
+	input:
+		prots=BASE+"/args/{NAME}_nr.fna"
+	params:
+		n="bwaindex_{NAME}",
+		name="{NAME}_nr",
+		out=BASE + "/args/mapping/references"
+	resources:
+		mem_mb= lambda wildcards, attempt: attempt * 4
+	output:
+		final=BASE + "/logs/finals/{NAME}_final_args_index"
+	message:"""---bwaindex"""
+	shell:
+		"""
+		if [ ! -d {params.out} ]; then mkdir -p {params.out}; fi
+		cd {params.out}
+		/programs/bwa-0.7.8/bwa index -a bwtsw -p {params.name} {input.prots}
+		touch {output.final}
+		"""
+

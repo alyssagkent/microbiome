@@ -1,0 +1,30 @@
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 1
+Rules claiming more threads will be scaled down.
+Unlimited resources: mem_mb
+Job counts:
+	count	jobs
+	1	final
+	4	sorted
+	5
+
+[Fri Aug 16 13:25:13 2019]
+Job 2: ---SORTED
+
+[Fri Aug 16 13:25:44 2019]
+Error in rule sorted:
+    jobid: 2
+    output: /workdir/users/agk85/CDC2/mapping/mapping_t8/US3-10/US3-10.sorted.bam, /workdir/users/agk85/CDC2/mapping/mapping_t8/US3-10/done
+
+RuleException:
+CalledProcessError in line 81 of /local/workdir/users/agk85/CDC2/scripts/binning_scripts/snake_bwa_scaffold_t8:
+Command 'set -euo pipefail;  /programs/samtools-1.3.2/bin/samtools sort -O BAM --threads 8 -o /workdir/users/agk85/CDC2/mapping/mapping_t8/US3-10/US3-10.sorted.bam -T US3-10 /workdir/users/agk85/CDC2/mapping/mapping_t8/US3-10/US3-10.nss.bam
+		/programs/samtools-1.3.2/bin/samtools index /workdir/users/agk85/CDC2/mapping/mapping_t8/US3-10/US3-10.sorted.bam
+		rm /workdir/users/agk85/CDC2/mapping/mapping_t8/US3-10/US3-10.nss.bam
+		touch /workdir/users/agk85/CDC2/mapping/mapping_t8/US3-10/done' returned non-zero exit status 1.
+  File "/local/workdir/users/agk85/CDC2/scripts/binning_scripts/snake_bwa_scaffold_t8", line 81, in __rule_sorted
+  File "/usr/lib64/python3.6/concurrent/futures/thread.py", line 56, in run
+Shutting down, this might take some time.
+Exiting because a job execution failed. Look above for error message
+Complete log: /local/workdir/users/agk85/CDC2/scripts/binning_scripts/.snakemake/log/2019-08-16T132513.099692.snakemake.log

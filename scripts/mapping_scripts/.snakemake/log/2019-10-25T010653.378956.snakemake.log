@@ -1,0 +1,1190 @@
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cluster nodes: 43
+Unlimited resources: mem_mb
+Job counts:
+	count	jobs
+	3	bwa
+	43	filter
+	1	final
+	3	primary_filter
+	43	rpkm
+	4	sam2bam
+	43	sortbam
+	140
+
+[Fri Oct 25 01:06:53 2019]
+Job 29: ---bwafilter
+
+Submitted job 29 with external jobid 'Your job 447086 ("filter_B370-1") has been submitted'.
+
+[Fri Oct 25 01:06:53 2019]
+Job 36: ---bwafilter
+
+Submitted job 36 with external jobid 'Your job 447087 ("filter_US3-16") has been submitted'.
+
+[Fri Oct 25 01:06:53 2019]
+Job 17: ---bwafilter
+
+Submitted job 17 with external jobid 'Your job 447088 ("filter_B331-2") has been submitted'.
+
+[Fri Oct 25 01:06:53 2019]
+Job 34: ---bwafilter
+
+Submitted job 34 with external jobid 'Your job 447089 ("filter_US3-12") has been submitted'.
+
+[Fri Oct 25 01:06:53 2019]
+Job 41: ---bwafilter
+
+Submitted job 41 with external jobid 'Your job 447090 ("filter_US8-5") has been submitted'.
+
+[Fri Oct 25 01:06:54 2019]
+Job 5: ---bwafilter
+
+Submitted job 5 with external jobid 'Your job 447091 ("filter_B316-1") has been submitted'.
+
+[Fri Oct 25 01:06:54 2019]
+Job 32: ---bwafilter
+
+Submitted job 32 with external jobid 'Your job 447092 ("filter_US3-8") has been submitted'.
+
+[Fri Oct 25 01:06:54 2019]
+Job 13: ---bwafilter
+
+Submitted job 13 with external jobid 'Your job 447093 ("filter_B320-2") has been submitted'.
+
+[Fri Oct 25 01:06:54 2019]
+Job 18: ---bwafilter
+
+Submitted job 18 with external jobid 'Your job 447094 ("filter_B331-3") has been submitted'.
+
+[Fri Oct 25 01:06:54 2019]
+Job 20: ---bwafilter
+
+Submitted job 20 with external jobid 'Your job 447095 ("filter_B335-1") has been submitted'.
+
+[Fri Oct 25 01:06:54 2019]
+Job 10: ---bwafilter
+
+Submitted job 10 with external jobid 'Your job 447096 ("filter_B316-6") has been submitted'.
+
+[Fri Oct 25 01:06:54 2019]
+Job 9: ---bwafilter
+
+Submitted job 9 with external jobid 'Your job 447097 ("filter_B316-5") has been submitted'.
+
+[Fri Oct 25 01:06:54 2019]
+Job 25: ---bwafilter
+
+Submitted job 25 with external jobid 'Your job 447098 ("filter_B357-3") has been submitted'.
+
+[Fri Oct 25 01:06:55 2019]
+Job 14: ---bwafilter
+
+Submitted job 14 with external jobid 'Your job 447099 ("filter_B320-3") has been submitted'.
+
+[Fri Oct 25 01:06:55 2019]
+Job 12: ---bwafilter
+
+Submitted job 12 with external jobid 'Your job 447100 ("filter_B320-1") has been submitted'.
+
+[Fri Oct 25 01:06:55 2019]
+Job 37: ---bwafilter
+
+Submitted job 37 with external jobid 'Your job 447101 ("filter_US8-1") has been submitted'.
+
+[Fri Oct 25 01:06:55 2019]
+Job 19: ---bwafilter
+
+Submitted job 19 with external jobid 'Your job 447102 ("filter_B331-4") has been submitted'.
+
+[Fri Oct 25 01:06:55 2019]
+Job 42: ---bwafilter
+
+Submitted job 42 with external jobid 'Your job 447103 ("filter_B370-4") has been submitted'.
+
+[Fri Oct 25 01:06:55 2019]
+rule bwa:
+    input: /workdir/data/CDC/metagenomes/merged/unzip/B314-3.1.fastq, /workdir/data/CDC/metagenomes/merged/unzip/B314-3.2.fastq
+    output: /workdir/users/agk85/CDC2/mapping/B314-3/B314-3.sam, /workdir/users/agk85/CDC2/mapping/B314-3/done_mapped_scaffolds
+    jobid: 178
+    wildcards: NAME=B314-3
+    resources: mem_mb=40
+
+Submitted job 178 with external jobid 'Your job 447104 ("B314-3_bwa") has been submitted'.
+
+[Fri Oct 25 01:06:55 2019]
+Job 16: ---bwafilter
+
+Submitted job 16 with external jobid 'Your job 447105 ("filter_B331-1") has been submitted'.
+
+[Fri Oct 25 01:06:55 2019]
+Job 23: ---bwafilter
+
+Submitted job 23 with external jobid 'Your job 447106 ("filter_B357-1") has been submitted'.
+
+[Fri Oct 25 01:06:55 2019]
+Job 6: ---bwafilter
+
+Submitted job 6 with external jobid 'Your job 447107 ("filter_B316-2") has been submitted'.
+
+[Fri Oct 25 01:06:56 2019]
+Job 8: ---bwafilter
+
+Submitted job 8 with external jobid 'Your job 447108 ("filter_B316-4") has been submitted'.
+
+[Fri Oct 25 01:06:56 2019]
+Job 7: ---bwafilter
+
+Submitted job 7 with external jobid 'Your job 447109 ("filter_B316-3") has been submitted'.
+
+[Fri Oct 25 01:06:56 2019]
+Job 27: ---bwafilter
+
+Submitted job 27 with external jobid 'Your job 447110 ("filter_B357-5") has been submitted'.
+
+[Fri Oct 25 01:06:56 2019]
+Job 31: ---bwafilter
+
+Submitted job 31 with external jobid 'Your job 447111 ("filter_B370-3") has been submitted'.
+
+[Fri Oct 25 01:06:56 2019]
+Job 38: ---bwafilter
+
+Submitted job 38 with external jobid 'Your job 447112 ("filter_US8-2") has been submitted'.
+
+[Fri Oct 25 01:06:56 2019]
+Job 43: ---bwafilter
+
+Submitted job 43 with external jobid 'Your job 447113 ("filter_B370-5") has been submitted'.
+
+[Fri Oct 25 01:06:56 2019]
+Job 21: ---bwafilter
+
+Submitted job 21 with external jobid 'Your job 447114 ("filter_B335-2") has been submitted'.
+
+[Fri Oct 25 01:06:56 2019]
+Job 39: ---bwafilter
+
+Submitted job 39 with external jobid 'Your job 447115 ("filter_US8-3") has been submitted'.
+
+[Fri Oct 25 01:06:56 2019]
+Job 26: ---bwafilter
+
+Submitted job 26 with external jobid 'Your job 447116 ("filter_B357-4") has been submitted'.
+
+[Fri Oct 25 01:06:56 2019]
+Job 22: ---bwafilter
+
+Submitted job 22 with external jobid 'Your job 447117 ("filter_B335-3") has been submitted'.
+
+[Fri Oct 25 01:06:57 2019]
+Job 24: ---bwafilter
+
+Submitted job 24 with external jobid 'Your job 447118 ("filter_B357-2") has been submitted'.
+
+[Fri Oct 25 01:06:57 2019]
+Job 35: ---bwafilter
+
+Submitted job 35 with external jobid 'Your job 447119 ("filter_US3-14") has been submitted'.
+
+[Fri Oct 25 01:06:57 2019]
+Job 87: ---SAM2BAM
+
+Submitted job 87 with external jobid 'Your job 447120 ("B314-1_sam2bam") has been submitted'.
+
+[Fri Oct 25 01:06:57 2019]
+rule bwa:
+    input: /workdir/data/CDC/metagenomes/merged/unzip/B314-4.1.fastq, /workdir/data/CDC/metagenomes/merged/unzip/B314-4.2.fastq
+    output: /workdir/users/agk85/CDC2/mapping/B314-4/B314-4.sam, /workdir/users/agk85/CDC2/mapping/B314-4/done_mapped_scaffolds
+    jobid: 180
+    wildcards: NAME=B314-4
+    resources: mem_mb=40
+
+Submitted job 180 with external jobid 'Your job 447121 ("B314-4_bwa") has been submitted'.
+
+[Fri Oct 25 01:06:57 2019]
+Job 15: ---bwafilter
+
+Submitted job 15 with external jobid 'Your job 447122 ("filter_B320-5") has been submitted'.
+
+[Fri Oct 25 01:06:57 2019]
+Job 28: ---bwafilter
+
+Submitted job 28 with external jobid 'Your job 447123 ("filter_B357-6") has been submitted'.
+
+[Fri Oct 25 01:06:57 2019]
+Job 40: ---bwafilter
+
+Submitted job 40 with external jobid 'Your job 447124 ("filter_US8-4") has been submitted'.
+
+[Fri Oct 25 01:06:57 2019]
+rule bwa:
+    input: /workdir/data/CDC/metagenomes/merged/unzip/B314-2.1.fastq, /workdir/data/CDC/metagenomes/merged/unzip/B314-2.2.fastq
+    output: /workdir/users/agk85/CDC2/mapping/B314-2/B314-2.sam, /workdir/users/agk85/CDC2/mapping/B314-2/done_mapped_scaffolds
+    jobid: 176
+    wildcards: NAME=B314-2
+    resources: mem_mb=40
+
+Submitted job 176 with external jobid 'Your job 447125 ("B314-2_bwa") has been submitted'.
+
+[Fri Oct 25 01:06:57 2019]
+Job 33: ---bwafilter
+
+Submitted job 33 with external jobid 'Your job 447126 ("filter_US3-10") has been submitted'.
+
+[Fri Oct 25 01:06:58 2019]
+Job 30: ---bwafilter
+
+Submitted job 30 with external jobid 'Your job 447127 ("filter_B370-2") has been submitted'.
+
+[Fri Oct 25 01:06:58 2019]
+Job 11: ---bwafilter
+
+Submitted job 11 with external jobid 'Your job 447128 ("filter_B316-7") has been submitted'.
+[Fri Oct 25 01:26:12 2019]
+Finished job 36.
+1 of 140 steps (0.71%) done
+
+[Fri Oct 25 01:26:13 2019]
+Job 165: ---sortbam
+
+Submitted job 165 with external jobid 'Your job 447129 ("sortbam_US3-16") has been submitted'.
+[Fri Oct 25 01:27:51 2019]
+Finished job 41.
+2 of 140 steps (1%) done
+
+[Fri Oct 25 01:27:51 2019]
+Job 170: ---sortbam
+
+Submitted job 170 with external jobid 'Your job 447130 ("sortbam_US8-5") has been submitted'.
+[Fri Oct 25 01:28:33 2019]
+Finished job 32.
+3 of 140 steps (2%) done
+
+[Fri Oct 25 01:28:33 2019]
+Job 161: ---sortbam
+
+Submitted job 161 with external jobid 'Your job 447131 ("sortbam_US3-8") has been submitted'.
+[Fri Oct 25 01:28:47 2019]
+Finished job 34.
+4 of 140 steps (3%) done
+
+[Fri Oct 25 01:28:47 2019]
+Job 163: ---sortbam
+
+Submitted job 163 with external jobid 'Your job 447132 ("sortbam_US3-12") has been submitted'.
+[Fri Oct 25 01:42:48 2019]
+Finished job 18.
+5 of 140 steps (4%) done
+
+[Fri Oct 25 01:42:48 2019]
+Job 147: ---sortbam
+
+Submitted job 147 with external jobid 'Your job 447133 ("sortbam_B331-3") has been submitted'.
+[Fri Oct 25 01:45:50 2019]
+Finished job 17.
+6 of 140 steps (4%) done
+
+[Fri Oct 25 01:45:50 2019]
+Job 146: ---sortbam
+
+Submitted job 146 with external jobid 'Your job 447134 ("sortbam_B331-2") has been submitted'.
+[Fri Oct 25 01:46:47 2019]
+Finished job 178.
+7 of 140 steps (5%) done
+
+[Fri Oct 25 01:46:48 2019]
+rule primary_filter:
+    input: /workdir/users/agk85/CDC2/mapping/B314-3/B314-3.sam
+    output: /workdir/users/agk85/CDC2/mapping/B314-3/B314-3.nss.sam, /workdir/users/agk85/CDC2/mapping/B314-3/B314-3.supp.sam, /workdir/users/agk85/CDC2/mapping/B314-3/done_nss_scaffolds
+    jobid: 177
+    wildcards: NAME=B314-3
+    resources: mem_mb=15
+
+Submitted job 177 with external jobid 'Your job 447135 ("B314-3_primary_filter") has been submitted'.
+[Fri Oct 25 01:52:23 2019]
+Finished job 165.
+8 of 140 steps (6%) done
+
+[Fri Oct 25 01:52:23 2019]
+Job 79: ---rpkm
+
+Submitted job 79 with external jobid 'Your job 447136 ("rpkm_US3-16") has been submitted'.
+[Fri Oct 25 01:53:34 2019]
+Finished job 10.
+9 of 140 steps (6%) done
+
+[Fri Oct 25 01:53:34 2019]
+Job 139: ---sortbam
+
+Submitted job 139 with external jobid 'Your job 447137 ("sortbam_B316-6") has been submitted'.
+[Fri Oct 25 01:56:36 2019]
+Finished job 9.
+10 of 140 steps (7%) done
+
+[Fri Oct 25 01:56:36 2019]
+Job 138: ---sortbam
+
+Submitted job 138 with external jobid 'Your job 447138 ("sortbam_B316-5") has been submitted'.
+[Fri Oct 25 01:58:27 2019]
+Finished job 170.
+11 of 140 steps (8%) done
+
+[Fri Oct 25 01:58:27 2019]
+Job 84: ---rpkm
+
+Submitted job 84 with external jobid 'Your job 447139 ("rpkm_US8-5") has been submitted'.
+[Fri Oct 25 02:04:45 2019]
+Finished job 161.
+12 of 140 steps (9%) done
+
+[Fri Oct 25 02:04:46 2019]
+Job 75: ---rpkm
+
+Submitted job 75 with external jobid 'Your job 447140 ("rpkm_US3-8") has been submitted'.
+[Fri Oct 25 02:08:03 2019]
+Finished job 13.
+13 of 140 steps (9%) done
+
+[Fri Oct 25 02:08:03 2019]
+Job 142: ---sortbam
+
+Submitted job 142 with external jobid 'Your job 447141 ("sortbam_B320-2") has been submitted'.
+[Fri Oct 25 02:09:41 2019]
+Finished job 37.
+14 of 140 steps (10%) done
+
+[Fri Oct 25 02:09:41 2019]
+Job 166: ---sortbam
+
+Submitted job 166 with external jobid 'Your job 447142 ("sortbam_US8-1") has been submitted'.
+[Fri Oct 25 02:09:55 2019]
+Finished job 5.
+15 of 140 steps (11%) done
+
+[Fri Oct 25 02:09:55 2019]
+Job 134: ---sortbam
+
+Submitted job 134 with external jobid 'Your job 447143 ("sortbam_B316-1") has been submitted'.
+[Fri Oct 25 02:11:05 2019]
+Finished job 163.
+16 of 140 steps (11%) done
+
+[Fri Oct 25 02:11:05 2019]
+Job 77: ---rpkm
+
+Submitted job 77 with external jobid 'Your job 447144 ("rpkm_US3-12") has been submitted'.
+[Fri Oct 25 02:20:53 2019]
+Finished job 147.
+17 of 140 steps (12%) done
+
+[Fri Oct 25 02:20:54 2019]
+Job 61: ---rpkm
+
+Submitted job 61 with external jobid 'Your job 447145 ("rpkm_B331-3") has been submitted'.
+[Fri Oct 25 02:21:22 2019]
+Finished job 14.
+18 of 140 steps (13%) done
+
+[Fri Oct 25 02:21:22 2019]
+Job 143: ---sortbam
+
+Submitted job 143 with external jobid 'Your job 447146 ("sortbam_B320-3") has been submitted'.
+[Fri Oct 25 02:24:52 2019]
+Finished job 29.
+19 of 140 steps (14%) done
+
+[Fri Oct 25 02:24:52 2019]
+Job 158: ---sortbam
+
+Submitted job 158 with external jobid 'Your job 447147 ("sortbam_B370-1") has been submitted'.
+[Fri Oct 25 02:25:07 2019]
+Finished job 23.
+20 of 140 steps (14%) done
+
+[Fri Oct 25 02:25:07 2019]
+Job 152: ---sortbam
+
+Submitted job 152 with external jobid 'Your job 447148 ("sortbam_B357-1") has been submitted'.
+[Fri Oct 25 02:27:12 2019]
+Finished job 20.
+21 of 140 steps (15%) done
+
+[Fri Oct 25 02:27:12 2019]
+Job 149: ---sortbam
+
+Submitted job 149 with external jobid 'Your job 447149 ("sortbam_B335-1") has been submitted'.
+[Fri Oct 25 02:32:34 2019]
+Finished job 146.
+22 of 140 steps (16%) done
+
+[Fri Oct 25 02:32:34 2019]
+Job 60: ---rpkm
+
+Submitted job 60 with external jobid 'Your job 447150 ("rpkm_B331-2") has been submitted'.
+[Fri Oct 25 02:33:16 2019]
+Finished job 12.
+23 of 140 steps (16%) done
+
+[Fri Oct 25 02:33:16 2019]
+Job 141: ---sortbam
+
+Submitted job 141 with external jobid 'Your job 447151 ("sortbam_B320-1") has been submitted'.
+[Fri Oct 25 02:38:39 2019]
+Finished job 25.
+24 of 140 steps (17%) done
+
+[Fri Oct 25 02:38:39 2019]
+Job 154: ---sortbam
+
+Submitted job 154 with external jobid 'Your job 447152 ("sortbam_B357-3") has been submitted'.
+[Fri Oct 25 02:40:04 2019]
+Finished job 16.
+25 of 140 steps (18%) done
+
+[Fri Oct 25 02:40:04 2019]
+Job 145: ---sortbam
+
+Submitted job 145 with external jobid 'Your job 447153 ("sortbam_B331-1") has been submitted'.
+[Fri Oct 25 02:42:09 2019]
+Finished job 19.
+26 of 140 steps (19%) done
+
+[Fri Oct 25 02:42:09 2019]
+Job 148: ---sortbam
+
+Submitted job 148 with external jobid 'Your job 447154 ("sortbam_B331-4") has been submitted'.
+[Fri Oct 25 02:49:38 2019]
+Finished job 177.
+27 of 140 steps (19%) done
+
+[Fri Oct 25 02:49:38 2019]
+Job 89: ---SAM2BAM
+
+Submitted job 89 with external jobid 'Your job 447155 ("B314-3_sam2bam") has been submitted'.
+[Fri Oct 25 02:54:46 2019]
+Finished job 79.
+28 of 140 steps (20%) done
+[Fri Oct 25 02:55:15 2019]
+Finished job 38.
+29 of 140 steps (21%) done
+
+[Fri Oct 25 02:55:15 2019]
+Job 167: ---sortbam
+
+Submitted job 167 with external jobid 'Your job 447156 ("sortbam_US8-2") has been submitted'.
+[Fri Oct 25 03:02:15 2019]
+Finished job 139.
+30 of 140 steps (21%) done
+
+[Fri Oct 25 03:02:15 2019]
+Job 53: ---rpkm
+
+Submitted job 53 with external jobid 'Your job 447157 ("rpkm_B316-6") has been submitted'.
+[Fri Oct 25 03:09:58 2019]
+Finished job 138.
+31 of 140 steps (22%) done
+
+[Fri Oct 25 03:09:58 2019]
+Job 52: ---rpkm
+
+Submitted job 52 with external jobid 'Your job 447158 ("rpkm_B316-5") has been submitted'.
+[Fri Oct 25 03:10:27 2019]
+Finished job 42.
+32 of 140 steps (23%) done
+
+[Fri Oct 25 03:10:27 2019]
+Job 171: ---sortbam
+
+Submitted job 171 with external jobid 'Your job 447159 ("sortbam_B370-4") has been submitted'.
+[Fri Oct 25 03:14:25 2019]
+Finished job 39.
+33 of 140 steps (24%) done
+
+[Fri Oct 25 03:14:25 2019]
+Job 168: ---sortbam
+
+Submitted job 168 with external jobid 'Your job 447160 ("sortbam_US8-3") has been submitted'.
+[Fri Oct 25 03:15:07 2019]
+Finished job 7.
+34 of 140 steps (24%) done
+
+[Fri Oct 25 03:15:07 2019]
+Job 136: ---sortbam
+
+Submitted job 136 with external jobid 'Your job 447161 ("sortbam_B316-3") has been submitted'.
+[Fri Oct 25 03:16:31 2019]
+Finished job 84.
+35 of 140 steps (25%) done
+[Fri Oct 25 03:23:18 2019]
+Finished job 75.
+36 of 140 steps (26%) done
+[Fri Oct 25 03:35:54 2019]
+Finished job 43.
+37 of 140 steps (26%) done
+
+[Fri Oct 25 03:35:54 2019]
+Job 172: ---sortbam
+
+Submitted job 172 with external jobid 'Your job 447162 ("sortbam_B370-5") has been submitted'.
+[Fri Oct 25 03:38:15 2019]
+Finished job 21.
+38 of 140 steps (27%) done
+
+[Fri Oct 25 03:38:15 2019]
+Job 150: ---sortbam
+
+Submitted job 150 with external jobid 'Your job 447163 ("sortbam_B335-2") has been submitted'.
+[Fri Oct 25 03:40:35 2019]
+Finished job 142.
+39 of 140 steps (28%) done
+
+[Fri Oct 25 03:40:35 2019]
+Job 56: ---rpkm
+
+Submitted job 56 with external jobid 'Your job 447164 ("rpkm_B320-2") has been submitted'.
+[Fri Oct 25 03:50:10 2019]
+Finished job 31.
+40 of 140 steps (29%) done
+
+[Fri Oct 25 03:50:10 2019]
+Job 160: ---sortbam
+
+Submitted job 160 with external jobid 'Your job 447165 ("sortbam_B370-3") has been submitted'.
+[Fri Oct 25 03:54:51 2019]
+Finished job 35.
+41 of 140 steps (29%) done
+
+[Fri Oct 25 03:54:51 2019]
+Job 164: ---sortbam
+
+Submitted job 164 with external jobid 'Your job 447166 ("sortbam_US3-14") has been submitted'.
+[Fri Oct 25 03:59:30 2019]
+Finished job 27.
+42 of 140 steps (30%) done
+
+[Fri Oct 25 03:59:30 2019]
+Job 156: ---sortbam
+
+Submitted job 156 with external jobid 'Your job 447167 ("sortbam_B357-5") has been submitted'.
+[Fri Oct 25 04:01:22 2019]
+Finished job 6.
+43 of 140 steps (31%) done
+
+[Fri Oct 25 04:01:22 2019]
+Job 135: ---sortbam
+
+Submitted job 135 with external jobid 'Your job 447168 ("sortbam_B316-2") has been submitted'.
+[Fri Oct 25 04:03:57 2019]
+Finished job 180.
+44 of 140 steps (31%) done
+
+[Fri Oct 25 04:03:58 2019]
+rule primary_filter:
+    input: /workdir/users/agk85/CDC2/mapping/B314-4/B314-4.sam
+    output: /workdir/users/agk85/CDC2/mapping/B314-4/B314-4.nss.sam, /workdir/users/agk85/CDC2/mapping/B314-4/B314-4.supp.sam, /workdir/users/agk85/CDC2/mapping/B314-4/done_nss_scaffolds
+    jobid: 179
+    wildcards: NAME=B314-4
+    resources: mem_mb=15
+
+Submitted job 179 with external jobid 'Your job 447169 ("B314-4_primary_filter") has been submitted'.
+[Fri Oct 25 04:05:20 2019]
+Finished job 22.
+45 of 140 steps (32%) done
+
+[Fri Oct 25 04:05:20 2019]
+Job 151: ---sortbam
+
+Submitted job 151 with external jobid 'Your job 447170 ("sortbam_B335-3") has been submitted'.
+[Fri Oct 25 04:09:05 2019]
+Finished job 166.
+46 of 140 steps (33%) done
+
+[Fri Oct 25 04:09:05 2019]
+Job 80: ---rpkm
+
+Submitted job 80 with external jobid 'Your job 447171 ("rpkm_US8-1") has been submitted'.
+[Fri Oct 25 04:16:19 2019]
+Finished job 8.
+47 of 140 steps (34%) done
+
+[Fri Oct 25 04:16:19 2019]
+Job 137: ---sortbam
+
+Submitted job 137 with external jobid 'Your job 447172 ("sortbam_B316-4") has been submitted'.
+[Fri Oct 25 04:18:54 2019]
+Finished job 40.
+48 of 140 steps (34%) done
+
+[Fri Oct 25 04:18:54 2019]
+Job 169: ---sortbam
+
+Submitted job 169 with external jobid 'Your job 447173 ("sortbam_US8-4") has been submitted'.
+[Fri Oct 25 04:21:14 2019]
+Finished job 15.
+49 of 140 steps (35%) done
+
+[Fri Oct 25 04:21:14 2019]
+Job 144: ---sortbam
+
+Submitted job 144 with external jobid 'Your job 447174 ("sortbam_B320-5") has been submitted'.
+[Fri Oct 25 04:24:02 2019]
+Finished job 61.
+50 of 140 steps (36%) done
+[Fri Oct 25 04:25:21 2019]
+Finished job 77.
+51 of 140 steps (36%) done
+[Fri Oct 25 04:28:23 2019]
+Finished job 134.
+52 of 140 steps (37%) done
+
+[Fri Oct 25 04:28:23 2019]
+Job 48: ---rpkm
+
+Submitted job 48 with external jobid 'Your job 447175 ("rpkm_B316-1") has been submitted'.
+[Fri Oct 25 04:30:20 2019]
+Finished job 152.
+53 of 140 steps (38%) done
+
+[Fri Oct 25 04:30:20 2019]
+Job 66: ---rpkm
+
+Submitted job 66 with external jobid 'Your job 447176 ("rpkm_B357-1") has been submitted'.
+[Fri Oct 25 04:30:59 2019]
+Finished job 26.
+54 of 140 steps (39%) done
+
+[Fri Oct 25 04:30:59 2019]
+Job 155: ---sortbam
+
+Submitted job 155 with external jobid 'Your job 447177 ("sortbam_B357-4") has been submitted'.
+[Fri Oct 25 04:32:57 2019]
+Finished job 33.
+55 of 140 steps (39%) done
+
+[Fri Oct 25 04:32:57 2019]
+Job 162: ---sortbam
+
+Submitted job 162 with external jobid 'Your job 447178 ("sortbam_US3-10") has been submitted'.
+[Fri Oct 25 04:33:35 2019]
+Finished job 143.
+56 of 140 steps (40%) done
+
+[Fri Oct 25 04:33:35 2019]
+Job 57: ---rpkm
+
+Submitted job 57 with external jobid 'Your job 447179 ("rpkm_B320-3") has been submitted'.
+[Fri Oct 25 04:35:06 2019]
+Finished job 24.
+57 of 140 steps (41%) done
+
+[Fri Oct 25 04:35:06 2019]
+Job 153: ---sortbam
+
+Submitted job 153 with external jobid 'Your job 447180 ("sortbam_B357-2") has been submitted'.
+[Fri Oct 25 04:35:45 2019]
+Finished job 60.
+58 of 140 steps (41%) done
+[Fri Oct 25 04:37:17 2019]
+Finished job 176.
+59 of 140 steps (42%) done
+
+[Fri Oct 25 04:37:17 2019]
+rule primary_filter:
+    input: /workdir/users/agk85/CDC2/mapping/B314-2/B314-2.sam
+    output: /workdir/users/agk85/CDC2/mapping/B314-2/B314-2.nss.sam, /workdir/users/agk85/CDC2/mapping/B314-2/B314-2.supp.sam, /workdir/users/agk85/CDC2/mapping/B314-2/done_nss_scaffolds
+    jobid: 175
+    wildcards: NAME=B314-2
+    resources: mem_mb=15
+
+Submitted job 175 with external jobid 'Your job 447181 ("B314-2_primary_filter") has been submitted'.
+[Fri Oct 25 04:41:24 2019]
+Finished job 167.
+60 of 140 steps (43%) done
+
+[Fri Oct 25 04:41:24 2019]
+Job 81: ---rpkm
+
+Submitted job 81 with external jobid 'Your job 447182 ("rpkm_US8-2") has been submitted'.
+[Fri Oct 25 04:41:37 2019]
+Finished job 53.
+61 of 140 steps (44%) done
+[Fri Oct 25 04:42:30 2019]
+Finished job 179.
+62 of 140 steps (44%) done
+
+[Fri Oct 25 04:42:30 2019]
+Job 90: ---SAM2BAM
+
+Submitted job 90 with external jobid 'Your job 447183 ("B314-4_sam2bam") has been submitted'.
+[Fri Oct 25 04:42:55 2019]
+Finished job 145.
+63 of 140 steps (45%) done
+
+[Fri Oct 25 04:42:55 2019]
+Job 59: ---rpkm
+
+Submitted job 59 with external jobid 'Your job 447184 ("rpkm_B331-1") has been submitted'.
+[Fri Oct 25 04:43:21 2019]
+Finished job 52.
+64 of 140 steps (46%) done
+[Fri Oct 25 04:47:15 2019]
+Finished job 141.
+65 of 140 steps (46%) done
+
+[Fri Oct 25 04:47:15 2019]
+Job 55: ---rpkm
+
+Submitted job 55 with external jobid 'Your job 447185 ("rpkm_B320-1") has been submitted'.
+[Fri Oct 25 04:48:06 2019]
+Finished job 168.
+66 of 140 steps (47%) done
+
+[Fri Oct 25 04:48:06 2019]
+Job 82: ---rpkm
+
+Submitted job 82 with external jobid 'Your job 447186 ("rpkm_US8-3") has been submitted'.
+[Fri Oct 25 04:48:46 2019]
+Finished job 148.
+67 of 140 steps (48%) done
+
+[Fri Oct 25 04:48:46 2019]
+Job 62: ---rpkm
+
+Submitted job 62 with external jobid 'Your job 447187 ("rpkm_B331-4") has been submitted'.
+[Fri Oct 25 04:50:43 2019]
+Finished job 11.
+68 of 140 steps (49%) done
+
+[Fri Oct 25 04:50:43 2019]
+Job 140: ---sortbam
+
+Submitted job 140 with external jobid 'Your job 447188 ("sortbam_B316-7") has been submitted'.
+[Fri Oct 25 04:52:14 2019]
+Finished job 149.
+69 of 140 steps (49%) done
+
+[Fri Oct 25 04:52:14 2019]
+Job 63: ---rpkm
+
+Submitted job 63 with external jobid 'Your job 447189 ("rpkm_B335-1") has been submitted'.
+[Fri Oct 25 04:52:40 2019]
+Finished job 158.
+70 of 140 steps (50%) done
+
+[Fri Oct 25 04:52:41 2019]
+Job 72: ---rpkm
+
+Submitted job 72 with external jobid 'Your job 447190 ("rpkm_B370-1") has been submitted'.
+[Fri Oct 25 04:53:20 2019]
+Finished job 87.
+71 of 140 steps (51%) done
+
+[Fri Oct 25 04:53:23 2019]
+Job 1: ---bwafilter
+
+Submitted job 1 with external jobid 'Your job 447191 ("filter_B314-1") has been submitted'.
+[Fri Oct 25 04:55:17 2019]
+Finished job 164.
+72 of 140 steps (51%) done
+
+[Fri Oct 25 04:55:17 2019]
+Job 78: ---rpkm
+
+Submitted job 78 with external jobid 'Your job 447192 ("rpkm_US3-14") has been submitted'.
+[Fri Oct 25 04:55:43 2019]
+Finished job 56.
+73 of 140 steps (52%) done
+[Fri Oct 25 04:58:06 2019]
+Finished job 154.
+74 of 140 steps (53%) done
+
+[Fri Oct 25 04:58:06 2019]
+Job 68: ---rpkm
+
+Submitted job 68 with external jobid 'Your job 447193 ("rpkm_B357-3") has been submitted'.
+[Fri Oct 25 04:59:37 2019]
+Finished job 136.
+75 of 140 steps (54%) done
+
+[Fri Oct 25 04:59:37 2019]
+Job 50: ---rpkm
+
+Submitted job 50 with external jobid 'Your job 447194 ("rpkm_B316-3") has been submitted'.
+[Fri Oct 25 05:00:29 2019]
+Finished job 171.
+76 of 140 steps (54%) done
+
+[Fri Oct 25 05:00:29 2019]
+Job 85: ---rpkm
+
+Submitted job 85 with external jobid 'Your job 447195 ("rpkm_B370-4") has been submitted'.
+[Fri Oct 25 05:01:34 2019]
+Finished job 28.
+77 of 140 steps (55%) done
+
+[Fri Oct 25 05:01:34 2019]
+Job 157: ---sortbam
+
+Submitted job 157 with external jobid 'Your job 447196 ("sortbam_B357-6") has been submitted'.
+[Fri Oct 25 05:02:39 2019]
+Finished job 150.
+78 of 140 steps (56%) done
+
+[Fri Oct 25 05:02:39 2019]
+Job 64: ---rpkm
+
+Submitted job 64 with external jobid 'Your job 447197 ("rpkm_B335-2") has been submitted'.
+[Fri Oct 25 05:03:05 2019]
+Finished job 80.
+79 of 140 steps (56%) done
+[Fri Oct 25 05:04:10 2019]
+Finished job 172.
+80 of 140 steps (57%) done
+
+[Fri Oct 25 05:04:10 2019]
+Job 86: ---rpkm
+
+Submitted job 86 with external jobid 'Your job 447198 ("rpkm_B370-5") has been submitted'.
+[Fri Oct 25 05:04:36 2019]
+Finished job 169.
+81 of 140 steps (58%) done
+
+[Fri Oct 25 05:04:36 2019]
+Job 83: ---rpkm
+
+Submitted job 83 with external jobid 'Your job 447199 ("rpkm_US8-4") has been submitted'.
+[Fri Oct 25 05:05:41 2019]
+Finished job 66.
+82 of 140 steps (59%) done
+[Fri Oct 25 05:07:11 2019]
+Finished job 175.
+83 of 140 steps (59%) done
+
+[Fri Oct 25 05:07:12 2019]
+Job 88: ---SAM2BAM
+
+Submitted job 88 with external jobid 'Your job 447200 ("B314-2_sam2bam") has been submitted'.
+[Fri Oct 25 05:09:09 2019]
+Finished job 57.
+84 of 140 steps (60%) done
+[Fri Oct 25 05:09:36 2019]
+Finished job 144.
+85 of 140 steps (61%) done
+
+[Fri Oct 25 05:09:36 2019]
+Job 58: ---rpkm
+
+Submitted job 58 with external jobid 'Your job 447201 ("rpkm_B320-5") has been submitted'.
+[Fri Oct 25 05:09:49 2019]
+Finished job 151.
+86 of 140 steps (61%) done
+
+[Fri Oct 25 05:09:49 2019]
+Job 65: ---rpkm
+
+Submitted job 65 with external jobid 'Your job 447202 ("rpkm_B335-3") has been submitted'.
+[Fri Oct 25 05:10:14 2019]
+Finished job 59.
+87 of 140 steps (62%) done
+[Fri Oct 25 05:12:37 2019]
+Finished job 81.
+88 of 140 steps (63%) done
+[Fri Oct 25 05:13:14 2019]
+Finished job 48.
+89 of 140 steps (64%) done
+[Fri Oct 25 05:13:15 2019]
+Finished job 162.
+90 of 140 steps (64%) done
+
+[Fri Oct 25 05:13:16 2019]
+Job 76: ---rpkm
+
+Submitted job 76 with external jobid 'Your job 447203 ("rpkm_US3-10") has been submitted'.
+[Fri Oct 25 05:16:14 2019]
+Finished job 62.
+91 of 140 steps (65%) done
+[Fri Oct 25 05:18:14 2019]
+Finished job 82.
+92 of 140 steps (66%) done
+[Fri Oct 25 05:18:51 2019]
+Finished job 160.
+93 of 140 steps (66%) done
+
+[Fri Oct 25 05:18:51 2019]
+Job 74: ---rpkm
+
+Submitted job 74 with external jobid 'Your job 447204 ("rpkm_B370-3") has been submitted'.
+[Fri Oct 25 05:20:02 2019]
+Finished job 78.
+94 of 140 steps (67%) done
+[Fri Oct 25 05:20:02 2019]
+Finished job 63.
+95 of 140 steps (68%) done
+[Fri Oct 25 05:20:26 2019]
+Finished job 140.
+96 of 140 steps (69%) done
+
+[Fri Oct 25 05:20:26 2019]
+Job 54: ---rpkm
+
+Submitted job 54 with external jobid 'Your job 447205 ("rpkm_B316-7") has been submitted'.
+[Fri Oct 25 05:21:50 2019]
+Finished job 55.
+97 of 140 steps (69%) done
+[Fri Oct 25 05:25:14 2019]
+Finished job 85.
+98 of 140 steps (70%) done
+[Fri Oct 25 05:25:51 2019]
+Finished job 156.
+99 of 140 steps (71%) done
+[Fri Oct 25 05:25:51 2019]
+Finished job 30.
+100 of 140 steps (71%) done
+
+[Fri Oct 25 05:25:51 2019]
+Job 70: ---rpkm
+
+Submitted job 70 with external jobid 'Your job 447206 ("rpkm_B357-5") has been submitted'.
+
+[Fri Oct 25 05:25:51 2019]
+Job 159: ---sortbam
+
+Submitted job 159 with external jobid 'Your job 447207 ("sortbam_B370-2") has been submitted'.
+[Fri Oct 25 05:26:14 2019]
+Finished job 64.
+101 of 140 steps (72%) done
+[Fri Oct 25 05:27:27 2019]
+Error in rule rpkm:
+    jobid: 72
+    output: /workdir/users/agk85/CDC2/mapping/B370-1/B370-1.rpkm.txt, /workdir/users/agk85/CDC2/mapping/B370-1/done_rpkm_scaffolds
+    cluster_jobid: Your job 447190 ("rpkm_B370-1") has been submitted
+
+Trying to restart job 72.
+
+[Fri Oct 25 05:27:27 2019]
+Job 72: ---rpkm
+
+Submitted job 72 with external jobid 'Your job 447208 ("rpkm_B370-1") has been submitted'.
+[Fri Oct 25 05:28:51 2019]
+Finished job 68.
+102 of 140 steps (73%) done
+[Fri Oct 25 05:29:02 2019]
+Finished job 86.
+103 of 140 steps (74%) done
+[Fri Oct 25 05:29:47 2019]
+Finished job 50.
+104 of 140 steps (74%) done
+[Fri Oct 25 05:31:15 2019]
+Finished job 65.
+105 of 140 steps (75%) done
+[Fri Oct 25 05:31:48 2019]
+Finished job 155.
+106 of 140 steps (76%) done
+
+[Fri Oct 25 05:31:48 2019]
+Job 69: ---rpkm
+
+Submitted job 69 with external jobid 'Your job 447209 ("rpkm_B357-4") has been submitted'.
+[Fri Oct 25 05:32:32 2019]
+Finished job 153.
+107 of 140 steps (76%) done
+
+[Fri Oct 25 05:32:34 2019]
+Job 67: ---rpkm
+
+Submitted job 67 with external jobid 'Your job 447210 ("rpkm_B357-2") has been submitted'.
+[Fri Oct 25 05:32:54 2019]
+Finished job 58.
+108 of 140 steps (77%) done
+[Fri Oct 25 05:33:05 2019]
+Finished job 135.
+109 of 140 steps (78%) done
+
+[Fri Oct 25 05:33:06 2019]
+Job 49: ---rpkm
+
+Submitted job 49 with external jobid 'Your job 447211 ("rpkm_B316-2") has been submitted'.
+[Fri Oct 25 05:33:49 2019]
+Finished job 54.
+110 of 140 steps (79%) done
+[Fri Oct 25 05:33:49 2019]
+Finished job 83.
+111 of 140 steps (79%) done
+[Fri Oct 25 05:35:52 2019]
+Finished job 76.
+112 of 140 steps (80%) done
+[Fri Oct 25 05:38:47 2019]
+Finished job 137.
+113 of 140 steps (81%) done
+
+[Fri Oct 25 05:38:47 2019]
+Job 51: ---rpkm
+
+Submitted job 51 with external jobid 'Your job 447212 ("rpkm_B316-4") has been submitted'.
+[Fri Oct 25 05:38:48 2019]
+Finished job 74.
+114 of 140 steps (81%) done
+[Fri Oct 25 05:41:10 2019]
+Finished job 157.
+115 of 140 steps (82%) done
+
+[Fri Oct 25 05:41:11 2019]
+Job 71: ---rpkm
+
+Submitted job 71 with external jobid 'Your job 447213 ("rpkm_B357-6") has been submitted'.
+[Fri Oct 25 05:45:23 2019]
+Finished job 70.
+116 of 140 steps (83%) done
+[Fri Oct 25 05:46:40 2019]
+Finished job 67.
+117 of 140 steps (84%) done
+[Fri Oct 25 05:47:24 2019]
+Finished job 69.
+118 of 140 steps (84%) done
+[Fri Oct 25 05:49:25 2019]
+Error in rule rpkm:
+    jobid: 49
+    output: /workdir/users/agk85/CDC2/mapping/B316-2/B316-2.rpkm.txt, /workdir/users/agk85/CDC2/mapping/B316-2/done_rpkm_scaffolds
+    cluster_jobid: Your job 447211 ("rpkm_B316-2") has been submitted
+
+Trying to restart job 49.
+
+[Fri Oct 25 05:49:25 2019]
+Job 49: ---rpkm
+
+Submitted job 49 with external jobid 'Your job 447214 ("rpkm_B316-2") has been submitted'.
+[Fri Oct 25 05:50:55 2019]
+Finished job 71.
+119 of 140 steps (85%) done
+[Fri Oct 25 05:52:26 2019]
+Finished job 72.
+120 of 140 steps (86%) done
+[Fri Oct 25 05:53:56 2019]
+Finished job 51.
+121 of 140 steps (86%) done
+[Fri Oct 25 05:57:06 2019]
+Finished job 159.
+122 of 140 steps (87%) done
+
+[Fri Oct 25 05:57:06 2019]
+Job 73: ---rpkm
+
+Submitted job 73 with external jobid 'Your job 447215 ("rpkm_B370-2") has been submitted'.
+[Fri Oct 25 06:02:56 2019]
+Finished job 49.
+123 of 140 steps (88%) done
+[Fri Oct 25 06:04:46 2019]
+Finished job 73.
+124 of 140 steps (89%) done
+[Fri Oct 25 06:17:47 2019]
+Finished job 90.
+125 of 140 steps (89%) done
+
+[Fri Oct 25 06:17:52 2019]
+Job 4: ---bwafilter
+
+Submitted job 4 with external jobid 'Your job 447216 ("filter_B314-4") has been submitted'.
+[Fri Oct 25 06:38:38 2019]
+Finished job 89.
+126 of 140 steps (90%) done
+
+[Fri Oct 25 06:38:44 2019]
+Job 3: ---bwafilter
+
+Submitted job 3 with external jobid 'Your job 447217 ("filter_B314-3") has been submitted'.
+[Fri Oct 25 07:19:51 2019]
+Finished job 4.
+127 of 140 steps (91%) done
+
+[Fri Oct 25 07:19:51 2019]
+Job 133: ---sortbam
+
+Submitted job 133 with external jobid 'Your job 447218 ("sortbam_B314-4") has been submitted'.
+[Fri Oct 25 07:38:42 2019]
+Finished job 133.
+128 of 140 steps (91%) done
+
+[Fri Oct 25 07:38:42 2019]
+Job 47: ---rpkm
+
+Submitted job 47 with external jobid 'Your job 447219 ("rpkm_B314-4") has been submitted'.
+[Fri Oct 25 07:42:02 2019]
+Finished job 1.
+129 of 140 steps (92%) done
+
+[Fri Oct 25 07:42:03 2019]
+Job 130: ---sortbam
+
+Submitted job 130 with external jobid 'Your job 447220 ("sortbam_B314-1") has been submitted'.
+[Fri Oct 25 07:43:32 2019]
+Finished job 47.
+130 of 140 steps (93%) done
+[Fri Oct 25 08:10:54 2019]
+Finished job 88.
+131 of 140 steps (94%) done
+
+[Fri Oct 25 08:11:01 2019]
+Job 2: ---bwafilter
+
+Submitted job 2 with external jobid 'Your job 447221 ("filter_B314-2") has been submitted'.
+[Fri Oct 25 08:23:35 2019]
+Finished job 3.
+132 of 140 steps (94%) done
+
+[Fri Oct 25 08:23:35 2019]
+Job 132: ---sortbam
+
+Submitted job 132 with external jobid 'Your job 447222 ("sortbam_B314-3") has been submitted'.
+[Fri Oct 25 08:27:25 2019]
+Finished job 130.
+133 of 140 steps (95%) done
+
+[Fri Oct 25 08:27:25 2019]
+Job 44: ---rpkm
+
+Submitted job 44 with external jobid 'Your job 447223 ("rpkm_B314-1") has been submitted'.
+[Fri Oct 25 08:33:45 2019]
+Finished job 44.
+134 of 140 steps (96%) done
+[Fri Oct 25 08:55:57 2019]
+Finished job 132.
+135 of 140 steps (96%) done
+
+[Fri Oct 25 08:55:57 2019]
+Job 46: ---rpkm
+
+Submitted job 46 with external jobid 'Your job 447224 ("rpkm_B314-3") has been submitted'.
+[Fri Oct 25 09:02:57 2019]
+Finished job 46.
+136 of 140 steps (97%) done
+[Fri Oct 25 10:25:02 2019]
+Finished job 2.
+137 of 140 steps (98%) done
+
+[Fri Oct 25 10:25:02 2019]
+Job 131: ---sortbam
+
+Submitted job 131 with external jobid 'Your job 447225 ("sortbam_B314-2") has been submitted'.
+[Fri Oct 25 11:07:25 2019]
+Finished job 131.
+138 of 140 steps (99%) done
+
+[Fri Oct 25 11:07:25 2019]
+Job 45: ---rpkm
+
+Submitted job 45 with external jobid 'Your job 447226 ("rpkm_B314-2") has been submitted'.
+[Fri Oct 25 11:15:15 2019]
+Finished job 45.
+139 of 140 steps (99%) done
+
+[Fri Oct 25 11:15:16 2019]
+localrule final:
+    input: /workdir/users/agk85/CDC2/mapping/B314-1/done_filtered_scaffolds, /workdir/users/agk85/CDC2/mapping/B314-2/done_filtered_scaffolds, /workdir/users/agk85/CDC2/mapping/B314-3/done_filtered_scaffolds, /workdir/users/agk85/CDC2/mapping/B314-4/done_filtered_scaffolds, /workdir/users/agk85/CDC2/mapping/B316-1/done_filtered_scaffolds, /workdir/users/agk85/CDC2/mapping/B316-2/done_filtered_scaffolds, /workdir/users/agk85/CDC2/mapping/B316-3/done_filtered_scaffolds, /workdir/users/agk85/CDC2/mapping/B316-4/done_filtered_scaffolds, /workdir/users/agk85/CDC2/mapping/B316-5/done_filtered_scaffolds, /workdir/users/agk85/CDC2/mapping/B316-6/done_filtered_scaffolds, /workdir/users/agk85/CDC2/mapping/B316-7/done_filtered_scaffolds, /workdir/users/agk85/CDC2/mapping/B320-1/done_filtered_scaffolds, /workdir/users/agk85/CDC2/mapping/B320-2/done_filtered_scaffolds, /workdir/users/agk85/CDC2/mapping/B320-3/done_filtered_scaffolds, /workdir/users/agk85/CDC2/mapping/B320-5/done_filtered_scaffolds, /workdir/users/agk85/CDC2/mapping/B331-1/done_filtered_scaffolds, /workdir/users/agk85/CDC2/mapping/B331-2/done_filtered_scaffolds, /workdir/users/agk85/CDC2/mapping/B331-3/done_filtered_scaffolds, /workdir/users/agk85/CDC2/mapping/B331-4/done_filtered_scaffolds, /workdir/users/agk85/CDC2/mapping/B335-1/done_filtered_scaffolds, /workdir/users/agk85/CDC2/mapping/B335-2/done_filtered_scaffolds, /workdir/users/agk85/CDC2/mapping/B335-3/done_filtered_scaffolds, /workdir/users/agk85/CDC2/mapping/B357-1/done_filtered_scaffolds, /workdir/users/agk85/CDC2/mapping/B357-2/done_filtered_scaffolds, /workdir/users/agk85/CDC2/mapping/B357-3/done_filtered_scaffolds, /workdir/users/agk85/CDC2/mapping/B357-4/done_filtered_scaffolds, /workdir/users/agk85/CDC2/mapping/B357-5/done_filtered_scaffolds, /workdir/users/agk85/CDC2/mapping/B357-6/done_filtered_scaffolds, /workdir/users/agk85/CDC2/mapping/B370-1/done_filtered_scaffolds, /workdir/users/agk85/CDC2/mapping/B370-2/done_filtered_scaffolds, /workdir/users/agk85/CDC2/mapping/B370-3/done_filtered_scaffolds, /workdir/users/agk85/CDC2/mapping/US3-8/done_filtered_scaffolds, /workdir/users/agk85/CDC2/mapping/US3-10/done_filtered_scaffolds, /workdir/users/agk85/CDC2/mapping/US3-12/done_filtered_scaffolds, /workdir/users/agk85/CDC2/mapping/US3-14/done_filtered_scaffolds, /workdir/users/agk85/CDC2/mapping/US3-16/done_filtered_scaffolds, /workdir/users/agk85/CDC2/mapping/US8-1/done_filtered_scaffolds, /workdir/users/agk85/CDC2/mapping/US8-2/done_filtered_scaffolds, /workdir/users/agk85/CDC2/mapping/US8-3/done_filtered_scaffolds, /workdir/users/agk85/CDC2/mapping/US8-4/done_filtered_scaffolds, /workdir/users/agk85/CDC2/mapping/US8-5/done_filtered_scaffolds, /workdir/users/agk85/CDC2/mapping/B370-4/done_filtered_scaffolds, /workdir/users/agk85/CDC2/mapping/B370-5/done_filtered_scaffolds, /workdir/users/agk85/CDC2/mapping/B314-1/done_rpkm_scaffolds, /workdir/users/agk85/CDC2/mapping/B314-2/done_rpkm_scaffolds, /workdir/users/agk85/CDC2/mapping/B314-3/done_rpkm_scaffolds, /workdir/users/agk85/CDC2/mapping/B314-4/done_rpkm_scaffolds, /workdir/users/agk85/CDC2/mapping/B316-1/done_rpkm_scaffolds, /workdir/users/agk85/CDC2/mapping/B316-2/done_rpkm_scaffolds, /workdir/users/agk85/CDC2/mapping/B316-3/done_rpkm_scaffolds, /workdir/users/agk85/CDC2/mapping/B316-4/done_rpkm_scaffolds, /workdir/users/agk85/CDC2/mapping/B316-5/done_rpkm_scaffolds, /workdir/users/agk85/CDC2/mapping/B316-6/done_rpkm_scaffolds, /workdir/users/agk85/CDC2/mapping/B316-7/done_rpkm_scaffolds, /workdir/users/agk85/CDC2/mapping/B320-1/done_rpkm_scaffolds, /workdir/users/agk85/CDC2/mapping/B320-2/done_rpkm_scaffolds, /workdir/users/agk85/CDC2/mapping/B320-3/done_rpkm_scaffolds, /workdir/users/agk85/CDC2/mapping/B320-5/done_rpkm_scaffolds, /workdir/users/agk85/CDC2/mapping/B331-1/done_rpkm_scaffolds, /workdir/users/agk85/CDC2/mapping/B331-2/done_rpkm_scaffolds, /workdir/users/agk85/CDC2/mapping/B331-3/done_rpkm_scaffolds, /workdir/users/agk85/CDC2/mapping/B331-4/done_rpkm_scaffolds, /workdir/users/agk85/CDC2/mapping/B335-1/done_rpkm_scaffolds, /workdir/users/agk85/CDC2/mapping/B335-2/done_rpkm_scaffolds, /workdir/users/agk85/CDC2/mapping/B335-3/done_rpkm_scaffolds, /workdir/users/agk85/CDC2/mapping/B357-1/done_rpkm_scaffolds, /workdir/users/agk85/CDC2/mapping/B357-2/done_rpkm_scaffolds, /workdir/users/agk85/CDC2/mapping/B357-3/done_rpkm_scaffolds, /workdir/users/agk85/CDC2/mapping/B357-4/done_rpkm_scaffolds, /workdir/users/agk85/CDC2/mapping/B357-5/done_rpkm_scaffolds, /workdir/users/agk85/CDC2/mapping/B357-6/done_rpkm_scaffolds, /workdir/users/agk85/CDC2/mapping/B370-1/done_rpkm_scaffolds, /workdir/users/agk85/CDC2/mapping/B370-2/done_rpkm_scaffolds, /workdir/users/agk85/CDC2/mapping/B370-3/done_rpkm_scaffolds, /workdir/users/agk85/CDC2/mapping/US3-8/done_rpkm_scaffolds, /workdir/users/agk85/CDC2/mapping/US3-10/done_rpkm_scaffolds, /workdir/users/agk85/CDC2/mapping/US3-12/done_rpkm_scaffolds, /workdir/users/agk85/CDC2/mapping/US3-14/done_rpkm_scaffolds, /workdir/users/agk85/CDC2/mapping/US3-16/done_rpkm_scaffolds, /workdir/users/agk85/CDC2/mapping/US8-1/done_rpkm_scaffolds, /workdir/users/agk85/CDC2/mapping/US8-2/done_rpkm_scaffolds, /workdir/users/agk85/CDC2/mapping/US8-3/done_rpkm_scaffolds, /workdir/users/agk85/CDC2/mapping/US8-4/done_rpkm_scaffolds, /workdir/users/agk85/CDC2/mapping/US8-5/done_rpkm_scaffolds, /workdir/users/agk85/CDC2/mapping/B370-4/done_rpkm_scaffolds, /workdir/users/agk85/CDC2/mapping/B370-5/done_rpkm_scaffolds
+    jobid: 0
+
+[Fri Oct 25 11:15:16 2019]
+Finished job 0.
+140 of 140 steps (100%) done
+Complete log: /local/workdir/users/agk85/CDC2/scripts/mapping/.snakemake/log/2019-10-25T010653.378956.snakemake.log

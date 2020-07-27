@@ -1,0 +1,4 @@
+Building DAG of jobs...
+MissingInputException in line 14 of /local/workdir/users/agk85/CDC2/scripts/mapping/snake_bwaindex:
+Missing input files for rule bwa_index:
+/workdir/users/agk85/CDC2/prodigal_excise/metagenomes/B357-1/B357-1_scaffold.fasta

@@ -1,0 +1,41 @@
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 1
+Rules claiming more threads will be scaled down.
+Unlimited resources: mem_mb
+Job counts:
+	count	jobs
+	1	bwa
+	1	filter
+	1	final
+	1	primary_filter
+	1	rpkm
+	1	sam2bam
+	1	sortbam
+	7
+
+[Fri Aug 16 22:37:27 2019]
+rule bwa:
+    input: /workdir/data/CDC/metagenomes/merged/unzip/B314-1.1.fastq, /workdir/data/CDC/metagenomes/merged/unzip/B314-1.2.fastq
+    output: /workdir/users/agk85/CDC2/mapping/B314-1/B314-1.sam, /workdir/users/agk85/CDC2/mapping/B314-1/done_mapped_scaffolds
+    jobid: 6
+    wildcards: NAME=B314-1
+    resources: mem_mb=40
+
+[Fri Aug 16 22:37:27 2019]
+Error in rule bwa:
+    jobid: 6
+    output: /workdir/users/agk85/CDC2/mapping/B314-1/B314-1.sam, /workdir/users/agk85/CDC2/mapping/B314-1/done_mapped_scaffolds
+
+RuleException:
+CalledProcessError in line 32 of /local/workdir/users/agk85/CDC2/scripts/mapping/snake_bwa_rpkm:
+Command 'set -euo pipefail;  if [ ! -e /workdir/users/agk85/CDC2/mapping/B314-1 ]; then mkdir -p /workdir/users/agk85/CDC2/mapping/B314-1; fi
+		/workdir/users/agk85/tools/bwa/bwa mem -t 8 /workdir/users/agk85/CDC2/mapping/references/B314-1_scaffold /workdir/data/CDC/metagenomes/merged/unzip/B314-1.1.fastq /workdir/data/CDC/metagenomes/merged/unzip/B314-1.2.fastq > /workdir/users/agk85/CDC2/mapping/B314-1/B314-1.sam
+		touch /workdir/users/agk85/CDC2/mapping/B314-1/done_mapped_scaffolds' returned non-zero exit status 1.
+  File "/local/workdir/users/agk85/CDC2/scripts/mapping/snake_bwa_rpkm", line 32, in __rule_bwa
+  File "/usr/lib64/python3.6/concurrent/futures/thread.py", line 56, in run
+Removing output files of failed job bwa since they might be corrupted:
+/workdir/users/agk85/CDC2/mapping/B314-1/B314-1.sam
+Shutting down, this might take some time.
+Exiting because a job execution failed. Look above for error message
+Complete log: /local/workdir/users/agk85/CDC2/scripts/mapping/.snakemake/log/2019-08-16T223727.731935.snakemake.log

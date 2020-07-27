@@ -1,0 +1,40 @@
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 1
+Rules claiming more threads will be scaled down.
+Unlimited resources: mem_mb
+Job counts:
+	count	jobs
+	13	bwa
+	1	final
+	13	primary_filter
+	13	sam2bam
+	13	sorted
+	53
+
+[Wed Aug 14 15:26:58 2019]
+rule bwa:
+    input: /workdir/data/CDC/metagenomes/merged/unzip/B370-1.1.fastq, /workdir/data/CDC/metagenomes/merged/unzip/B370-1.2.fastq
+    output: /workdir/users/agk85/CDC2/mapping/mapping_t5/B370-1/B370-1.sam, /workdir/users/agk85/CDC2/mapping/mapping_t5/B370-1/mapped
+    jobid: 106
+    wildcards: NAME=B370-1
+    resources: mem_mb=30
+
+Terminating processes on user request, this might take some time.
+[Wed Aug 14 17:41:02 2019]
+Error in rule bwa:
+    jobid: 106
+    output: /workdir/users/agk85/CDC2/mapping/mapping_t5/B370-1/B370-1.sam, /workdir/users/agk85/CDC2/mapping/mapping_t5/B370-1/mapped
+
+RuleException:
+CalledProcessError in line 27 of /local/workdir/users/agk85/CDC2/scripts/binning_scripts/snake_bwa_scaffold_t5:
+Command 'set -euo pipefail;  if [ ! -e /workdir/users/agk85/CDC2/mapping/mapping_t5/B370-1 ]; then mkdir -p /workdir/users/agk85/CDC2/mapping/mapping_t5/B370-1; fi
+		PATIENT=$(echo B370-1 | cut -d'-' -f1)
+		REF=/workdir/users/agk85/CDC2/hic/mapping/references/${PATIENT}-5_scaffold
+		/workdir/users/agk85/tools/bwa/bwa mem -a -t 8 $REF /workdir/data/CDC/metagenomes/merged/unzip/B370-1.1.fastq /workdir/data/CDC/metagenomes/merged/unzip/B370-1.2.fastq > /workdir/users/agk85/CDC2/mapping/mapping_t5/B370-1/B370-1.sam
+		touch /workdir/users/agk85/CDC2/mapping/mapping_t5/B370-1/mapped' died with <Signals.SIGINT: 2>.
+  File "/local/workdir/users/agk85/CDC2/scripts/binning_scripts/snake_bwa_scaffold_t5", line 27, in __rule_bwa
+  File "/usr/lib64/python3.6/concurrent/futures/thread.py", line 56, in run
+Removing output files of failed job bwa since they might be corrupted:
+/workdir/users/agk85/CDC2/mapping/mapping_t5/B370-1/B370-1.sam
+Cancelling snakemake on user request.

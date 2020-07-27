@@ -1,0 +1,84 @@
+##-----------------------------------------------------------------------------------##
+## The list of samples to be processed
+##-----------------------------------------------------------------------------------##
+BASE="/workdir/data/CDC/metagenomes/merged/unzip"
+BASE2="/workdir/users/agk85/CDC2"
+SAMPLES, = glob_wildcards(BASE + "/{NAME}.1.fastq")
+SAMPLES, = glob_wildcards(BASE2 +"/concoct/t12/{NAME}")
+NB_SAMPLES = len(SAMPLES)
+print (SAMPLES)
+
+rule final:
+	input:
+		expand(BASE2 + "/mapping/mapping_t12/{NAME}/done", NAME=SAMPLES),
+rule bwa:
+	input: 
+		FQ1=BASE + "/{NAME}.1.fastq",
+		FQ2=BASE + "/{NAME}.2.fastq"
+	params: 
+		MAPFOLDER=BASE2 + "/mapping/mapping_t12/{NAME}",
+		n="{NAME}_bwa_t12",
+		NAME="{NAME}",
+	resources:
+		mem_mb=lambda wildcards, attempt: attempt * 30
+	output:
+		OUT=BASE2 + "/mapping/mapping_t12/{NAME}/{NAME}.sam",
+		final=BASE2 + "/mapping/mapping_t12/{NAME}/mapped",
+	shell: """ 
+		if [ ! -e {params.MAPFOLDER} ]; then mkdir -p {params.MAPFOLDER}; fi
+		PATIENT=$(echo {params.NAME} | cut -d'-' -f1)
+		REF=/workdir/users/agk85/CDC2/hic/mapping/references/${{PATIENT}}-12_scaffold
+		/workdir/users/agk85/tools/bwa/bwa mem -a -t 8 $REF {input.FQ1} {input.FQ2} > {output.OUT}
+		touch {output.final}
+		"""
+
+rule primary_filter:
+	input:
+		SAM=BASE2 + "/mapping/mapping_t12/{NAME}/{NAME}.sam",
+	params:
+		n="{NAME}_primary_filter_t12"
+	resources:
+		mem_mb=lambda wildcards, attempt: attempt * 15
+	output:
+		NSS=BASE2 + "/mapping/mapping_t12/{NAME}/{NAME}.nss.sam",
+	shell:
+		"""
+		/programs/samtools-1.3.2/bin/samtools view -h -F 2316 {input.SAM} > {output.NSS}
+		rm {input.SAM}
+		"""
+
+rule sam2bam:
+	input:
+		NSS=BASE2 + "/mapping/mapping_t12/{NAME}/{NAME}.nss.sam",
+	params:
+		n="{NAME}_sam2bam_t12",
+	resources:
+		mem_mb=lambda wildcards, attempt: attempt * 15
+	output:
+		NSSBAM=BASE2 + "/mapping/mapping_t12/{NAME}/{NAME}.nss.bam",
+		final=BASE2 + "/mapping/mapping_t12/{NAME}/cleaned",
+	message:"""---SAM2BAM"""
+	shell:"""
+		/programs/samtools-1.3.2/bin/samtools view -bh {input.NSS}  > {output.NSSBAM}
+		rm {input.NSS}
+		touch {output.final}
+		"""
+
+rule sorted:
+	input:
+		BAM=BASE2 + "/mapping/mapping_t12/{NAME}/{NAME}.nss.bam",
+	params:
+		n="{NAME}_sort_t12",
+		NAME="{NAME}",
+	resources:
+		mem_mb=lambda wildcards, attempt: attempt * 50
+	output:
+		SORTED=BASE2 + "/mapping/mapping_t12/{NAME}/{NAME}.sorted.bam",
+		final = BASE2 + "/mapping/mapping_t12/{NAME}/done",
+	message:"""---SORTED"""
+	shell:"""
+		/programs/samtools-1.3.2/bin/samtools sort -O BAM --threads 8 -o {output.SORTED} -T {params.NAME} {input.BAM}
+		/programs/samtools-1.3.2/bin/samtools index {output.SORTED}
+		rm {input.BAM}
+		touch {output.final}
+		"""

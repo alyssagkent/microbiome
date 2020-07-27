@@ -1,0 +1,49 @@
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 1
+Rules claiming more threads will be scaled down.
+Unlimited resources: mem_mb
+Job counts:
+	count	jobs
+	8	bwa
+	1	final
+	8	primary_filter
+	8	sam2bam
+	12	sorted
+	37
+
+[Tue Aug 13 22:22:02 2019]
+rule bwa:
+    input: /workdir/data/CDC/metagenomes/merged/unzip/B370-4.1.fastq, /workdir/data/CDC/metagenomes/merged/unzip/B370-4.2.fastq
+    output: /workdir/users/agk85/CDC2/mapping/B370-4/B370-4.sam
+    jobid: 60
+    wildcards: NAME=B370-4
+    resources: mem_mb=40
+
+[Tue Aug 13 22:40:06 2019]
+Finished job 60.
+1 of 37 steps (3%) done
+
+[Tue Aug 13 22:40:06 2019]
+rule primary_filter:
+    input: /workdir/users/agk85/CDC2/mapping/B370-4/B370-4.sam
+    output: /workdir/users/agk85/CDC2/mapping/B370-4/B370-4.nss.sam, /workdir/users/agk85/CDC2/mapping/B370-4/B370-4.supp.sam
+    jobid: 59
+    wildcards: NAME=B370-4
+    resources: mem_mb=15
+
+Terminating processes on user request, this might take some time.
+[Tue Aug 13 22:43:24 2019]
+Error in rule primary_filter:
+    jobid: 59
+    output: /workdir/users/agk85/CDC2/mapping/B370-4/B370-4.nss.sam, /workdir/users/agk85/CDC2/mapping/B370-4/B370-4.supp.sam
+
+RuleException:
+CalledProcessError in line 42 of /local/workdir/users/agk85/CDC2/scripts/mapping/snake_bwa_scaffold:
+Command 'set -euo pipefail;  /programs/samtools-1.3.2/bin/samtools view -h -F 2316 /workdir/users/agk85/CDC2/mapping/B370-4/B370-4.sam > /workdir/users/agk85/CDC2/mapping/B370-4/B370-4.nss.sam
+		/programs/samtools-1.3.2/bin/samtools view -h -f 2048 /workdir/users/agk85/CDC2/mapping/B370-4/B370-4.sam > /workdir/users/agk85/CDC2/mapping/B370-4/B370-4.supp.sam' died with <Signals.SIGINT: 2>.
+  File "/local/workdir/users/agk85/CDC2/scripts/mapping/snake_bwa_scaffold", line 42, in __rule_primary_filter
+  File "/usr/lib64/python3.6/concurrent/futures/thread.py", line 56, in run
+Removing output files of failed job primary_filter since they might be corrupted:
+/workdir/users/agk85/CDC2/mapping/B370-4/B370-4.nss.sam
+Complete log: /local/workdir/users/agk85/CDC2/scripts/mapping/.snakemake/log/2019-08-13T222202.123511.snakemake.log

@@ -1,0 +1,35 @@
+##-----------------------------------------------------------------------------------##
+## The list of samples to be processed
+##-----------------------------------------------------------------------------------##
+BASE="/workdir/data/CDC/metagenomes/merged"
+BASE2="/workdir/users/agk85/CDC2"
+SAMPLES, = glob_wildcards(BASE + "/{NAME}.1.fastq")
+SAMPLES, = glob_wildcards("/workdir/users/agk85/CDC2/todo/{NAME}")
+NB_SAMPLES = len(SAMPLES)
+print (SAMPLES)
+
+rule final:
+	input:
+		expand(BASE2 + "/metaspades/metagenomes/{NAME}/contigs.fasta", NAME=SAMPLES)
+rule metaspades:
+	input:
+		R1=BASE + "/unzip/{NAME}.1.fastq",
+		R2=BASE + "/unzip/{NAME}.2.fastq",
+	params:
+		n="metaspades_{NAME}",
+		FQ1=BASE + "/unzip/{NAME}.1.fastq",
+		FQ2=BASE + "/unzip/{NAME}.2.fastq",
+		SOLO1=BASE+"/solo/{NAME}.1.solo.fastq",
+		SOLO2=BASE+"/solo/{NAME}.2.solo.fastq",
+		OUT=BASE2 + "/metaspades/metagenomes/{NAME}", 
+	resources:
+		mem_mb=lambda wildcards, attempt: attempt * 100
+	output:
+		FA=BASE2 + "/metaspades/metagenomes/{NAME}/contigs.fasta"
+	message:  """---metaSPAdes"""
+	shell: """
+		echo `date` started {params.n}	
+		if [ ! -d {params.OUT} ]; then mkdir -p {params.OUT}; fi
+		time /programs/spades/bin/spades.py --meta -1 {params.FQ1} -2 {params.FQ2} -t 16 -m {resources.mem_mb} -s {params.SOLO1} -s {params.SOLO2}  -o {params.OUT}
+		echo `date` finished {params.n} 
+		"""

@@ -1,0 +1,87 @@
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cluster nodes: 8
+Unlimited resources: mem_mb
+Job counts:
+	count	jobs
+	8	bwa
+	1	final
+	8	primary_filter
+	8	sam2bam
+	12	sorted
+	37
+
+[Tue Aug 13 22:09:53 2019]
+rule bwa:
+    input: /workdir/data/CDC/metagenomes/merged/unzip/US3-14.1.fastq, /workdir/data/CDC/metagenomes/merged/unzip/US3-14.2.fastq
+    output: /workdir/users/agk85/CDC2/mapping/US3-14/US3-14.sam
+    jobid: 56
+    wildcards: NAME=US3-14
+    resources: mem_mb=40
+
+Submitted job 56 with external jobid 'Your job 440729 ("US3-14_bwa") has been submitted'.
+
+[Tue Aug 13 22:09:53 2019]
+rule bwa:
+    input: /workdir/data/CDC/metagenomes/merged/unzip/US3-16.1.fastq, /workdir/data/CDC/metagenomes/merged/unzip/US3-16.2.fastq
+    output: /workdir/users/agk85/CDC2/mapping/US3-16/US3-16.sam
+    jobid: 62
+    wildcards: NAME=US3-16
+    resources: mem_mb=40
+
+Submitted job 62 with external jobid 'Your job 440730 ("US3-16_bwa") has been submitted'.
+
+[Tue Aug 13 22:09:53 2019]
+rule bwa:
+    input: /workdir/data/CDC/metagenomes/merged/unzip/B370-4.1.fastq, /workdir/data/CDC/metagenomes/merged/unzip/B370-4.2.fastq
+    output: /workdir/users/agk85/CDC2/mapping/B370-4/B370-4.sam
+    jobid: 60
+    wildcards: NAME=B370-4
+    resources: mem_mb=40
+
+Submitted job 60 with external jobid 'Your job 440731 ("B370-4_bwa") has been submitted'.
+
+[Tue Aug 13 22:09:53 2019]
+rule bwa:
+    input: /workdir/data/CDC/metagenomes/merged/unzip/B370-5.1.fastq, /workdir/data/CDC/metagenomes/merged/unzip/B370-5.2.fastq
+    output: /workdir/users/agk85/CDC2/mapping/B370-5/B370-5.sam
+    jobid: 64
+    wildcards: NAME=B370-5
+    resources: mem_mb=40
+
+Submitted job 64 with external jobid 'Your job 440732 ("B370-5_bwa") has been submitted'.
+
+[Tue Aug 13 22:09:53 2019]
+rule bwa:
+    input: /workdir/data/CDC/metagenomes/merged/unzip/US8-2.1.fastq, /workdir/data/CDC/metagenomes/merged/unzip/US8-2.2.fastq
+    output: /workdir/users/agk85/CDC2/mapping/US8-2/US8-2.sam
+    jobid: 50
+    wildcards: NAME=US8-2
+    resources: mem_mb=40
+
+Submitted job 50 with external jobid 'Your job 440733 ("US8-2_bwa") has been submitted'.
+
+[Tue Aug 13 22:09:53 2019]
+rule bwa:
+    input: /workdir/data/CDC/metagenomes/merged/unzip/US8-5.1.fastq, /workdir/data/CDC/metagenomes/merged/unzip/US8-5.2.fastq
+    output: /workdir/users/agk85/CDC2/mapping/US8-5/US8-5.sam
+    jobid: 54
+    wildcards: NAME=US8-5
+    resources: mem_mb=40
+
+Submitted job 54 with external jobid 'Your job 440734 ("US8-5_bwa") has been submitted'.
+
+[Tue Aug 13 22:09:53 2019]
+rule bwa:
+    input: /workdir/data/CDC/metagenomes/merged/unzip/US8-1.1.fastq, /workdir/data/CDC/metagenomes/merged/unzip/US8-1.2.fastq
+    output: /workdir/users/agk85/CDC2/mapping/US8-1/US8-1.sam
+    jobid: 52
+    wildcards: NAME=US8-1
+    resources: mem_mb=40
+
+Submitted job 52 with external jobid 'Your job 440735 ("US8-1_bwa") has been submitted'.
+
+[Tue Aug 13 22:09:53 2019]
+Job 3: ---SORTED
+
+Submitted job 3 with external jobid 'Your job 440736 ("B357-2_sort") has been submitted'.

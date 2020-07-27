@@ -1,0 +1,26 @@
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 1
+Rules claiming more threads will be scaled down.
+Unlimited resources: mem_mb
+Job counts:
+	count	jobs
+	1	filter
+	1	final
+	1	rpkm
+	1	sortbam
+	4
+
+[Fri Aug 16 14:11:42 2019]
+Job 1: ---bwafilter
+
+Waiting at most 5 seconds for missing files.
+MissingOutputException in line 93 of /local/workdir/users/agk85/CDC2/scripts/mapping/snake_bwa_rpkm:
+Missing files after 5 seconds:
+/workdir/users/agk85/CDC2/mapping/B314-1/B314-1.nss.sam
+This might be due to filesystem latency. If that is the case, consider to increase the wait time with --latency-wait.
+Removing output files of failed job filter since they might be corrupted:
+/workdir/users/agk85/CDC2/mapping/B314-1/B314-1.nss.filtered.sam, /workdir/users/agk85/CDC2/mapping/B314-1/B314-1.nss.filtered.bam, /workdir/users/agk85/CDC2/mapping/B314-1/done_filtered_scaffolds
+Shutting down, this might take some time.
+Exiting because a job execution failed. Look above for error message
+Complete log: /local/workdir/users/agk85/CDC2/scripts/mapping/.snakemake/log/2019-08-16T141142.023645.snakemake.log

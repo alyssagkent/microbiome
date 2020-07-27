@@ -1,0 +1,151 @@
+##-----------------------------------------------------------------------------------##
+## The list of samples to be processed
+##-----------------------------------------------------------------------------------##
+BASE="/workdir/data/CDC/hic/merged"
+BASE2="/workdir/users/agk85/CDC2"
+SAMPLES, = glob_wildcards(BASE + "/{NAME}hic.1.fastq")
+NB_SAMPLES = len(SAMPLES)
+print (SAMPLES)
+#for NAME in SAMPLES:
+#  print("Sample " + NAME + " will be processed")
+
+rule final:
+	input:
+		expand(BASE2 + "/hic/mapping/{NAME}/{NAME}_{NAME}_trans_single_98.txt", NAME=SAMPLES),
+		expand(BASE2 + "/hic/mapping/{NAME}/{NAME}_{NAME}_trans_single_99.txt", NAME=SAMPLES),
+		expand(BASE2 + "/hic/mapping/{NAME}/{NAME}_{NAME}_trans_single_100.txt", NAME=SAMPLES),
+rule bwa:
+	input: 
+		FQ1=BASE + "/{NAME}hic.1.fastq",
+		FQ2=BASE + "/{NAME}hic.2.fastq"
+	params: 
+		REF=BASE2 + "/hic/mapping/references/{NAME}_scaffold",
+		MAPFOLDER=BASE2 + "/hic/mapping/{NAME}",
+		n="{NAME}_bwa"
+	resources:
+		mem_mb=lambda wildcards, attempt: attempt * 15
+	output:
+		OUT1=BASE2 + "/hic/mapping/{NAME}/{NAME}_R1.sam",
+		OUT2=BASE2 + "/hic/mapping/{NAME}/{NAME}_R2.sam",
+		NSS1=BASE2 + "/hic/mapping/{NAME}/{NAME}_R1.nss.sam",
+		NSS2=BASE2 + "/hic/mapping/{NAME}/{NAME}_R2.nss.sam",
+		SUPP1=BASE2 + "/hic/mapping/{NAME}/{NAME}_R1.supp.sam",
+		SUPP2=BASE2 + "/hic/mapping/{NAME}/{NAME}_R2.supp.sam"
+	shell: """ 
+		if [ ! -e {params.MAPFOLDER} ]; then mkdir -p {params.MAPFOLDER}; fi
+		/programs/bwa-0.7.8/bwa mem -a -t 8 {params.REF} {input.FQ1} > {output.OUT1}
+		/programs/bwa-0.7.8/bwa mem -a -t 8 {params.REF} {input.FQ2} > {output.OUT2}
+		/programs/samtools-1.3.2/bin/samtools view -F 0x900 {output.OUT1} > {output.NSS1}
+		/programs/samtools-1.3.2/bin/samtools view -F 0x900 {output.OUT2} > {output.NSS2}
+		/programs/samtools-1.3.2/bin/samtools view -f 0x800 {output.OUT1} > {output.SUPP1}
+		/programs/samtools-1.3.2/bin/samtools view -f 0x800 {output.OUT2} > {output.SUPP2}
+		"""
+rule flagstat:
+	input:
+		SAM1=BASE2 + "/hic/mapping/{NAME}/{NAME}_R1.sam",
+		SAM2=BASE2 + "/hic/mapping/{NAME}/{NAME}_R2.sam"
+	params:
+		BAM1=BASE2 + "/hic/mapping/{NAME}/{NAME}_R1.bam",
+		BAM2=BASE2 + "/hic/mapping/{NAME}/{NAME}_R2.bam",
+		n="{NAME}_flagstat"
+	resources:
+		mem_mb=lambda wildcards, attempt: attempt * 15
+	output:
+		FLAGSTAT1=BASE2 + "/hic/mapping/flagstats/{NAME}_R1_prefilter_flagstats.txt",
+		FLAGSTAT2=BASE2 + "/hic/mapping/flagstats/{NAME}_R2_prefilter_flagstats.txt"
+	shell:
+		"""
+		/programs/samtools-1.3.2/bin/samtools view -bh {input.SAM1}  > {params.BAM1}
+		/programs/samtools-1.3.2/bin/samtools flagstat {params.BAM1} > {output.FLAGSTAT1}
+		rm {input.SAM1}
+                /programs/samtools-1.3.2/bin/samtools view -bh {input.SAM2}  > {params.BAM2}
+                /programs/samtools-1.3.2/bin/samtools flagstat {params.BAM2} > {output.FLAGSTAT2}
+                rm {input.SAM2}
+		"""
+
+
+rule single:
+	input:
+		BAM1=BASE2 + "/hic/mapping/{NAME}/{NAME}_R1.bam",
+		BAM2=BASE2 + "/hic/mapping/{NAME}/{NAME}_R2.bam",
+	params:
+		n="{NAME}_single",
+		SAM1=BASE2 + "/hic/mapping/{NAME}/{NAME}_R1.sam",
+		SAM2=BASE2 + "/hic/mapping/{NAME}/{NAME}_R2.sam",
+		IDCOUNT1=BASE2+"/hic/mapping/{NAME}/{NAME}_R1_idcount.txt",
+		IDCOUNT2=BASE2+"/hic/mapping/{NAME}/{NAME}_R2_idcount.txt",
+		script="/workdir/users/agk85/CDC/scripts/unique_bwa_ids.py",
+	resources:
+		mem_mb=lambda wildcards, attempt: attempt * 10
+	output:
+		NSS1=BASE2 + "/hic/mapping/{NAME}/{NAME}_R1.single.nss.sam",
+		NSS2=BASE2 + "/hic/mapping/{NAME}/{NAME}_R2.single.nss.sam",
+		SINGLE1=BASE2 + "/hic/mapping/{NAME}/{NAME}_R1.single.sam",
+		SINGLE2=BASE2 + "/hic/mapping/{NAME}/{NAME}_R2.single.sam",
+	shell:
+		"""
+		#convert to sam
+		/programs/samtools-1.3.2/bin/samtools view -h {input.BAM1} > {params.SAM1}
+		/programs/samtools-1.3.2/bin/samtools view -h {input.BAM2} > {params.SAM2}
+		grep -v "^@" {params.SAM1} | cut -f1 | sort | uniq -c > {params.IDCOUNT1}
+		grep -v "^@" {params.SAM2} | cut -f1 | sort | uniq -c > {params.IDCOUNT2}
+		#python script to output unique reads
+		python {params.script} -s {params.SAM1} -c {params.IDCOUNT1} -o {output.SINGLE1}
+		python {params.script} -s {params.SAM2} -c {params.IDCOUNT2} -o {output.SINGLE2}
+		#remove secondary and supplementary reads (shouldn't be any secondary, but you could have supplementary)
+		/programs/samtools-1.3.2/bin/samtools view -F 0x900 {output.SINGLE1} > {output.NSS1}
+		/programs/samtools-1.3.2/bin/samtools view -F 0x900 {output.SINGLE2} > {output.NSS2}
+		"""
+
+
+
+
+rule filter:
+	input:
+		 NSS1=BASE2 + "/hic/mapping/{NAME}/{NAME}_R1.single.nss.sam",
+		 NSS2=BASE2 + "/hic/mapping/{NAME}/{NAME}_R2.single.nss.sam"
+	params:
+		n="{NAME}_filter"
+	resources:
+		mem_mb=lambda wildcards, attempt: attempt * 40
+	output:
+		FILTER1_98=BASE2 + "/hic/mapping/{NAME}/{NAME}_R1.single.nss.filter_98.sam",
+		FILTER2_98=BASE2 + "/hic/mapping/{NAME}/{NAME}_R2.single.nss.filter_98.sam",
+		FILTER1_99=BASE2 + "/hic/mapping/{NAME}/{NAME}_R1.single.nss.filter_99.sam",
+		FILTER2_99=BASE2 + "/hic/mapping/{NAME}/{NAME}_R2.single.nss.filter_99.sam",
+		FILTER1_100=BASE2 + "/hic/mapping/{NAME}/{NAME}_R1.single.nss.filter_100.sam",
+		FILTER2_100=BASE2 + "/hic/mapping/{NAME}/{NAME}_R2.single.nss.filter_100.sam",		
+		COMBINED_98=BASE2 + "/hic/mapping/{NAME}/{NAME}.single.nss.filter_98.combined.txt",
+		COMBINED_99=BASE2 + "/hic/mapping/{NAME}/{NAME}.single.nss.filter_99.combined.txt",
+		COMBINED_100=BASE2 + "/hic/mapping/{NAME}/{NAME}.single.nss.filter_100.combined.txt"
+	message: """--- FILTER"""
+	shell: """
+		perl /workdir/scripts/analysing_alignments/filterSamByIdentity.pl {input.NSS1} 98 0 0 1 1 > {output.FILTER1_98}
+		perl /workdir/scripts/analysing_alignments/filterSamByIdentity.pl {input.NSS2} 98 0 0 1 1 > {output.FILTER2_98}
+		perl /workdir/scripts/analysing_alignments/filterSamByIdentity.pl {input.NSS1} 99 0 0 1 1 > {output.FILTER1_99}
+		perl /workdir/scripts/analysing_alignments/filterSamByIdentity.pl {input.NSS2} 99 0 0 1 1 > {output.FILTER2_99}
+		perl /workdir/scripts/analysing_alignments/filterSamByIdentity.pl {input.NSS1} 100 0 0 1 1 > {output.FILTER1_100}
+		perl /workdir/scripts/analysing_alignments/filterSamByIdentity.pl {input.NSS2} 100 0 0 1 1 > {output.FILTER2_100}		
+		python ~/agk/CDC/scripts/repair.py {output.FILTER1_98} {output.FILTER2_98} {output.COMBINED_98}
+		python ~/agk/CDC/scripts/repair.py {output.FILTER1_99} {output.FILTER2_99} {output.COMBINED_99}
+		python ~/agk/CDC/scripts/repair.py {output.FILTER1_100} {output.FILTER2_100} {output.COMBINED_100}	
+		"""
+rule trans:
+	input:
+		COMBINED_98=BASE2 + "/hic/mapping/{NAME}/{NAME}.single.nss.filter_98.combined.txt",
+		COMBINED_99=BASE2 + "/hic/mapping/{NAME}/{NAME}.single.nss.filter_99.combined.txt",
+		COMBINED_100=BASE2 + "/hic/mapping/{NAME}/{NAME}.single.nss.filter_100.combined.txt"
+	params:
+		n="{NAME}_trans"
+	resources:
+		mem_mb=lambda wildcards, attempt: attempt * 15
+	output:
+		TRANS_98=BASE2 + "/hic/mapping/{NAME}/{NAME}_{NAME}_trans_single_98.txt",
+		TRANS_99=BASE2 + "/hic/mapping/{NAME}/{NAME}_{NAME}_trans_single_99.txt",
+		TRANS_100=BASE2 + "/hic/mapping/{NAME}/{NAME}_{NAME}_trans_single_100.txt"
+	message: """--- TRANS"""
+	shell: """
+		awk '($3 != $9)' {input.COMBINED_98}  > {output.TRANS_98}
+		awk '($3 != $9)' {input.COMBINED_99}  > {output.TRANS_99}
+		awk '($3 != $9)' {input.COMBINED_100}  > {output.TRANS_100}  
+		"""

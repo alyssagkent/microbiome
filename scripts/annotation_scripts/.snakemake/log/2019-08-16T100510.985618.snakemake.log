@@ -1,0 +1,245 @@
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 1
+Rules claiming more threads will be scaled down.
+Unlimited resources: mem_mb
+Job counts:
+	count	jobs
+	16	card
+	1	final
+	16	resfams
+	33
+
+[Fri Aug 16 10:05:11 2019]
+Job 9: ---card
+
+[Fri Aug 16 11:15:37 2019]
+Finished job 9.
+1 of 33 steps (3%) done
+
+[Fri Aug 16 11:15:37 2019]
+Job 53: ---resfams
+
+[Fri Aug 16 11:16:59 2019]
+Finished job 53.
+2 of 33 steps (6%) done
+
+[Fri Aug 16 11:16:59 2019]
+Job 38: ---card
+
+[Fri Aug 16 12:34:02 2019]
+Finished job 38.
+3 of 33 steps (9%) done
+
+[Fri Aug 16 12:34:02 2019]
+Job 82: ---resfams
+
+[Fri Aug 16 12:35:35 2019]
+Finished job 82.
+4 of 33 steps (12%) done
+
+[Fri Aug 16 12:35:35 2019]
+Job 87: ---resfams
+
+[Fri Aug 16 12:37:13 2019]
+Finished job 87.
+5 of 33 steps (15%) done
+
+[Fri Aug 16 12:37:13 2019]
+Job 43: ---card
+
+[Fri Aug 16 13:52:16 2019]
+Finished job 43.
+6 of 33 steps (18%) done
+
+[Fri Aug 16 13:52:16 2019]
+Job 58: ---resfams
+
+[Fri Aug 16 13:53:31 2019]
+Finished job 58.
+7 of 33 steps (21%) done
+
+[Fri Aug 16 13:53:31 2019]
+Job 14: ---card
+
+[Fri Aug 16 15:24:38 2019]
+Finished job 14.
+8 of 33 steps (24%) done
+
+[Fri Aug 16 15:24:38 2019]
+Job 60: ---resfams
+
+[Fri Aug 16 15:30:36 2019]
+Finished job 60.
+9 of 33 steps (27%) done
+
+[Fri Aug 16 15:30:36 2019]
+Job 16: ---card
+
+[Fri Aug 16 16:43:46 2019]
+Finished job 16.
+10 of 33 steps (30%) done
+
+[Fri Aug 16 16:43:46 2019]
+Job 63: ---resfams
+
+[Fri Aug 16 16:44:55 2019]
+Finished job 63.
+11 of 33 steps (33%) done
+
+[Fri Aug 16 16:44:55 2019]
+Job 19: ---card
+
+[Fri Aug 16 17:51:27 2019]
+Finished job 19.
+12 of 33 steps (36%) done
+
+[Fri Aug 16 17:51:27 2019]
+Job 42: ---card
+
+[Fri Aug 16 19:09:49 2019]
+Finished job 42.
+13 of 33 steps (39%) done
+
+[Fri Aug 16 19:09:49 2019]
+Job 86: ---resfams
+
+[Fri Aug 16 19:12:33 2019]
+Finished job 86.
+14 of 33 steps (42%) done
+
+[Fri Aug 16 19:12:33 2019]
+Job 17: ---card
+
+[Fri Aug 16 20:29:44 2019]
+Finished job 17.
+15 of 33 steps (45%) done
+
+[Fri Aug 16 20:29:44 2019]
+Job 61: ---resfams
+
+[Fri Aug 16 20:31:55 2019]
+Finished job 61.
+16 of 33 steps (48%) done
+
+[Fri Aug 16 20:31:55 2019]
+Job 64: ---resfams
+
+[Fri Aug 16 20:34:04 2019]
+Finished job 64.
+17 of 33 steps (52%) done
+
+[Fri Aug 16 20:34:04 2019]
+Job 20: ---card
+
+[Fri Aug 16 21:29:44 2019]
+Finished job 20.
+18 of 33 steps (55%) done
+
+[Fri Aug 16 21:29:44 2019]
+Job 37: ---card
+
+[Fri Aug 16 22:18:51 2019]
+Finished job 37.
+19 of 33 steps (58%) done
+
+[Fri Aug 16 22:18:51 2019]
+Job 81: ---resfams
+
+[Fri Aug 16 22:20:02 2019]
+Finished job 81.
+20 of 33 steps (61%) done
+
+[Fri Aug 16 22:20:02 2019]
+Job 39: ---card
+
+[Fri Aug 16 23:16:26 2019]
+Finished job 39.
+21 of 33 steps (64%) done
+
+[Fri Aug 16 23:16:26 2019]
+Job 83: ---resfams
+
+[Sat Aug 17 14:13:48 2019]
+Finished job 83.
+22 of 33 steps (67%) done
+
+[Sat Aug 17 14:13:48 2019]
+Job 62: ---resfams
+
+[Sat Aug 17 14:15:40 2019]
+Finished job 62.
+23 of 33 steps (70%) done
+
+[Sat Aug 17 14:15:40 2019]
+Job 18: ---card
+
+[Sat Aug 17 15:17:08 2019]
+Finished job 18.
+24 of 33 steps (73%) done
+
+[Sat Aug 17 15:17:08 2019]
+Job 65: ---resfams
+
+[Sat Aug 17 15:18:53 2019]
+Finished job 65.
+25 of 33 steps (76%) done
+
+[Sat Aug 17 15:18:53 2019]
+Job 21: ---card
+
+[Sat Aug 17 15:59:36 2019]
+Finished job 21.
+26 of 33 steps (79%) done
+
+[Sat Aug 17 15:59:36 2019]
+Job 44: ---card
+
+[Sat Aug 17 16:27:55 2019]
+Finished job 44.
+27 of 33 steps (82%) done
+
+[Sat Aug 17 16:27:55 2019]
+Job 88: ---resfams
+
+[Sat Aug 17 16:28:30 2019]
+Finished job 88.
+28 of 33 steps (85%) done
+
+[Sat Aug 17 16:28:30 2019]
+Job 84: ---resfams
+
+[Sat Aug 17 16:29:02 2019]
+Finished job 84.
+29 of 33 steps (88%) done
+
+[Sat Aug 17 16:29:02 2019]
+Job 40: ---card
+
+[Sat Aug 17 16:51:01 2019]
+Finished job 40.
+30 of 33 steps (91%) done
+
+[Sat Aug 17 16:51:01 2019]
+Job 85: ---resfams
+
+[Sat Aug 17 16:51:27 2019]
+Finished job 85.
+31 of 33 steps (94%) done
+
+[Sat Aug 17 16:51:27 2019]
+Job 41: ---card
+
+[Sat Aug 17 16:59:22 2019]
+Finished job 41.
+32 of 33 steps (97%) done
+
+[Sat Aug 17 16:59:22 2019]
+localrule final:
+    input: /workdir/users/agk85/CDC2/logs/finals/B370-1_final_card, /workdir/users/agk85/CDC2/logs/finals/B316-2_final_card, /workdir/users/agk85/CDC2/logs/finals/B316-4_final_card, /workdir/users/agk85/CDC2/logs/finals/B357-5_final_card, /workdir/users/agk85/CDC2/logs/finals/B357-4_final_card, /workdir/users/agk85/CDC2/logs/finals/B370-2_final_card, /workdir/users/agk85/CDC2/logs/finals/B357-3_final_card, /workdir/users/agk85/CDC2/logs/finals/B370-3_final_card, /workdir/users/agk85/CDC2/logs/finals/US8-3_final_card, /workdir/users/agk85/CDC2/logs/finals/B314-3_final_card, /workdir/users/agk85/CDC2/logs/finals/B314-2_final_card, /workdir/users/agk85/CDC2/logs/finals/B314-1_final_card, /workdir/users/agk85/CDC2/logs/finals/B314-4_final_card, /workdir/users/agk85/CDC2/logs/finals/US3-10_final_card, /workdir/users/agk85/CDC2/logs/finals/B335-2_final_card, /workdir/users/agk85/CDC2/logs/finals/B357-2_final_card, /workdir/users/agk85/CDC2/logs/finals/US8-4_final_card, /workdir/users/agk85/CDC2/logs/finals/B320-2_final_card, /workdir/users/agk85/CDC2/logs/finals/US3-8_final_card, /workdir/users/agk85/CDC2/logs/finals/US3-12_final_card, /workdir/users/agk85/CDC2/logs/finals/B331-2_final_card, /workdir/users/agk85/CDC2/logs/finals/B320-1_final_card, /workdir/users/agk85/CDC2/logs/finals/B316-1_final_card, /workdir/users/agk85/CDC2/logs/finals/B316-3_final_card, /workdir/users/agk85/CDC2/logs/finals/B357-6_final_card, /workdir/users/agk85/CDC2/logs/finals/B335-1_final_card, /workdir/users/agk85/CDC2/logs/finals/B316-5_final_card, /workdir/users/agk85/CDC2/logs/finals/B316-6_final_card, /workdir/users/agk85/CDC2/logs/finals/B320-5_final_card, /workdir/users/agk85/CDC2/logs/finals/B331-4_final_card, /workdir/users/agk85/CDC2/logs/finals/B320-3_final_card, /workdir/users/agk85/CDC2/logs/finals/B331-3_final_card, /workdir/users/agk85/CDC2/logs/finals/B331-1_final_card, /workdir/users/agk85/CDC2/logs/finals/B320-4_final_card, /workdir/users/agk85/CDC2/logs/finals/B316-7_final_card, /workdir/users/agk85/CDC2/logs/finals/B335-3_final_card, /workdir/users/agk85/CDC2/logs/finals/US3-14_final_card, /workdir/users/agk85/CDC2/logs/finals/US8-2_final_card, /workdir/users/agk85/CDC2/logs/finals/US3-16_final_card, /workdir/users/agk85/CDC2/logs/finals/B357-1_final_card, /workdir/users/agk85/CDC2/logs/finals/B370-5_final_card, /workdir/users/agk85/CDC2/logs/finals/US8-5_final_card, /workdir/users/agk85/CDC2/logs/finals/US8-1_final_card, /workdir/users/agk85/CDC2/logs/finals/B370-4_final_card, /workdir/users/agk85/CDC2/logs/finals/B370-1_final_resfams, /workdir/users/agk85/CDC2/logs/finals/B316-2_final_resfams, /workdir/users/agk85/CDC2/logs/finals/B316-4_final_resfams, /workdir/users/agk85/CDC2/logs/finals/B357-5_final_resfams, /workdir/users/agk85/CDC2/logs/finals/B357-4_final_resfams, /workdir/users/agk85/CDC2/logs/finals/B370-2_final_resfams, /workdir/users/agk85/CDC2/logs/finals/B357-3_final_resfams, /workdir/users/agk85/CDC2/logs/finals/B370-3_final_resfams, /workdir/users/agk85/CDC2/logs/finals/US8-3_final_resfams, /workdir/users/agk85/CDC2/logs/finals/B314-3_final_resfams, /workdir/users/agk85/CDC2/logs/finals/B314-2_final_resfams, /workdir/users/agk85/CDC2/logs/finals/B314-1_final_resfams, /workdir/users/agk85/CDC2/logs/finals/B314-4_final_resfams, /workdir/users/agk85/CDC2/logs/finals/US3-10_final_resfams, /workdir/users/agk85/CDC2/logs/finals/B335-2_final_resfams, /workdir/users/agk85/CDC2/logs/finals/B357-2_final_resfams, /workdir/users/agk85/CDC2/logs/finals/US8-4_final_resfams, /workdir/users/agk85/CDC2/logs/finals/B320-2_final_resfams, /workdir/users/agk85/CDC2/logs/finals/US3-8_final_resfams, /workdir/users/agk85/CDC2/logs/finals/US3-12_final_resfams, /workdir/users/agk85/CDC2/logs/finals/B331-2_final_resfams, /workdir/users/agk85/CDC2/logs/finals/B320-1_final_resfams, /workdir/users/agk85/CDC2/logs/finals/B316-1_final_resfams, /workdir/users/agk85/CDC2/logs/finals/B316-3_final_resfams, /workdir/users/agk85/CDC2/logs/finals/B357-6_final_resfams, /workdir/users/agk85/CDC2/logs/finals/B335-1_final_resfams, /workdir/users/agk85/CDC2/logs/finals/B316-5_final_resfams, /workdir/users/agk85/CDC2/logs/finals/B316-6_final_resfams, /workdir/users/agk85/CDC2/logs/finals/B320-5_final_resfams, /workdir/users/agk85/CDC2/logs/finals/B331-4_final_resfams, /workdir/users/agk85/CDC2/logs/finals/B320-3_final_resfams, /workdir/users/agk85/CDC2/logs/finals/B331-3_final_resfams, /workdir/users/agk85/CDC2/logs/finals/B331-1_final_resfams, /workdir/users/agk85/CDC2/logs/finals/B320-4_final_resfams, /workdir/users/agk85/CDC2/logs/finals/B316-7_final_resfams, /workdir/users/agk85/CDC2/logs/finals/B335-3_final_resfams, /workdir/users/agk85/CDC2/logs/finals/US3-14_final_resfams, /workdir/users/agk85/CDC2/logs/finals/US8-2_final_resfams, /workdir/users/agk85/CDC2/logs/finals/US3-16_final_resfams, /workdir/users/agk85/CDC2/logs/finals/B357-1_final_resfams, /workdir/users/agk85/CDC2/logs/finals/B370-5_final_resfams, /workdir/users/agk85/CDC2/logs/finals/US8-5_final_resfams, /workdir/users/agk85/CDC2/logs/finals/US8-1_final_resfams, /workdir/users/agk85/CDC2/logs/finals/B370-4_final_resfams, /workdir/users/agk85/CDC2/logs/finals/B370-1_final_prodigal, /workdir/users/agk85/CDC2/logs/finals/B316-2_final_prodigal, /workdir/users/agk85/CDC2/logs/finals/B316-4_final_prodigal, /workdir/users/agk85/CDC2/logs/finals/B357-5_final_prodigal, /workdir/users/agk85/CDC2/logs/finals/B357-4_final_prodigal, /workdir/users/agk85/CDC2/logs/finals/B370-2_final_prodigal, /workdir/users/agk85/CDC2/logs/finals/B357-3_final_prodigal, /workdir/users/agk85/CDC2/logs/finals/B370-3_final_prodigal, /workdir/users/agk85/CDC2/logs/finals/US8-3_final_prodigal, /workdir/users/agk85/CDC2/logs/finals/B314-3_final_prodigal, /workdir/users/agk85/CDC2/logs/finals/B314-2_final_prodigal, /workdir/users/agk85/CDC2/logs/finals/B314-1_final_prodigal, /workdir/users/agk85/CDC2/logs/finals/B314-4_final_prodigal, /workdir/users/agk85/CDC2/logs/finals/US3-10_final_prodigal, /workdir/users/agk85/CDC2/logs/finals/B335-2_final_prodigal, /workdir/users/agk85/CDC2/logs/finals/B357-2_final_prodigal, /workdir/users/agk85/CDC2/logs/finals/US8-4_final_prodigal, /workdir/users/agk85/CDC2/logs/finals/B320-2_final_prodigal, /workdir/users/agk85/CDC2/logs/finals/US3-8_final_prodigal, /workdir/users/agk85/CDC2/logs/finals/US3-12_final_prodigal, /workdir/users/agk85/CDC2/logs/finals/B331-2_final_prodigal, /workdir/users/agk85/CDC2/logs/finals/B320-1_final_prodigal, /workdir/users/agk85/CDC2/logs/finals/B316-1_final_prodigal, /workdir/users/agk85/CDC2/logs/finals/B316-3_final_prodigal, /workdir/users/agk85/CDC2/logs/finals/B357-6_final_prodigal, /workdir/users/agk85/CDC2/logs/finals/B335-1_final_prodigal, /workdir/users/agk85/CDC2/logs/finals/B316-5_final_prodigal, /workdir/users/agk85/CDC2/logs/finals/B316-6_final_prodigal, /workdir/users/agk85/CDC2/logs/finals/B320-5_final_prodigal, /workdir/users/agk85/CDC2/logs/finals/B331-4_final_prodigal, /workdir/users/agk85/CDC2/logs/finals/B320-3_final_prodigal, /workdir/users/agk85/CDC2/logs/finals/B331-3_final_prodigal, /workdir/users/agk85/CDC2/logs/finals/B331-1_final_prodigal, /workdir/users/agk85/CDC2/logs/finals/B320-4_final_prodigal, /workdir/users/agk85/CDC2/logs/finals/B316-7_final_prodigal, /workdir/users/agk85/CDC2/logs/finals/B335-3_final_prodigal, /workdir/users/agk85/CDC2/logs/finals/US3-14_final_prodigal, /workdir/users/agk85/CDC2/logs/finals/US8-2_final_prodigal, /workdir/users/agk85/CDC2/logs/finals/US3-16_final_prodigal, /workdir/users/agk85/CDC2/logs/finals/B357-1_final_prodigal, /workdir/users/agk85/CDC2/logs/finals/B370-5_final_prodigal, /workdir/users/agk85/CDC2/logs/finals/US8-5_final_prodigal, /workdir/users/agk85/CDC2/logs/finals/US8-1_final_prodigal, /workdir/users/agk85/CDC2/logs/finals/B370-4_final_prodigal
+    jobid: 0
+
+[Sat Aug 17 16:59:22 2019]
+Finished job 0.
+33 of 33 steps (100%) done
+Complete log: /local/workdir/users/agk85/CDC2/scripts/snakes/.snakemake/log/2019-08-16T100510.985618.snakemake.log

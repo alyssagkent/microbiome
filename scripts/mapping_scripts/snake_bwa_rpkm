@@ -1,0 +1,167 @@
+##-----------------------------------------------------------------------------------##
+## The list of samples to be processed
+##-----------------------------------------------------------------------------------##
+BASE="/workdir/data/CDC/metagenomes/merged/unzip"
+BASE2="/workdir/users/agk85/CDC2"
+SAMPLES, = glob_wildcards(BASE2 + "/todo/{NAME}")
+#SAMPLES, = glob_wildcards(BASE2 +"/todo/{NAME}")
+NB_SAMPLES = len(SAMPLES)
+print (SAMPLES)
+
+rule final:
+	input:
+		#expand(BASE2 + "/mapping/{NAME}/done_mapped_scaffolds",NAME=SAMPLES),
+		#expand(BASE2 + "/mapping/{NAME}/done_nss_scaffolds",NAME=SAMPLES),
+		#expand(BASE2 + "/mapping/{NAME}/done_sam2bam_scaffolds",NAME=SAMPLES),
+		#expand(BASE2 + "/mapping/{NAME}/done_sorted_scaffolds",NAME=SAMPLES),
+		expand(BASE2+"/mapping/{NAME}/done_filtered_scaffolds",NAME=SAMPLES),
+		expand(BASE2 + "/mapping/{NAME}/done_rpkm_scaffolds", NAME=SAMPLES),
+rule bwa:
+	input: 
+		FQ1=BASE + "/{NAME}.1.fastq",
+		FQ2=BASE + "/{NAME}.2.fastq"
+	params: 
+		REF=BASE2 + "/hic/mapping/references/{NAME}_scaffold",
+		MAPFOLDER=BASE2 + "/mapping/{NAME}",
+		final=BASE2 + "/mapping/{NAME}/done_mapped_scaffolds",
+		n="{NAME}_bwa"
+	resources:
+		mem_mb=lambda wildcards, attempt: attempt * 40
+	output:
+		OUT=BASE2 + "/mapping/{NAME}/{NAME}.sam",
+	shell: """ 
+		if [ ! -e {params.MAPFOLDER} ]; then mkdir -p {params.MAPFOLDER}; fi
+		/workdir/users/agk85/tools/bwa/bwa mem -t 8 {params.REF} {input.FQ1} {input.FQ2} > {output.OUT}
+		touch {params.final}
+		"""
+
+rule primary_filter:
+	input:
+		SAM=BASE2 + "/mapping/{NAME}/{NAME}.sam",
+	params:
+		n="{NAME}_primary_filter"
+	resources:
+		mem_mb=lambda wildcards, attempt: attempt * 15
+	output:
+		NSS=BASE2 + "/mapping/{NAME}/{NAME}.nss.sam",
+		SUPP=BASE2 + "/mapping/{NAME}/{NAME}.supp.sam",
+		final=BASE2 + "/mapping/{NAME}/done_nss_scaffolds",
+	shell:
+		"""
+		/programs/samtools-1.3.2/bin/samtools view -h -F 2316 {input.SAM} > {output.NSS}
+		/programs/samtools-1.3.2/bin/samtools view -h -f 2048 {input.SAM} > {output.SUPP}
+		touch {output.final}
+		"""
+
+rule sam2bam:
+	input:
+		NSS=BASE2 + "/mapping/{NAME}/{NAME}.nss.sam",
+		SAM=BASE2 + "/mapping/{NAME}/{NAME}.sam",
+	params:
+		n="{NAME}_sam2bam",
+	resources:
+		mem_mb=lambda wildcards, attempt: attempt * 15
+	output:
+		NSSBAM=BASE2 + "/mapping/{NAME}/{NAME}.nss.bam",
+		SAMBAM=BASE2 + "/mapping/{NAME}/{NAME}.bam",
+		final=BASE2 + "/mapping/{NAME}/done_sam2bam_scaffolds",
+	message:"""---SAM2BAM"""
+	shell:"""
+		/programs/samtools-1.3.2/bin/samtools view -bh {input.SAM}  > {output.SAMBAM}
+		/programs/samtools-1.3.2/bin/samtools view -bh {input.NSS}  > {output.NSSBAM}
+		touch {output.final}
+		"""
+
+rule sorted:
+	input:
+		BAM=BASE2 + "/mapping/{NAME}/{NAME}.bam",
+	params:
+		n="{NAME}_sort",
+		NAME="{NAME}",
+	resources:
+		mem_mb=lambda wildcards, attempt: attempt * 40
+	output:
+		SORTED=BASE2 + "/mapping/{NAME}/{NAME}.sorted.bam",
+		final = BASE2 + "/mapping/{NAME}/done_sorted_scaffolds",
+	message:"""---SORTED"""
+	shell:"""
+		/programs/samtools-1.3.2/bin/samtools sort -O BAM --threads 8 -o {output.SORTED} -T {params.NAME} {input.BAM}
+		/programs/samtools-1.3.2/bin/samtools index {output.SORTED}
+		touch {output.final}
+		"""
+
+rule filter:
+	input:
+		bam=BASE2+"/mapping/{NAME}/{NAME}.nss.bam"
+	params:
+		n="filter_{NAME}",
+		j="1"
+	resources:
+		mem_mb= lambda wildcards, attempt: attempt * 50
+	output:
+		sam=BASE2+"/mapping/{NAME}/{NAME}.nss.sam",
+		filtersam=BASE2+"/mapping/{NAME}/{NAME}.nss.filtered.sam",
+		filterbam=BASE2+"/mapping/{NAME}/{NAME}.nss.filtered.bam",
+		final=BASE2+"/mapping/{NAME}/done_filtered_scaffolds",
+	message:"""---bwafilter"""
+	shell:
+		"""
+		export PATH=/programs/samtools-1.6/bin:$PATH
+		samtools view -h {input.bam} > {output.sam}
+		perl /workdir/scripts/alignments/filterSamByIdentity.pl {output.sam} 90 0 0 1 1 > {output.filtersam}
+		samtools view -b {output.filtersam} > {output.filterbam}
+		#rm {output.sam}
+		#rm {input.bam}
+		touch {output.final}
+		"""
+
+rule sortbam:
+	input:
+		filterbam=BASE2+"/mapping/{NAME}/{NAME}.nss.filtered.bam"
+	params:
+		n="sortbam_{NAME}",
+		name="{NAME}",
+		j="8"
+	resources:
+		mem_mb= lambda wildcards, attempt: attempt * 30
+	output:
+		sortbam=BASE2+"/mapping/{NAME}/{NAME}.nss.filtered.sorted.bam",
+		idxstats=BASE2+"/mapping/{NAME}/{NAME}.idxstats.txt",
+		depth=BASE2+"/mapping/{NAME}/{NAME}.depth.txt",
+		final=BASE2+"/mapping/{NAME}/done_sortbam_scaffolds"
+	message:"""---sortbam"""
+	shell:
+		"""
+		export PATH=/programs/samtools-1.6/bin:$PATH
+		samtools view -h -F 0x900 {input.filterbam} | samtools sort -m 3G -O BAM --threads 8 -o {output.sortbam} -T {params.name}
+		samtools index {output.sortbam}
+		samtools idxstats {output.sortbam} > {output.idxstats}
+		samtools depth -a {output.sortbam} > {output.depth}
+		touch {output.final}
+		#rm {input.filterbam}
+		"""
+
+rule rpkm:
+	input:
+		idxstats=BASE2+"/mapping/{NAME}/{NAME}.idxstats.txt",
+		depth=BASE2+"/mapping/{NAME}/{NAME}.depth.txt",
+		F1=BASE+"/{NAME}.1.fastq",
+		F2=BASE+"/{NAME}.2.fastq"
+	params:
+		j="1",
+		n="rpkm_{NAME}"
+	resources:
+		mem_mb= lambda wildcards, attempt: attempt * 30
+	output:
+		depth=BASE2+"/mapping/{NAME}/{NAME}.rpkm.txt",
+		final=BASE2+"/mapping/{NAME}/done_rpkm_scaffolds"
+	message:"""---rpkm"""
+	shell:
+		"""
+		a=($(wc -l {input.F1}))
+		b=($(wc -l {input.F2}))
+		python /workdir/scripts/analysing_alignments/rpkm_calculate.py -s {input.idxstats} -d {input.depth} -o {output.depth} -f1 $a -f2 $b
+		touch {output.final}
+		"""
+
+

@@ -1,0 +1,118 @@
+##-----------------------------------------------------------------------------------##
+## The list of samples to be processed
+##-----------------------------------------------------------------------------------##
+BASE="/workdir/data/CDC/metagenomes/merged"
+BASE2="/workdir/users/agk85/CDC2"
+SAMPLES, = glob_wildcards(BASE2 + "/metaspades/metagenomes/{NAME}/contigs.fasta")
+NB_SAMPLES = len(SAMPLES)
+print (SAMPLES)
+
+rule final:
+	input:
+		expand(BASE2 + "/metaspades/metagenomes/scaffolds/{NAME}_scaffold.fasta", NAME=SAMPLES),
+		expand(BASE2 + "/prodigal/metagenomes/{NAME}/{NAME}.gff3", NAME=SAMPLES),
+		expand(BASE2 + "/prodigal/metagenomes/{NAME}/{NAME}_proteins.faa",NAME=SAMPLES),
+		expand(BASE2+"/prodigal/metagenomes/{NAME}/{NAME}_proteins.out",NAME=SAMPLES),
+		expand(BASE2+"/prodigal/metagenomes/{NAME}/PFPR_tab.txt",NAME=SAMPLES)
+
+rule convert:
+	input:
+		FA=BASE2+"/metaspades/metagenomes/{NAME}/contigs.fasta"
+	params:
+		n="convert_{NAME}",
+	resources:
+		mem_mb = lambda wildcards, attempt: attempt * 5
+	output:
+		outfile=BASE2 +"/metaspades/metagenomes/{NAME}/scaffold.fa"
+	message: """---convert to idba format"""
+	shell:
+		"""
+		python ~/agk/press/scripts/spades/convert_spades_headers.py {input.FA} {output.outfile}
+		"""
+
+rule trim500:
+	input:
+		FA=BASE2 + "/metaspades/metagenomes/{NAME}/scaffold.fa"
+	params:
+		n="trim_{NAME}",
+		out=BASE2 + "/metaspades/metagenomes/scaffolds/"
+	resources:
+		mem_mb = lambda wildcards, attempt: attempt * 10
+	output:
+		outfile=BASE2 + "/metaspades/metagenomes/scaffolds/{NAME}_scaffold.fasta"
+	message: """--- trim scaffolds"""
+	shell:
+		"""
+		if [ ! -d {params.out} ]; then mkdir -p {params.out}; fi
+		python /workdir/users/agk85/CDC/scripts/fasta_min_Xbp.py {input.FA} {output.outfile} 1000
+		""" 
+
+rule prodigal:
+	input: 
+		FA=BASE2 + "/metaspades/metagenomes/scaffolds/{NAME}_scaffold.fasta"
+	params:
+		out=BASE2 + "/prodigal/metagenomes/{NAME}",
+		scf = BASE2 + "/prodigal/metagenomes/{NAME}/{NAME}_scaffold.fasta",
+		scf_id= BASE2 + "/prodigal/metagenomes/{NAME}/{NAME}_scfids.txt",
+		name="{NAME}",
+		n="prodigal_{NAME}",
+		scf_rename= BASE2 + "/prodigal/metagenomes/{NAME}/{NAME}_scaffold_rename.fasta"
+	resources: 
+		mem_mb = lambda wildcards, attempt: attempt * 10
+	output:
+		scf=BASE2 + "/prodigal/metagenomes/{NAME}/{NAME}_scaffold.fasta",
+		outfile=BASE2 + "/prodigal/metagenomes/{NAME}/{NAME}.gff3",
+		outfna = BASE2 + "/prodigal/metagenomes/{NAME}/{NAME}_proteins.fna",
+		outfaa = BASE2 + "/prodigal/metagenomes/{NAME}/{NAME}_proteins.faa",
+	message: """--- prodigal"""
+	shell:
+		"""
+		if [ ! -d {params.out} ]; then mkdir -p {params.out}; fi
+		cp {input.FA} {params.scf}
+		grep '>' {params.scf} | cut -d'>' -f2 > {params.scf_id}
+		python /workdir/users/agk85/CDC/scripts/general_getseqs.py {params.scf} {params.scf_id} {params.scf_rename} 1 {params.name}
+		mv {params.scf_rename} {params.scf}
+		/programs/prodigal-2.6.3/prodigal -i {params.scf} -o {output.outfile} -f gff -d {output.outfna} -a {output.outfaa} -p meta
+		"""
+
+rule phageblast:
+	input:
+		faa=BASE2+"/prodigal/metagenomes/{NAME}/{NAME}_proteins.faa",
+		scf=BASE2+"/prodigal/metagenomes/{NAME}/{NAME}_scaffold.fasta"
+	params:
+		n="pb_{NAME}"
+	resources:
+                mem_mb = lambda wildcards, attempt: attempt * 40
+	output:
+		pf=BASE2+"/prodigal/metagenomes/{NAME}/phage_finder_info.txt",
+		prot=BASE2+"/prodigal/metagenomes/{NAME}/{NAME}_proteins.out"
+	message:"""---phage blast"""
+	shell:
+		"""
+		python /workdir/users/agk85/CDC/scripts/phage_finder_info.py {input.scf} {input.faa} {output.pf}
+		/programs/ncbi-blast-2.3.0+/bin/blastp -query {input.faa} -db /workdir/users/agk85/tools/phage_finder_v2.1/DB/phagedb -num_threads 8 -outfmt 6 -out {output.prot}
+		"""
+
+rule phagefinder:
+	input:
+        	pf=BASE2 + "/prodigal/metagenomes/{NAME}/phage_finder_info.txt",
+        	prot=BASE2+"/prodigal/metagenomes/{NAME}/{NAME}_proteins.out"
+	params:
+		out=BASE2+"/prodigal/metagenomes/{NAME}",
+		n="pf_{NAME}",
+		pf="phage_finder_info.txt",
+                prot="{NAME}_proteins.out"
+	resources:
+		mem_mb= lambda wildcards, attempt: attempt * 10
+	output:
+		pftab=BASE2+"/prodigal/metagenomes/{NAME}/PFPR_tab.txt",
+		fin=BASE2+"/prodigal/metagenomes/{NAME}/pf_finished"
+	message:"""---phage finder"""
+	shell:
+                """
+                export PHOME=/workdir/users/agk85/tools/
+		cd {params.out}
+		/workdir/users/agk85/tools/phage_finder_v2.1/bin/Phage_Finder_v2.1.pl -t {params.prot} -i {params.pf}
+                touch {output.fin}
+		"""
+

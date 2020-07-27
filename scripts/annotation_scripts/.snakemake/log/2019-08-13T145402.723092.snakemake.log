@@ -1,0 +1,34 @@
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 1
+Rules claiming more threads will be scaled down.
+Unlimited resources: mem_mb
+Job counts:
+	count	jobs
+	1	final
+	2	prodigal
+	3
+
+[Tue Aug 13 14:54:02 2019]
+Job 37: --- prodigal
+
+[Tue Aug 13 15:21:58 2019]
+Finished job 37.
+1 of 3 steps (33%) done
+
+[Tue Aug 13 15:21:58 2019]
+Job 38: --- prodigal
+
+[Tue Aug 13 16:00:05 2019]
+Finished job 38.
+2 of 3 steps (67%) done
+
+[Tue Aug 13 16:00:05 2019]
+localrule final:
+    input: /workdir/users/agk85/CDC2/logs/finals/B370-1_final_prodigal, /workdir/users/agk85/CDC2/logs/finals/B316-2_final_prodigal, /workdir/users/agk85/CDC2/logs/finals/B316-4_final_prodigal, /workdir/users/agk85/CDC2/logs/finals/B357-5_final_prodigal, /workdir/users/agk85/CDC2/logs/finals/B357-4_final_prodigal, /workdir/users/agk85/CDC2/logs/finals/B370-2_final_prodigal, /workdir/users/agk85/CDC2/logs/finals/B357-3_final_prodigal, /workdir/users/agk85/CDC2/logs/finals/B370-3_final_prodigal, /workdir/users/agk85/CDC2/logs/finals/US8-3_final_prodigal, /workdir/users/agk85/CDC2/logs/finals/B314-3_final_prodigal, /workdir/users/agk85/CDC2/logs/finals/B314-2_final_prodigal, /workdir/users/agk85/CDC2/logs/finals/B314-1_final_prodigal, /workdir/users/agk85/CDC2/logs/finals/B314-4_final_prodigal, /workdir/users/agk85/CDC2/logs/finals/US3-10_final_prodigal, /workdir/users/agk85/CDC2/logs/finals/B335-2_final_prodigal, /workdir/users/agk85/CDC2/logs/finals/B357-2_final_prodigal, /workdir/users/agk85/CDC2/logs/finals/US8-4_final_prodigal, /workdir/users/agk85/CDC2/logs/finals/B320-2_final_prodigal, /workdir/users/agk85/CDC2/logs/finals/US3-8_final_prodigal, /workdir/users/agk85/CDC2/logs/finals/US3-12_final_prodigal, /workdir/users/agk85/CDC2/logs/finals/B331-2_final_prodigal, /workdir/users/agk85/CDC2/logs/finals/B320-1_final_prodigal, /workdir/users/agk85/CDC2/logs/finals/B316-1_final_prodigal, /workdir/users/agk85/CDC2/logs/finals/B316-3_final_prodigal, /workdir/users/agk85/CDC2/logs/finals/B357-6_final_prodigal, /workdir/users/agk85/CDC2/logs/finals/B335-1_final_prodigal, /workdir/users/agk85/CDC2/logs/finals/B316-5_final_prodigal, /workdir/users/agk85/CDC2/logs/finals/B316-6_final_prodigal, /workdir/users/agk85/CDC2/logs/finals/B320-5_final_prodigal, /workdir/users/agk85/CDC2/logs/finals/B331-4_final_prodigal, /workdir/users/agk85/CDC2/logs/finals/B320-3_final_prodigal, /workdir/users/agk85/CDC2/logs/finals/B331-3_final_prodigal, /workdir/users/agk85/CDC2/logs/finals/B331-1_final_prodigal, /workdir/users/agk85/CDC2/logs/finals/B320-4_final_prodigal, /workdir/users/agk85/CDC2/logs/finals/B316-7_final_prodigal, /workdir/users/agk85/CDC2/logs/finals/B335-3_final_prodigal, /workdir/users/agk85/CDC2/logs/finals/US8-2_final_prodigal, /workdir/users/agk85/CDC2/logs/finals/US8-1_final_prodigal
+    jobid: 0
+
+[Tue Aug 13 16:00:05 2019]
+Finished job 0.
+3 of 3 steps (100%) done
+Complete log: /local/workdir/users/agk85/CDC2/scripts/snakes/.snakemake/log/2019-08-13T145402.723092.snakemake.log

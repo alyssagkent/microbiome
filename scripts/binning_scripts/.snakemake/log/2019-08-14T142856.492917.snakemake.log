@@ -1,0 +1,4 @@
+Building DAG of jobs...
+MissingInputException in line 68 of /local/workdir/users/agk85/CDC2/scripts/binning_scripts/snake_bwa_scaffold_t2:
+Missing input files for rule sorted:
+/workdir/users/agk85/CDC2/mapping/mapping_t2/B320-2/B320-2.nss.bam

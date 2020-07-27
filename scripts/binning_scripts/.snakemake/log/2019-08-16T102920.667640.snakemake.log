@@ -1,0 +1,93 @@
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 1
+Rules claiming more threads will be scaled down.
+Unlimited resources: mem_mb
+Job counts:
+	count	jobs
+	13	bwa
+	1	final
+	13	primary_filter
+	13	sam2bam
+	13	sorted
+	53
+
+[Fri Aug 16 10:29:20 2019]
+rule bwa:
+    input: /workdir/data/CDC/metagenomes/merged/unzip/B357-2.1.fastq, /workdir/data/CDC/metagenomes/merged/unzip/B357-2.2.fastq
+    output: /workdir/users/agk85/CDC2/mapping/mapping_t3/B357-2/B357-2.sam, /workdir/users/agk85/CDC2/mapping/mapping_t3/B357-2/mapped
+    jobid: 137
+    wildcards: NAME=B357-2
+    resources: mem_mb=30
+
+[Fri Aug 16 11:12:12 2019]
+Finished job 137.
+1 of 53 steps (2%) done
+
+[Fri Aug 16 11:12:12 2019]
+rule primary_filter:
+    input: /workdir/users/agk85/CDC2/mapping/mapping_t3/B357-2/B357-2.sam
+    output: /workdir/users/agk85/CDC2/mapping/mapping_t3/B357-2/B357-2.nss.sam, /workdir/users/agk85/CDC2/mapping/mapping_t3/B357-2/filtered
+    jobid: 99
+    wildcards: NAME=B357-2
+    resources: mem_mb=15
+
+[Fri Aug 16 11:20:12 2019]
+Finished job 99.
+2 of 53 steps (4%) done
+
+[Fri Aug 16 11:20:12 2019]
+Job 61: ---SAM2BAM
+
+[Fri Aug 16 12:06:33 2019]
+Finished job 61.
+3 of 53 steps (6%) done
+
+[Fri Aug 16 12:06:33 2019]
+rule bwa:
+    input: /workdir/data/CDC/metagenomes/merged/unzip/B370-4.1.fastq, /workdir/data/CDC/metagenomes/merged/unzip/B370-4.2.fastq
+    output: /workdir/users/agk85/CDC2/mapping/mapping_t3/B370-4/B370-4.sam, /workdir/users/agk85/CDC2/mapping/mapping_t3/B370-4/mapped
+    jobid: 145
+    wildcards: NAME=B370-4
+    resources: mem_mb=30
+
+[Fri Aug 16 12:54:55 2019]
+Finished job 145.
+4 of 53 steps (8%) done
+
+[Fri Aug 16 12:54:55 2019]
+rule bwa:
+    input: /workdir/data/CDC/metagenomes/merged/unzip/B320-2.1.fastq, /workdir/data/CDC/metagenomes/merged/unzip/B320-2.2.fastq
+    output: /workdir/users/agk85/CDC2/mapping/mapping_t3/B320-2/B320-2.sam, /workdir/users/agk85/CDC2/mapping/mapping_t3/B320-2/mapped
+    jobid: 127
+    wildcards: NAME=B320-2
+    resources: mem_mb=30
+
+[Fri Aug 16 13:20:05 2019]
+Finished job 127.
+5 of 53 steps (9%) done
+
+[Fri Aug 16 13:20:05 2019]
+rule primary_filter:
+    input: /workdir/users/agk85/CDC2/mapping/mapping_t3/B320-2/B320-2.sam
+    output: /workdir/users/agk85/CDC2/mapping/mapping_t3/B320-2/B320-2.nss.sam, /workdir/users/agk85/CDC2/mapping/mapping_t3/B320-2/filtered
+    jobid: 89
+    wildcards: NAME=B320-2
+    resources: mem_mb=15
+
+Terminating processes on user request, this might take some time.
+[Fri Aug 16 13:22:33 2019]
+Error in rule primary_filter:
+    jobid: 89
+    output: /workdir/users/agk85/CDC2/mapping/mapping_t3/B320-2/B320-2.nss.sam, /workdir/users/agk85/CDC2/mapping/mapping_t3/B320-2/filtered
+
+RuleException:
+CalledProcessError in line 46 of /local/workdir/users/agk85/CDC2/scripts/binning_scripts/snake_bwa_scaffold_t3:
+Command 'set -euo pipefail;  /programs/samtools-1.3.2/bin/samtools view -h -F 2316 /workdir/users/agk85/CDC2/mapping/mapping_t3/B320-2/B320-2.sam > /workdir/users/agk85/CDC2/mapping/mapping_t3/B320-2/B320-2.nss.sam
+		rm /workdir/users/agk85/CDC2/mapping/mapping_t3/B320-2/B320-2.sam
+		touch /workdir/users/agk85/CDC2/mapping/mapping_t3/B320-2/filtered' died with <Signals.SIGINT: 2>.
+  File "/local/workdir/users/agk85/CDC2/scripts/binning_scripts/snake_bwa_scaffold_t3", line 46, in __rule_primary_filter
+  File "/usr/lib64/python3.6/concurrent/futures/thread.py", line 56, in run
+Removing output files of failed job primary_filter since they might be corrupted:
+/workdir/users/agk85/CDC2/mapping/mapping_t3/B320-2/B320-2.nss.sam
+Cancelling snakemake on user request.

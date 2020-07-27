@@ -1,0 +1,352 @@
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cluster nodes: 8
+Unlimited resources: mem_mb
+Job counts:
+	count	jobs
+	9	bwa
+	1	final
+	9	primary_filter
+	9	sam2bam
+	9	sorted
+	37
+
+[Tue Aug 13 15:27:23 2019]
+rule bwa:
+    input: /workdir/data/CDC/metagenomes/merged/unzip/US8-4.1.fastq, /workdir/data/CDC/metagenomes/merged/unzip/US8-4.2.fastq
+    output: /workdir/users/agk85/CDC2/mapping/US8-4/US8-4.sam
+    jobid: 34
+    wildcards: NAME=US8-4
+    resources: mem_mb=40
+
+Submitted job 34 with external jobid 'Your job 440697 ("US8-4_bwa") has been submitted'.
+
+[Tue Aug 13 15:27:23 2019]
+rule bwa:
+    input: /workdir/data/CDC/metagenomes/merged/unzip/B357-2.1.fastq, /workdir/data/CDC/metagenomes/merged/unzip/B357-2.2.fastq
+    output: /workdir/users/agk85/CDC2/mapping/B357-2/B357-2.sam
+    jobid: 24
+    wildcards: NAME=B357-2
+    resources: mem_mb=40
+
+Submitted job 24 with external jobid 'Your job 440698 ("B357-2_bwa") has been submitted'.
+
+[Tue Aug 13 15:27:23 2019]
+rule bwa:
+    input: /workdir/data/CDC/metagenomes/merged/unzip/US3-10.1.fastq, /workdir/data/CDC/metagenomes/merged/unzip/US3-10.2.fastq
+    output: /workdir/users/agk85/CDC2/mapping/US3-10/US3-10.sam
+    jobid: 26
+    wildcards: NAME=US3-10
+    resources: mem_mb=40
+
+Submitted job 26 with external jobid 'Your job 440699 ("US3-10_bwa") has been submitted'.
+
+[Tue Aug 13 15:27:23 2019]
+rule bwa:
+    input: /workdir/data/CDC/metagenomes/merged/unzip/US8-3.1.fastq, /workdir/data/CDC/metagenomes/merged/unzip/US8-3.2.fastq
+    output: /workdir/users/agk85/CDC2/mapping/US8-3/US8-3.sam
+    jobid: 32
+    wildcards: NAME=US8-3
+    resources: mem_mb=40
+
+Submitted job 32 with external jobid 'Your job 440700 ("US8-3_bwa") has been submitted'.
+
+[Tue Aug 13 15:27:23 2019]
+rule bwa:
+    input: /workdir/data/CDC/metagenomes/merged/unzip/B320-2.1.fastq, /workdir/data/CDC/metagenomes/merged/unzip/B320-2.2.fastq
+    output: /workdir/users/agk85/CDC2/mapping/B320-2/B320-2.sam
+    jobid: 22
+    wildcards: NAME=B320-2
+    resources: mem_mb=40
+
+Submitted job 22 with external jobid 'Your job 440701 ("B320-2_bwa") has been submitted'.
+
+[Tue Aug 13 15:27:23 2019]
+rule bwa:
+    input: /workdir/data/CDC/metagenomes/merged/unzip/US3-8.1.fastq, /workdir/data/CDC/metagenomes/merged/unzip/US3-8.2.fastq
+    output: /workdir/users/agk85/CDC2/mapping/US3-8/US3-8.sam
+    jobid: 30
+    wildcards: NAME=US3-8
+    resources: mem_mb=40
+
+Submitted job 30 with external jobid 'Your job 440702 ("US3-8_bwa") has been submitted'.
+
+[Tue Aug 13 15:27:23 2019]
+rule bwa:
+    input: /workdir/data/CDC/metagenomes/merged/unzip/B331-2.1.fastq, /workdir/data/CDC/metagenomes/merged/unzip/B331-2.2.fastq
+    output: /workdir/users/agk85/CDC2/mapping/B331-2/B331-2.sam
+    jobid: 20
+    wildcards: NAME=B331-2
+    resources: mem_mb=40
+
+Submitted job 20 with external jobid 'Your job 440703 ("B331-2_bwa") has been submitted'.
+
+[Tue Aug 13 15:27:23 2019]
+rule bwa:
+    input: /workdir/data/CDC/metagenomes/merged/unzip/US3-12.1.fastq, /workdir/data/CDC/metagenomes/merged/unzip/US3-12.2.fastq
+    output: /workdir/users/agk85/CDC2/mapping/US3-12/US3-12.sam
+    jobid: 28
+    wildcards: NAME=US3-12
+    resources: mem_mb=40
+
+Submitted job 28 with external jobid 'Your job 440704 ("US3-12_bwa") has been submitted'.
+[Tue Aug 13 15:40:14 2019]
+Finished job 34.
+1 of 37 steps (3%) done
+
+[Tue Aug 13 15:40:14 2019]
+rule primary_filter:
+    input: /workdir/users/agk85/CDC2/mapping/US8-4/US8-4.sam
+    output: /workdir/users/agk85/CDC2/mapping/US8-4/US8-4.nss.sam, /workdir/users/agk85/CDC2/mapping/US8-4/US8-4.supp.sam
+    jobid: 33
+    wildcards: NAME=US8-4
+    resources: mem_mb=15
+
+Submitted job 33 with external jobid 'Your job 440705 ("US8-4_primary_filter") has been submitted'.
+[Tue Aug 13 15:47:14 2019]
+Finished job 26.
+2 of 37 steps (5%) done
+
+[Tue Aug 13 15:47:14 2019]
+rule primary_filter:
+    input: /workdir/users/agk85/CDC2/mapping/US3-10/US3-10.sam
+    output: /workdir/users/agk85/CDC2/mapping/US3-10/US3-10.nss.sam, /workdir/users/agk85/CDC2/mapping/US3-10/US3-10.supp.sam
+    jobid: 25
+    wildcards: NAME=US3-10
+    resources: mem_mb=15
+
+Submitted job 25 with external jobid 'Your job 440706 ("US3-10_primary_filter") has been submitted'.
+[Tue Aug 13 15:54:05 2019]
+Finished job 32.
+3 of 37 steps (8%) done
+
+[Tue Aug 13 15:54:05 2019]
+rule primary_filter:
+    input: /workdir/users/agk85/CDC2/mapping/US8-3/US8-3.sam
+    output: /workdir/users/agk85/CDC2/mapping/US8-3/US8-3.nss.sam, /workdir/users/agk85/CDC2/mapping/US8-3/US8-3.supp.sam
+    jobid: 31
+    wildcards: NAME=US8-3
+    resources: mem_mb=15
+
+Submitted job 31 with external jobid 'Your job 440707 ("US8-3_primary_filter") has been submitted'.
+[Tue Aug 13 16:05:45 2019]
+Finished job 24.
+4 of 37 steps (11%) done
+
+[Tue Aug 13 16:05:45 2019]
+rule primary_filter:
+    input: /workdir/users/agk85/CDC2/mapping/B357-2/B357-2.sam
+    output: /workdir/users/agk85/CDC2/mapping/B357-2/B357-2.nss.sam, /workdir/users/agk85/CDC2/mapping/B357-2/B357-2.supp.sam
+    jobid: 23
+    wildcards: NAME=B357-2
+    resources: mem_mb=15
+
+Submitted job 23 with external jobid 'Your job 440708 ("B357-2_primary_filter") has been submitted'.
+[Tue Aug 13 16:07:16 2019]
+Finished job 30.
+5 of 37 steps (14%) done
+
+[Tue Aug 13 16:07:16 2019]
+rule primary_filter:
+    input: /workdir/users/agk85/CDC2/mapping/US3-8/US3-8.sam
+    output: /workdir/users/agk85/CDC2/mapping/US3-8/US3-8.nss.sam, /workdir/users/agk85/CDC2/mapping/US3-8/US3-8.supp.sam
+    jobid: 29
+    wildcards: NAME=US3-8
+    resources: mem_mb=15
+
+Submitted job 29 with external jobid 'Your job 440709 ("US3-8_primary_filter") has been submitted'.
+[Tue Aug 13 16:17:06 2019]
+Finished job 22.
+6 of 37 steps (16%) done
+
+[Tue Aug 13 16:17:06 2019]
+rule primary_filter:
+    input: /workdir/users/agk85/CDC2/mapping/B320-2/B320-2.sam
+    output: /workdir/users/agk85/CDC2/mapping/B320-2/B320-2.nss.sam, /workdir/users/agk85/CDC2/mapping/B320-2/B320-2.supp.sam
+    jobid: 21
+    wildcards: NAME=B320-2
+    resources: mem_mb=15
+
+Submitted job 21 with external jobid 'Your job 440710 ("B320-2_primary_filter") has been submitted'.
+[Tue Aug 13 16:18:56 2019]
+Finished job 33.
+7 of 37 steps (19%) done
+
+[Tue Aug 13 16:18:56 2019]
+Job 17: ---SAM2BAM
+
+Submitted job 17 with external jobid 'Your job 440711 ("US8-4_sam2bam") has been submitted'.
+[Tue Aug 13 16:19:46 2019]
+Finished job 28.
+8 of 37 steps (22%) done
+
+[Tue Aug 13 16:19:46 2019]
+rule primary_filter:
+    input: /workdir/users/agk85/CDC2/mapping/US3-12/US3-12.sam
+    output: /workdir/users/agk85/CDC2/mapping/US3-12/US3-12.nss.sam, /workdir/users/agk85/CDC2/mapping/US3-12/US3-12.supp.sam
+    jobid: 27
+    wildcards: NAME=US3-12
+    resources: mem_mb=15
+
+Submitted job 27 with external jobid 'Your job 440712 ("US3-12_primary_filter") has been submitted'.
+[Tue Aug 13 16:21:36 2019]
+Finished job 31.
+9 of 37 steps (24%) done
+
+[Tue Aug 13 16:21:36 2019]
+Job 16: ---SAM2BAM
+
+Submitted job 16 with external jobid 'Your job 440713 ("US8-3_sam2bam") has been submitted'.
+[Tue Aug 13 16:22:07 2019]
+Finished job 20.
+10 of 37 steps (27%) done
+
+[Tue Aug 13 16:22:07 2019]
+rule primary_filter:
+    input: /workdir/users/agk85/CDC2/mapping/B331-2/B331-2.sam
+    output: /workdir/users/agk85/CDC2/mapping/B331-2/B331-2.nss.sam, /workdir/users/agk85/CDC2/mapping/B331-2/B331-2.supp.sam
+    jobid: 19
+    wildcards: NAME=B331-2
+    resources: mem_mb=15
+
+Submitted job 19 with external jobid 'Your job 440714 ("B331-2_primary_filter") has been submitted'.
+[Tue Aug 13 16:23:47 2019]
+Finished job 27.
+11 of 37 steps (30%) done
+
+[Tue Aug 13 16:23:47 2019]
+Job 14: ---SAM2BAM
+
+Submitted job 14 with external jobid 'Your job 440715 ("US3-12_sam2bam") has been submitted'.
+[Tue Aug 13 16:24:27 2019]
+Finished job 29.
+12 of 37 steps (32%) done
+
+[Tue Aug 13 16:24:27 2019]
+Job 15: ---SAM2BAM
+
+Submitted job 15 with external jobid 'Your job 440716 ("US3-8_sam2bam") has been submitted'.
+[Tue Aug 13 16:25:27 2019]
+Finished job 25.
+13 of 37 steps (35%) done
+
+[Tue Aug 13 16:25:27 2019]
+Job 13: ---SAM2BAM
+
+Submitted job 13 with external jobid 'Your job 440717 ("US3-10_sam2bam") has been submitted'.
+[Tue Aug 13 16:31:37 2019]
+Finished job 19.
+14 of 37 steps (38%) done
+
+[Tue Aug 13 16:31:37 2019]
+Job 10: ---SAM2BAM
+
+Submitted job 10 with external jobid 'Your job 440718 ("B331-2_sam2bam") has been submitted'.
+[Tue Aug 13 16:33:47 2019]
+Finished job 21.
+15 of 37 steps (41%) done
+
+[Tue Aug 13 16:33:47 2019]
+Job 11: ---SAM2BAM
+
+Submitted job 11 with external jobid 'Your job 440719 ("B320-2_sam2bam") has been submitted'.
+[Tue Aug 13 16:34:57 2019]
+Finished job 23.
+16 of 37 steps (43%) done
+
+[Tue Aug 13 16:34:57 2019]
+Job 12: ---SAM2BAM
+
+Submitted job 12 with external jobid 'Your job 440720 ("B357-2_sam2bam") has been submitted'.
+[Tue Aug 13 16:47:48 2019]
+Finished job 17.
+17 of 37 steps (46%) done
+
+[Tue Aug 13 16:47:48 2019]
+rule bwa:
+    input: /workdir/data/CDC/metagenomes/merged/unzip/US8-2.1.fastq, /workdir/data/CDC/metagenomes/merged/unzip/US8-2.2.fastq
+    output: /workdir/users/agk85/CDC2/mapping/US8-2/US8-2.sam
+    jobid: 36
+    wildcards: NAME=US8-2
+    resources: mem_mb=40
+
+Submitted job 36 with external jobid 'Your job 440721 ("US8-2_bwa") has been submitted'.
+[Tue Aug 13 16:47:58 2019]
+Error in rule bwa:
+    jobid: 36
+    output: /workdir/users/agk85/CDC2/mapping/US8-2/US8-2.sam
+    cluster_jobid: Your job 440721 ("US8-2_bwa") has been submitted
+
+Trying to restart job 36.
+
+[Tue Aug 13 16:47:58 2019]
+rule bwa:
+    input: /workdir/data/CDC/metagenomes/merged/unzip/US8-2.1.fastq, /workdir/data/CDC/metagenomes/merged/unzip/US8-2.2.fastq
+    output: /workdir/users/agk85/CDC2/mapping/US8-2/US8-2.sam
+    jobid: 36
+    wildcards: NAME=US8-2
+    resources: mem_mb=80
+
+Submitted job 36 with external jobid 'Your job 440722 ("US8-2_bwa") has been submitted'.
+[Tue Aug 13 16:52:38 2019]
+Finished job 16.
+18 of 37 steps (49%) done
+
+[Tue Aug 13 16:52:38 2019]
+Job 7: ---SORTED
+
+Submitted job 7 with external jobid 'Your job 440723 ("US8-3_sort") has been submitted'.
+[Tue Aug 13 16:55:09 2019]
+Finished job 14.
+19 of 37 steps (51%) done
+
+[Tue Aug 13 16:55:09 2019]
+Job 5: ---SORTED
+
+Submitted job 5 with external jobid 'Your job 440724 ("US3-12_sort") has been submitted'.
+[Tue Aug 13 16:57:09 2019]
+Finished job 15.
+20 of 37 steps (54%) done
+
+[Tue Aug 13 16:57:09 2019]
+Job 6: ---SORTED
+
+Submitted job 6 with external jobid 'Your job 440725 ("US3-8_sort") has been submitted'.
+[Tue Aug 13 17:00:59 2019]
+Finished job 7.
+21 of 37 steps (57%) done
+
+[Tue Aug 13 17:00:59 2019]
+Job 8: ---SORTED
+
+Submitted job 8 with external jobid 'Your job 440726 ("US8-4_sort") has been submitted'.
+[Tue Aug 13 17:01:09 2019]
+Error in rule bwa:
+    jobid: 36
+    output: /workdir/users/agk85/CDC2/mapping/US8-2/US8-2.sam
+    cluster_jobid: Your job 440722 ("US8-2_bwa") has been submitted
+
+[Tue Aug 13 17:09:10 2019]
+Finished job 5.
+22 of 37 steps (59%) done
+[Tue Aug 13 17:11:00 2019]
+Finished job 13.
+23 of 37 steps (62%) done
+[Tue Aug 13 17:18:00 2019]
+Finished job 6.
+24 of 37 steps (65%) done
+[Tue Aug 13 17:18:50 2019]
+Finished job 8.
+25 of 37 steps (68%) done
+[Tue Aug 13 17:23:00 2019]
+Finished job 10.
+26 of 37 steps (70%) done
+[Tue Aug 13 17:59:43 2019]
+Finished job 11.
+27 of 37 steps (73%) done
+[Tue Aug 13 18:20:34 2019]
+Finished job 12.
+28 of 37 steps (76%) done
+Shutting down, this might take some time.
+Exiting because a job execution failed. Look above for error message
+Complete log: /local/workdir/users/agk85/CDC2/scripts/mapping/.snakemake/log/2019-08-13T152723.412852.snakemake.log

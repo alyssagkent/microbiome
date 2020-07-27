@@ -1,0 +1,29 @@
+##-----------------------------------------------------------------------------------##
+## The list of samples to be processed
+##-----------------------------------------------------------------------------------##
+BASE="/workdir/users/agk85/CDC2"
+SAMPLES, = glob_wildcards(BASE + "/das/binnames/{NAME}")
+NB_SAMPLES = len(SAMPLES)
+print (SAMPLES)
+#for NAME in SAMPLES:
+#  print("Sample " + NAME + " will be processed")
+
+rule final:
+	input:
+		expand(BASE + "/hic/mapping_bins/references/{NAME}_scaffold.sa", NAME=SAMPLES),
+rule bwa_index:
+	input:
+		SCF=BASE + "/das/all_bins/{NAME}"
+	params:
+		name="{NAME}_scaffold",
+		n="{NAME}_bwa_index",
+		out=BASE+"/hic/mapping/references/"
+	resources:
+		mem_mb=lambda wildcards, attempt: attempt * 50,
+	output:
+		FA=BASE + "/hic/mapping/references/{NAME}_scaffold.sa"
+	message:  """--- BWA INDEX"""
+	shell: """
+		cd {params.out}
+		/programs/bwa-0.7.8/bwa index -a bwtsw -p {params.name} {input.SCF}
+		"""

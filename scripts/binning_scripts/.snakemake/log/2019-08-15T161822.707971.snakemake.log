@@ -1,0 +1,44 @@
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 1
+Rules claiming more threads will be scaled down.
+Unlimited resources: mem_mb
+Job counts:
+	count	jobs
+	21	bwa
+	1	final
+	21	primary_filter
+	21	sam2bam
+	21	sorted
+	85
+
+[Thu Aug 15 16:18:23 2019]
+rule bwa:
+    input: /workdir/data/CDC/metagenomes/merged/unzip/B357-5.1.fastq, /workdir/data/CDC/metagenomes/merged/unzip/B357-5.2.fastq
+    output: /workdir/users/agk85/CDC2/mapping/mapping_t2/B357-5/B357-5.sam, /workdir/users/agk85/CDC2/mapping/mapping_t2/B357-5/mapped
+    jobid: 140
+    wildcards: NAME=B357-5
+    resources: mem_mb=30
+
+[Thu Aug 15 17:02:45 2019]
+Finished job 140.
+1 of 85 steps (1%) done
+
+[Thu Aug 15 17:02:45 2019]
+rule primary_filter:
+    input: /workdir/users/agk85/CDC2/mapping/mapping_t2/B357-5/B357-5.sam
+    output: /workdir/users/agk85/CDC2/mapping/mapping_t2/B357-5/B357-5.nss.sam, /workdir/users/agk85/CDC2/mapping/mapping_t2/B357-5/filtered
+    jobid: 102
+    wildcards: NAME=B357-5
+    resources: mem_mb=15
+
+Waiting at most 5 seconds for missing files.
+MissingOutputException in line 36 of /local/workdir/users/agk85/CDC2/scripts/binning_scripts/snake_bwa_scaffold_t2:
+Missing files after 5 seconds:
+/workdir/users/agk85/CDC2/mapping/mapping_t2/B357-5/filtered
+This might be due to filesystem latency. If that is the case, consider to increase the wait time with --latency-wait.
+Removing output files of failed job primary_filter since they might be corrupted:
+/workdir/users/agk85/CDC2/mapping/mapping_t2/B357-5/B357-5.nss.sam
+Shutting down, this might take some time.
+Exiting because a job execution failed. Look above for error message
+Complete log: /local/workdir/users/agk85/CDC2/scripts/binning_scripts/.snakemake/log/2019-08-15T161822.707971.snakemake.log

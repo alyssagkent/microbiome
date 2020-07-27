@@ -1,0 +1,132 @@
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 1
+Rules claiming more threads will be scaled down.
+Unlimited resources: mem_mb
+Job counts:
+	count	jobs
+	16	combo_tables
+	1	final
+	17
+
+[Tue Aug 20 09:30:43 2019]
+Job 35: ---combo_tables
+
+[Tue Aug 20 09:31:04 2019]
+Finished job 35.
+1 of 17 steps (6%) done
+
+[Tue Aug 20 09:31:04 2019]
+Job 42: ---combo_tables
+
+[Tue Aug 20 09:31:27 2019]
+Finished job 42.
+2 of 17 steps (12%) done
+
+[Tue Aug 20 09:31:27 2019]
+Job 39: ---combo_tables
+
+[Tue Aug 20 09:31:49 2019]
+Finished job 39.
+3 of 17 steps (18%) done
+
+[Tue Aug 20 09:31:49 2019]
+Job 34: ---combo_tables
+
+[Tue Aug 20 09:32:08 2019]
+Finished job 34.
+4 of 17 steps (24%) done
+
+[Tue Aug 20 09:32:08 2019]
+Job 37: ---combo_tables
+
+[Tue Aug 20 09:32:29 2019]
+Finished job 37.
+5 of 17 steps (29%) done
+
+[Tue Aug 20 09:32:29 2019]
+Job 19: ---combo_tables
+
+[Tue Aug 20 09:32:51 2019]
+Finished job 19.
+6 of 17 steps (35%) done
+
+[Tue Aug 20 09:32:51 2019]
+Job 43: ---combo_tables
+
+[Tue Aug 20 09:33:10 2019]
+Finished job 43.
+7 of 17 steps (41%) done
+
+[Tue Aug 20 09:33:10 2019]
+Job 20: ---combo_tables
+
+[Tue Aug 20 09:33:30 2019]
+Finished job 20.
+8 of 17 steps (47%) done
+
+[Tue Aug 20 09:33:30 2019]
+Job 40: ---combo_tables
+
+[Tue Aug 20 09:33:52 2019]
+Finished job 40.
+9 of 17 steps (53%) done
+
+[Tue Aug 20 09:33:52 2019]
+Job 21: ---combo_tables
+
+[Tue Aug 20 09:34:15 2019]
+Finished job 21.
+10 of 17 steps (59%) done
+
+[Tue Aug 20 09:34:15 2019]
+Job 36: ---combo_tables
+
+[Tue Aug 20 09:34:32 2019]
+Finished job 36.
+11 of 17 steps (65%) done
+
+[Tue Aug 20 09:34:32 2019]
+Job 38: ---combo_tables
+
+[Tue Aug 20 09:34:53 2019]
+Finished job 38.
+12 of 17 steps (71%) done
+
+[Tue Aug 20 09:34:53 2019]
+Job 44: ---combo_tables
+
+[Tue Aug 20 09:35:13 2019]
+Finished job 44.
+13 of 17 steps (76%) done
+
+[Tue Aug 20 09:35:13 2019]
+Job 31: ---combo_tables
+
+[Tue Aug 20 09:35:35 2019]
+Finished job 31.
+14 of 17 steps (82%) done
+
+[Tue Aug 20 09:35:35 2019]
+Job 24: ---combo_tables
+
+[Tue Aug 20 09:35:57 2019]
+Finished job 24.
+15 of 17 steps (88%) done
+
+[Tue Aug 20 09:35:57 2019]
+Job 41: ---combo_tables
+
+[Tue Aug 20 09:36:17 2019]
+Finished job 41.
+16 of 17 steps (94%) done
+
+[Tue Aug 20 09:36:17 2019]
+localrule final:
+    input: /workdir/users/agk85/CDC2/logs/finals/B314-4_final_combo_tables, /workdir/users/agk85/CDC2/logs/finals/B314-1_final_combo_tables, /workdir/users/agk85/CDC2/logs/finals/B370-2_final_combo_tables, /workdir/users/agk85/CDC2/logs/finals/B357-4_final_combo_tables, /workdir/users/agk85/CDC2/logs/finals/B357-5_final_combo_tables, /workdir/users/agk85/CDC2/logs/finals/B316-4_final_combo_tables, /workdir/users/agk85/CDC2/logs/finals/B335-2_final_combo_tables, /workdir/users/agk85/CDC2/logs/finals/B316-2_final_combo_tables, /workdir/users/agk85/CDC2/logs/finals/B370-1_final_combo_tables, /workdir/users/agk85/CDC2/logs/finals/B314-2_final_combo_tables, /workdir/users/agk85/CDC2/logs/finals/B314-3_final_combo_tables, /workdir/users/agk85/CDC2/logs/finals/B335-1_final_combo_tables, /workdir/users/agk85/CDC2/logs/finals/B357-3_final_combo_tables, /workdir/users/agk85/CDC2/logs/finals/B370-3_final_combo_tables, /workdir/users/agk85/CDC2/logs/finals/B357-6_final_combo_tables, /workdir/users/agk85/CDC2/logs/finals/B316-3_final_combo_tables, /workdir/users/agk85/CDC2/logs/finals/B320-1_final_combo_tables, /workdir/users/agk85/CDC2/logs/finals/B316-1_final_combo_tables, /workdir/users/agk85/CDC2/logs/finals/US3-8_final_combo_tables, /workdir/users/agk85/CDC2/logs/finals/US3-12_final_combo_tables, /workdir/users/agk85/CDC2/logs/finals/US8-3_final_combo_tables, /workdir/users/agk85/CDC2/logs/finals/B331-1_final_combo_tables, /workdir/users/agk85/CDC2/logs/finals/B320-4_final_combo_tables, /workdir/users/agk85/CDC2/logs/finals/US8-4_final_combo_tables, /workdir/users/agk85/CDC2/logs/finals/B331-3_final_combo_tables, /workdir/users/agk85/CDC2/logs/finals/B320-3_final_combo_tables, /workdir/users/agk85/CDC2/logs/finals/B331-4_final_combo_tables, /workdir/users/agk85/CDC2/logs/finals/B320-5_final_combo_tables, /workdir/users/agk85/CDC2/logs/finals/B316-6_final_combo_tables, /workdir/users/agk85/CDC2/logs/finals/B316-5_final_combo_tables, /workdir/users/agk85/CDC2/logs/finals/US3-10_final_combo_tables, /workdir/users/agk85/CDC2/logs/finals/B335-3_final_combo_tables, /workdir/users/agk85/CDC2/logs/finals/B316-7_final_combo_tables, /workdir/users/agk85/CDC2/logs/finals/B357-1_final_combo_tables, /workdir/users/agk85/CDC2/logs/finals/B370-4_final_combo_tables, /workdir/users/agk85/CDC2/logs/finals/B370-5_final_combo_tables, /workdir/users/agk85/CDC2/logs/finals/US3-16_final_combo_tables, /workdir/users/agk85/CDC2/logs/finals/US3-14_final_combo_tables, /workdir/users/agk85/CDC2/logs/finals/US8-5_final_combo_tables, /workdir/users/agk85/CDC2/logs/finals/US8-2_final_combo_tables, /workdir/users/agk85/CDC2/logs/finals/B320-2_final_combo_tables, /workdir/users/agk85/CDC2/logs/finals/US8-1_final_combo_tables, /workdir/users/agk85/CDC2/logs/finals/B331-2_final_combo_tables, /workdir/users/agk85/CDC2/logs/finals/B357-2_final_combo_tables
+    jobid: 0
+
+[Tue Aug 20 09:36:17 2019]
+Finished job 0.
+17 of 17 steps (100%) done
+Complete log: /local/workdir/users/agk85/CDC2/scripts/snakes/.snakemake/log/2019-08-20T093043.596329.snakemake.log

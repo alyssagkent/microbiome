@@ -1,0 +1,992 @@
+##--------------------------------------------------------------------------##
+## The list of samples to be processed
+##--------------------------------------------------------------------------##
+BASE2="/workdir/data/CDC/metagenomes/merged/unzip"
+BASE="/workdir/users/agk85/CDC2"
+PRODIGAL=BASE + "/prodigal_excise/metagenomes"
+FOLDER="CDC2"
+SAMPLES, = glob_wildcards(BASE + "/logs/finals/{NAME}_final_excise_phage")
+NB_SAMPLES = len(SAMPLES)
+print (SAMPLES)
+
+rule final:
+	input:
+		#expand(BASE+"/logs/finals/{NAME}_final_isescan",NAME=SAMPLES),
+		expand(BASE+"/logs/finals/{NAME}_final_phaster",NAME=SAMPLES),
+		expand(BASE+"/logs/finals/{NAME}_final_fullplasmids",NAME=SAMPLES),
+		expand(BASE+"/logs/finals/{NAME}_final_plasflow",NAME=SAMPLES),
+		expand(BASE+"/logs/finals/{NAME}_final_aclame",NAME=SAMPLES),
+		expand(BASE+"/logs/finals/{NAME}_final_imme",NAME=SAMPLES),
+		expand(BASE+"/logs/finals/{NAME}_final_plasmidfinder",NAME=SAMPLES),
+		expand(BASE+"/logs/finals/{NAME}_final_card", NAME=SAMPLES),
+		expand(BASE+"/logs/finals/{NAME}_final_plasmid_pfams",NAME=SAMPLES),
+		expand(BASE+"/logs/finals/{NAME}_final_phaster_50",NAME=SAMPLES),
+		expand(BASE+"/logs/finals/{NAME}_final_aclame_50",NAME=SAMPLES),
+		expand(BASE+"/logs/finals/{NAME}_final_mobile_pfams",NAME=SAMPLES),
+		expand(BASE+"/logs/finals/{NAME}_final_pfam",NAME=SAMPLES),
+		expand(BASE+"/logs/finals/{NAME}_final_tigrfam",NAME=SAMPLES),
+		expand(BASE+"/logs/finals/{NAME}_final_resfams",NAME=SAMPLES),
+		expand(BASE+"/logs/finals/{NAME}_final_relaxase",NAME=SAMPLES),
+		expand(BASE+"/logs/finals/{NAME}_final_perfect",NAME=SAMPLES),		
+		#expand(BASE+"/logs/finals/{NAME}_final_amphora",NAME=SAMPLES),
+		#expand(BASE+"/logs/finals/{NAME}_final_gaemr",NAME=SAMPLES),
+		#expand(BASE+"/gaemr/metagenomes/{NAME}/gaemr/table/{NAME}.blast_hit_taxonomy.table.txt",NAME=SAMPLES),
+		#expand(BASE+"/logs/finals/{NAME}_final_combo_tables",NAME=SAMPLES),
+		#expand(BASE+"/logs/finals/{NAME}_final_trnascan",NAME=SAMPLES),
+		#expand(BASE+"/logs/finals/{NAME}_final_rnammer",NAME=SAMPLES),
+		#expand(BASE+"/logs/finals/{NAME}_final_greengenes",NAME=SAMPLE),
+		#expand(BASE+"/logs/finals/{NAME}_final_greengenes_taxa",NAME=SAMPLES),
+		#expand(BASE+"/logs/finals/{NAME}_final_16S_ncbi",NAME=SAMPLES),
+		#expand(BASE+"/logs/finals/{NAME}_final_ribosomes",NAME=SAMPLES),
+		#expand(BASE+"/logs/finals/{NAME}_final_vogs",NAME=SAMPLES),
+		#expand(BASE+"/logs/finals/{NAME}_final_vf",NAME=SAMPLES),
+		#expand(BASE+"/logs/finals/{NAME}_final_mtphln", NAME=SAMPLES),
+		#expand(BASE+"/logs/finals/{NAME}_final_gsmer", NAME=SAMPLES),
+		#expand(BASE+"/logs/finals/{NAME}_final_amphora_blast",NAME=SAMPLES),
+		#expand(BASE+"/logs/finals/{NAME}_final_campbell",NAME=SAMPLES),
+		expand(BASE+"/logs/finals/{NAME}_final_prodigal",NAME=SAMPLES)
+
+rule prodigal:
+	input: 
+		FA=PRODIGAL + "/{NAME}/{NAME}_excise.fasta"
+	params:
+		out=PRODIGAL + "/{NAME}",
+		scf = PRODIGAL + "/{NAME}/{NAME}_scaffold.fasta",
+		scf_id= PRODIGAL + "/{NAME}/{NAME}_scfids.txt",
+		name="{NAME}",
+		j="1",
+		n="prodigal_{NAME}",
+	resources: 
+		mem_mb = lambda wildcards, attempt: attempt * 5
+	output:
+		scf=PRODIGAL+ "/{NAME}/{NAME}_scaffold.fasta",
+		outfile=PRODIGAL + "/{NAME}/{NAME}.gff3",
+		outfna = PRODIGAL + "/{NAME}/{NAME}_proteins.fna",
+		outfaa = PRODIGAL + "/{NAME}/{NAME}_proteins.faa",
+		final = BASE + "/logs/finals/{NAME}_final_prodigal"
+	message: """--- prodigal"""
+	shell:
+		"""
+		cp {input.FA} {params.scf}
+		grep '>' {params.scf} | cut -d'>' -f2 > {params.scf_id}
+		/programs/prodigal-2.6.3/prodigal -i {params.scf} -o {output.outfile} -f gff -d {output.outfna} -a {output.outfaa} -p meta
+		touch {output.final}
+		"""
+
+rule isescan:
+	input:
+		prot=BASE+"/prodigal_excise/metagenomes/{NAME}/{NAME}_proteins.faa",
+		scf=BASE+"/prodigal_excise/metagenomes/{NAME}/{NAME}_scaffold.fasta",
+		gff=BASE+"/prodigal_excise/metagenomes/{NAME}/{NAME}.gff3"
+	params:
+		outprot= BASE + "/iselements/metagenomes/proteome/{NAME}_scaffold.fasta.faa",
+		outscf=BASE + "/iselements/metagenomes/{NAME}_scaffold.fasta",
+		outgff=BASE + "/iselements/metagenomes/proteome/{NAME}_scaffold.fasta.gff",
+		dir=BASE + "/iselements/metagenomes/",
+		scfname="{NAME}_scaffold.fasta",
+		j="2",
+		n="is_{NAME}"
+	resources:
+		mem_mb= lambda wildcards, attempt: attempt * 10
+	output:
+		fin=BASE+"/logs/finals/{NAME}_final_isescan"
+	message:"""---ISEScan"""
+	shell:
+		"""
+		cp {input.scf} {params.outscf}
+		cd {params.dir}
+		set +u
+		export PYTHONPATH=$PYTHONPATH:/programs/fastcluster_p3/lib/python3.6/site-packages:/workdir/users/agk85/tools/ISEScan/
+		export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/workdir/users/agk85/tools/ISEScan/
+		set -u
+		python3 /workdir/users/agk85/tools/ISEScan/isescan.py {params.scfname} proteome hmm
+		touch {output.fin}
+		"""
+
+rule resfams:
+	input:
+		scf=PRODIGAL + "/{NAME}/{NAME}_proteins.faa"
+	params:
+		out=BASE+ "/resfams/metagenomes/{NAME}",
+		n="resfam_{NAME}",
+		j="1",
+		hmm="/workdir/refdbs/Resfams/Resfams-core-v1.2-20150127.hmm"
+	resources:
+		mem_mb= lambda wildcards, attempt: attempt * 10
+	output:
+		restable=BASE +"/resfams/metagenomes/{NAME}/{NAME}.resfams.tbl.txt",
+		resfile=BASE + "/resfams/metagenomes/{NAME}/{NAME}_resfams.txt",
+		final=BASE + "/logs/finals/{NAME}_final_resfams"
+	message:"""---resfams"""
+	shell:
+		"""
+		if [ ! -d {params.out} ]; then mkdir -p {params.out}; fi
+		/programs/hmmer-3.1b2-linux-intel-x86_64/binaries/hmmsearch --cut_ga --tblout {output.restable} {params.hmm} {input.scf}
+		cat {output.restable}  | grep -v '^#' | awk '{{print $1,$2,$3,$5,$6,$7}}' | sed 's/ /\t/g' > {output.resfile}
+		touch {output.final}
+		"""
+
+rule card:
+	input:
+		prot=BASE + "/prodigal_excise/metagenomes/{NAME}/{NAME}_proteins.faa"
+	params:
+		n="card_{NAME}",
+		j="8",
+		out=BASE + "/card/metagenomes/{NAME}",
+		outname=BASE + "/card/metagenomes/{NAME}/{NAME}"
+	resources:
+		mem_mb= lambda wildcards, attempt: attempt * 16
+	output:
+		cardfile=BASE+"/card/metagenomes/{NAME}/{NAME}.txt",
+		final=BASE + "/logs/finals/{NAME}_final_card"
+	message:"""---card"""
+	shell:
+		"""
+		if [ ! -d {params.out} ]; then mkdir -p {params.out}; fi
+		export PATH=/programs/ncbi-blast-2.3.0+/bin:$PATH
+		python /workdir/users/agk85/CDC/card/rgi/rgi.py -t protein -i {input.prot} -o {params.outname} -n 8
+		touch {output.final}
+		"""
+
+rule pfam:
+	input:
+		outfna = PRODIGAL + "/{NAME}/{NAME}_proteins.fna",
+	params:
+		prot=BASE+"/prodigal_excise/metagenomes/{NAME}/{NAME}_proteins.faa",
+		n="pfam_{NAME}",
+		j="4",
+		out=BASE+"/annotation/metagenomes/",
+		pfamtbl=BASE+"/annotation/metagenomes/{NAME}.tbl.txt"
+	resources:
+		mem_mb= lambda wildcards, attempt: attempt * 16
+	output:
+		pfamfile=BASE+"/annotation/metagenomes/{NAME}_pfam.txt",
+		final = BASE + "/logs/finals/{NAME}_final_pfam"
+	message:"""---pfam"""
+	shell:
+		"""
+		if [ ! -d {params.out} ]; then mkdir -p {params.out}; fi
+		/programs/hmmer-3.1b2-linux-intel-x86_64/binaries/hmmsearch --cut_ga --tblout {params.pfamtbl} --cpu 4 /workdir/refdbs/Pfams/Pfam-A.hmm {params.prot}
+		cat {params.pfamtbl}  | grep -v '^#' | awk '{{print $1,$2,$3,$4,$5,$6,$7}}' | sed 's/ /\t/g' > {output.pfamfile}
+		touch {output.final}
+		"""
+
+
+rule tigrfam:
+	input:
+		prot=BASE+"/prodigal_excise/metagenomes/{NAME}/{NAME}_proteins.faa"
+	params:
+		n="tigr_{NAME}",
+		j="4",
+		out=BASE+"/annotation/metagenomes/"
+	resources:
+		mem_mb= lambda wildcards, attempt: attempt * 16
+	output:
+		outfile=BASE+"/annotation/metagenomes/{NAME}_tigrfam.txt",
+		tbl=BASE+"/annotation/metagenomes/{NAME}.tigr.tbl.txt",
+		final=BASE + "/logs/finals/{NAME}_final_tigrfam"		
+	message:"""---tigrfam"""
+	shell:
+		"""
+		if [ ! -d {params.out} ]; then mkdir -p {params.out}; fi
+		/programs/hmmer-3.1b2-linux-intel-x86_64/binaries/hmmsearch --cpu 4 --cut_ga --tblout {output.tbl} /workdir/refdbs/TIGRfams/TIGR.hmm {input.prot}
+		cat {output.tbl}  | grep -v '^#' | awk '{{print $1,$2,$3,$5,$6,$7}}' | sed 's/ /\t/g' > {output.outfile}
+		touch {output.final}
+		"""
+
+rule plasmidfinder:
+	input:
+		scf=BASE+"/prodigal_excise/metagenomes/{NAME}/{NAME}_scaffold.fasta"
+	params:
+		n="plmdf_{NAME}",
+		j="1",
+		db="/workdir/refdbs/plasmids/plasmidFinder_db",
+		ref="/workdir/refdbs/plasmids/plasmid_db.fsa",
+		out=BASE+"/plasmids/metagenomes/{NAME}"
+	resources:
+		mem_mb= lambda wildcards, attempt: attempt * 2
+	output:
+		outfile=BASE+"/plasmids/metagenomes/{NAME}/{NAME}_plasmidgenes.out",
+		outbest=BASE+"/plasmids/metagenomes/{NAME}/{NAME}_plasmidgenes.out.best",
+		filter=BASE+"/plasmids/metagenomes/{NAME}/{NAME}_plasmidgenes_filter.out",
+		final=BASE + "/logs/finals/{NAME}_final_plasmidfinder"
+	message:"""---plasmidfinder"""
+	shell:
+		"""
+		if [ ! -d {params.out} ]; then mkdir -p {params.out}; fi
+		/programs/ncbi-blast-2.3.0+/bin/blastn -query {input.scf} -db {params.db} -out {output.outfile} -num_threads 1 -outfmt 6 -evalue 1e-10
+		sort -k1,1 -k12,12gr -k11,11g -k3,3gr {output.outfile} | sort -u -k1,1 --merge > {output.outbest}
+		python /workdir/users/agk85/CDC/scripts/blast_filter.py {params.ref} {output.outbest} {output.filter} 80 60
+		touch {output.final}
+		"""
+
+rule vogs:
+	input:
+		prot=BASE+"/prodigal_excise/metagenomes/{NAME}/{NAME}_proteins.faa"
+	params:
+		n="vogs_{NAME}",
+		j="4",
+		out=BASE+"/phage/metagenomes"
+	resources:
+		mem_mb= lambda wildcards, attempt: attempt * 16
+	output:
+		outfile=BASE+"/phage/metagenomes/{NAME}/{NAME}_vogs.txt",
+		outbest=BASE+"/phage/metagenomes/{NAME}/{NAME}_vogs.txt.best",
+		tbl=BASE+"/phage/metagenomes/{NAME}/{NAME}.vogs.tbl.txt",
+		final=BASE + "/logs/finals/{NAME}_final_vogs"
+	message:"""---vogs"""
+	shell:
+		"""
+		if [ ! -d {params.out} ]; then mkdir -p {params.out}; fi
+		/programs/hmmer-3.1b2-linux-intel-x86_64/binaries/hmmsearch --cpu 4 --tblout {output.tbl} /workdir/users/agk85/CDC/phage/pogs/VOG.hmm {input.prot}
+		cat {output.tbl}  | grep -v '^#' | awk '{{print $1,$2,$3,$5,$6,$7}}' | sed 's/ /\t/g' > {output.outfile}
+		sort -k3,3 -k5,5gr -k4,4g {output.outfile} | sort -u -k1,1 --merge > {output.outbest}
+		python /workdir/users/agk85/CDC/scripts/vogs_filter.py {output.outbest}
+		touch {output.final}
+		"""
+
+rule phaster:
+	input:
+		prot=BASE+"/prodigal_excise/metagenomes/{NAME}/{NAME}_proteins.faa"
+	params:
+		n="phstr_{NAME}",
+		j="4",
+		db="/workdir/users/agk85/CDC/phage/Phaster/phaster_db",
+		ref="/workdir/users/agk85/CDC/phage/Phaster/new_prophage_virus.db2",
+		out=BASE+"/phage/metagenomes/{NAME}"
+	resources:
+		mem_mb= lambda wildcards, attempt: attempt * 2
+	output:
+		outfile=BASE+"/phage/metagenomes/{NAME}/{NAME}_phaster.out",
+		infile=BASE+"/phage/metagenomes/{NAME}/{NAME}_phaster.best",
+		bestout=BASE+"/phage/metagenomes/{NAME}/{NAME}_phaster_filter.out",
+		final=BASE + "/logs/finals/{NAME}_final_phaster"
+	message:"""---phaster"""
+	shell:
+		"""
+		if [ ! -d {params.out} ]; then mkdir -p {params.out}; fi
+		/programs/ncbi-blast-2.3.0+/bin/blastp -query {input.prot} -db {params.db} -out {output.outfile} -num_threads 4 -outfmt 6 -evalue 1e-10
+		sort -k1,1 -k12,12gr -k11,11g -k3,3gr {output.outfile} | sort -u -k1,1 --merge > {output.infile}
+		python /workdir/users/agk85/CDC/scripts/blast_filter.py {params.ref} {output.infile} {output.bestout} 80 60
+		touch {output.final}
+		"""
+
+rule phaster_50:
+	input:
+		infile=BASE+"/phage/metagenomes/{NAME}/{NAME}_phaster.best"
+	params:
+		n="phstr50_{NAME}",
+		j="1",
+		ref="/workdir/users/agk85/CDC/phage/Phaster/new_prophage_virus.db2",
+	resources:
+		mem_mb= lambda wildcards, attempt: attempt * 2
+	output:
+		bestout=BASE+"/phage/metagenomes/{NAME}/{NAME}_phaster_5060_filter.out",
+		final=BASE + "/logs/finals/{NAME}_final_phaster_50"
+	message:"""---phaster_50"""
+	shell:
+		"""
+		python /workdir/users/agk85/CDC/scripts/blast_filter.py {params.ref} {input.infile} {output.bestout} 50 60
+		touch {output.final}
+		"""
+
+rule relaxase:
+	input:
+		prot=BASE+"/prodigal_excise/metagenomes/{NAME}/{NAME}_proteins.faa"
+	params:
+		n="relax_{NAME}",
+		j="1",
+		ref="/workdir/refdbs/plasmids/relaxase.hmm",
+		out=BASE+"/plasmids/metagenomes/{NAME}"
+	resources:
+		mem_mb= lambda wildcards, attempt: attempt * 8
+	output:
+		tbl=BASE+"/plasmids/metagenomes/{NAME}/{NAME}.relaxase.tbl.txt",
+		outfile=BASE+"/plasmids/metagenomes/{NAME}/{NAME}_relaxase.txt",
+		final=BASE + "/logs/finals/{NAME}_final_relaxase"
+	message:"""---relaxase"""
+	shell:
+		"""
+		if [ ! -d {params.out} ]; then mkdir -p {params.out}; fi
+		/programs/hmmer-3.1b2-linux-intel-x86_64/binaries/hmmsearch --cut_ga --tblout {output.tbl} {params.ref} {input.prot}
+		cat {output.tbl}  | grep -v '^#' | awk '{{print $1,$2,$3,$5,$6,$7}}' | sed 's/ /\t/g' > {output.outfile}
+		touch {output.final}
+		"""
+
+rule fullplasmids:
+	input:
+		scf=BASE+"/prodigal_excise/metagenomes/{NAME}/{NAME}_scaffold.fasta"
+	params:
+		n="fullplasmids_{NAME}",
+		j="1",
+		db="/workdir/refdbs/plasmids/plasmids_db",
+		ref="/workdir/refdbs/plasmids/plasmids.fna",
+		out=BASE+"/plasmids/metagenomes/{NAME}"
+	resources:
+		mem_mb= lambda wildcards, attempt: attempt * 8
+	output:
+		outfile=BASE+ "/plasmids/metagenomes/{NAME}/{NAME}_fullplasmids.out",
+		outbest=BASE+ "/plasmids/metagenomes/{NAME}/{NAME}_fullplasmids.out.best",
+		outfilter=BASE+ "/plasmids/metagenomes/{NAME}/{NAME}_fullplasmids_filter.out",
+		final=BASE + "/logs/finals/{NAME}_final_fullplasmids"
+	message:"""---fullplasmids"""
+	shell:
+		"""
+		if [ ! -d {params.out} ]; then mkdir -p {params.out}; fi
+		/programs/ncbi-blast-2.3.0+/bin/blastn -query {input.scf} -db {params.db} -out {output.outfile} -num_threads 1 -outfmt 6 -evalue 1e-10
+		sort -k1,1 -k12,12gr -k11,11g -k3,3gr {output.outfile} | sort -u -k1,1 --merge > {output.outbest}
+		python /workdir/users/agk85/CDC/scripts/blast_filter_size.py {params.ref} {output.outbest} {output.outfilter} 80 0 1000 {input.scf}
+		touch {output.final}
+		"""
+
+rule amphora:
+	input:
+		prot=BASE+"/prodigal_excise/metagenomes/{NAME}/{NAME}_proteins.faa"
+	params:
+		n="amphora_{NAME}",
+		j="1",
+		out=BASE+"/amphora/metagenomes/{NAME}",
+		scripts="/workdir/users/agk85/tools/AMPHORA2/Scripts"	
+	resources:
+		mem_mb= lambda wildcards, attempt: attempt * 5
+	output:
+		outfile=BASE+"/amphora/metagenomes/{NAME}/{NAME}_phylotype.txt",
+		final=BASE + "/logs/finals/{NAME}_final_amphora"
+	message:"""---amphora"""
+	shell:
+		"""
+		if [ ! -d {params.out} ]; then mkdir -p {params.out}; fi
+		export PATH=/programs/hmmer/binaries:/programs/emboss/bin:/programs/AMPHORA2/bin:$PATH
+		export AMPHORA2_home=/workdir/users/agk85/tools/AMPHORA2
+		cd {params.out}
+		{params.scripts}/MarkerScanner.pl -Bacteria -ReferenceDirectory /workdir/users/agk85/tools/AMPHORA2/Marker/ {input.prot}
+		{params.scripts}/MarkerAlignTrim.pl -WithReference -OutputFormat phylip
+		{params.scripts}/Phylotyping.pl {input.prot} > {output.outfile}
+		touch {output.final}
+		"""
+
+rule perfect_arg:
+	input:
+		scf=BASE+"/prodigal_excise/metagenomes/{NAME}/{NAME}_scaffold.fasta"
+	params:
+		n="perfect_{NAME}",
+		j="1",
+		db="/workdir/users/agk85/CDC/resfams/blast_db/perfect_db",
+		out=BASE+"/resfams/metagenomes/{NAME}",
+		ref="/workdir/users/agk85/CDC/resfams/blast_db/perfect_db.fasta"
+	resources:
+		mem_mb= lambda wildcards, attempt: attempt * 2
+	output:
+		outfile=BASE+"/resfams/metagenomes/{NAME}/{NAME}_perfect.out",
+		outbest=BASE+"/resfams/metagenomes/{NAME}/{NAME}_perfect.out.best",
+		outfilter=BASE+"/resfams/metagenomes/{NAME}/{NAME}_perfect_filter.out",
+		final=BASE + "/logs/finals/{NAME}_final_perfect"
+	message:"""---perfect_arg"""
+	shell:
+		"""
+		if [ ! -d {params.out} ]; then mkdir -p {params.out}; fi
+		/programs/ncbi-blast-2.3.0+/bin/blastn -query {input.scf} -db {params.db} -out {output.outfile} -num_threads 1 -outfmt 6
+		sort -k1,1 -k12,12gr -k11,11g -k3,3gr {output.outfile} | sort -u -k1,1 --merge > {output.outbest}
+		python /workdir/users/agk85/CDC/scripts/blast_filter.py {params.ref} {output.outbest} {output.outfilter} 100 100
+		touch {output.final}
+		"""
+
+
+rule aclame:
+	input:
+		prot=BASE+"/prodigal_excise/metagenomes/{NAME}/{NAME}_proteins.faa"
+	params:
+		n="aclame_{NAME}",
+		j="4",
+		db="/workdir/refdbs/ACLAME/aclame_db",
+		out=BASE+"/aclame/metagenomes/{NAME}",
+		ref="/workdir/refdbs/ACLAME/aclame_proteins_all_0.4.fasta"
+	resources:
+		mem_mb= lambda wildcards, attempt: attempt * 10
+	output:
+		outfile=BASE+"/aclame/metagenomes/{NAME}/{NAME}_aclame.out",
+		outbest=BASE+"/aclame/metagenomes/{NAME}/{NAME}_aclame.out.best",
+		outfilter=BASE+"/aclame/metagenomes/{NAME}/{NAME}_aclame_filter.out",
+		final=BASE + "/logs/finals/{NAME}_final_aclame"
+	message:"""---aclame"""
+	shell:
+		"""
+		if [ ! -d {params.out} ]; then mkdir -p {params.out}; fi
+		/programs/ncbi-blast-2.3.0+/bin/blastp -query {input.prot} -db {params.db} -out {output.outfile} -num_threads 8 -outfmt 6
+		sort -k1,1 -k12,12gr -k11,11g -k3,3gr {output.outfile} | sort -u -k1,1 --merge > {output.outbest}
+		python /workdir/users/agk85/CDC/scripts/blast_filter.py {params.ref} {output.outbest} {output.outfilter} 80 60
+		touch {output.final}
+                """
+
+
+rule aclame_50:
+	input:
+		outbest=BASE+"/aclame/metagenomes/{NAME}/{NAME}_aclame.out.best",
+	params:
+		n="aclame50_{NAME}",
+		j="1",
+		ref="/workdir/refdbs/ACLAME/aclame_proteins_all_0.4.fasta"
+	resources:
+		mem_mb= lambda wildcards, attempt: attempt * 10
+	output:
+		outfilter=BASE+"/aclame/metagenomes/{NAME}/{NAME}_aclame_5060_filter_.out",
+		final=BASE + "/logs/finals/{NAME}_final_aclame_50"
+	message:"""---aclame_50"""
+	shell:
+		"""
+		python /workdir/users/agk85/CDC/scripts/blast_filter.py {params.ref} {input.outbest} {output.outfilter} 50 60
+		touch {output.final}
+		"""
+
+rule imme:
+	input:
+		scf=BASE+"/prodigal_excise/metagenomes/{NAME}/{NAME}_scaffold.fasta"
+	params:
+		n="imme_{NAME}",
+		j="2",
+		db="/workdir/refdbs/ImmeDB/MGE_sequences_db",
+		out=BASE+"/imme/metagenomes/{NAME}",
+		ref="/workdir/refdbs/ImmeDB/MGE_sequences.fasta"
+	resources:
+		mem_mb= lambda wildcards, attempt: attempt * 2
+	output:
+		outfile=BASE+"/imme/metagenomes/{NAME}/{NAME}_imme.out",
+		outbest=BASE+"/imme/metagenomes/{NAME}/{NAME}_imme.out.best",
+		outfilter=BASE+"/imme/metagenomes/{NAME}/{NAME}_imme_filter.out",
+		final=BASE + "/logs/finals/{NAME}_final_imme"
+	message:"""---imme"""
+	shell:
+		"""
+		if [ ! -d {params.out} ]; then mkdir -p {params.out}; fi
+		/programs/ncbi-blast-2.3.0+/bin/blastn -query {input.scf} -db {params.db} -out {output.outfile} -num_threads 2 -outfmt 6
+		sort -k1,1 -k12,12gr -k11,11g -k3,3gr {output.outfile} | sort -u -k1,1 --merge > {output.outbest}
+		python /workdir/users/agk85/CDC/scripts/blast_filter_size.py {params.ref} {output.outbest} {output.outfilter} 80 0 1000 {input.scf}
+	touch {output.final}
+		"""
+
+rule vf:
+	input:
+		prot=BASE+"/prodigal_excise/metagenomes/{NAME}/{NAME}_proteins.faa"
+	params:
+		n="vf_{NAME}",
+		j="2",
+		db="/workdir/refdbs/VFs/VFDB_A",
+		out=BASE+"/vf/metagenomes/{NAME}",
+		ref="/workdir/refdbs/VFs/VFDB_setA_pro.fas"
+	resources:
+		mem_mb= lambda wildcards, attempt: attempt * 2
+	output:
+		outfile=BASE+"/vf/metagenomes/{NAME}/{NAME}_vf.out",
+		outbest=BASE+"/vf/metagenomes/{NAME}/{NAME}_vf.out.best",
+		outfilter=BASE+"/vf/metagenomes/{NAME}/{NAME}_vf_filter.out",
+		final=BASE + "/logs/finals/{NAME}_final_vf"
+	message:"""---vf"""
+	shell:
+		"""
+		if [ ! -d {params.out} ]; then mkdir -p {params.out}; fi
+		/programs/ncbi-blast-2.3.0+/bin/blastp -query {input.prot} -db {params.db} -out {output.outfile} -num_threads 2 -outfmt 6
+		sort -k1,1 -k12,12gr -k11,11g -k3,3gr {output.outfile} | sort -u -k1,1 --merge > {output.outbest}
+		python /workdir/users/agk85/CDC/scripts/blast_filter.py {params.ref} {output.outbest} {output.outfilter} 80 60
+		touch {output.final}
+		"""
+
+rule rnammer:
+	input:
+		scf=BASE+"/prodigal_excise/metagenomes/{NAME}/{NAME}_scaffold.fasta"
+	params:
+		script="/programs/rnammer-1.2/rnammer",
+		n="rnammer_{NAME}",
+		j="1",
+		out=BASE+"/rnammer/metagenomes"
+	resources:
+		mem_mb= lambda wildcards, attempt: attempt * 10
+	output:
+		outfile=BASE+"/rnammer/metagenomes/{NAME}_16S.fasta",
+		final=BASE + "/logs/finals/{NAME}_final_rnammer"
+	message:"""---rnammer"""
+	shell:
+		"""
+		if [ ! -d {params.out} ]; then mkdir -p {params.out}; fi
+		perl {params.script} -S bac -m ssu -f {output.outfile} {input.scf}
+		touch {output.final}
+		"""
+rule greengenes:
+	input:
+		gene=BASE+"/rnammer/metagenomes/{NAME}_16S.fasta"
+	params:
+		n="greengenes_{NAME}",
+		j="1",
+		db="/workdir/users/agk85/CDC/rnammer/gg_13_5_db"
+	resources:
+		mem_mb= lambda wildcards, attempt: attempt * 2
+	output:
+		outfile=BASE+"/rnammer/metagenomes/{NAME}_16S.out",
+		outbest=BASE+"/rnammer/metagenomes/{NAME}_16S.out.best",
+		final=BASE + "/logs/finals/{NAME}_final_greengenes"	
+	message:"""---greengenes"""
+	shell:
+		"""
+		/programs/ncbi-blast-2.3.0+/bin/blastn -query {input.gene} -db {params.db} -out {output.outfile} -num_threads 1 -outfmt 6	
+		sort -k1,1 -k12,12gr -k11,11g -k3,3gr {output.outfile} | sort -u -k1,1 --merge > {output.outbest}
+		touch {output.final}
+		"""
+
+rule greengenes_taxa:
+	input:
+		infile=BASE+"/rnammer/metagenomes/{NAME}_16S.out.best"
+	params:
+		n="gg_taxa_{NAME}",
+		j="1",
+	resources:
+		mem_mb= lambda wildcards, attempt: attempt * 1
+	output:
+		outfile=BASE+"/rnammer/metagenomes/{NAME}_16S.out.best.withtaxa.txt",
+		f=BASE+"/logs/finals/{NAME}_final_greengenes_taxa"
+	run:
+		refdict = dict()
+		with open("/workdir/users/agk85/CDC/rnammer/gg_13_5_taxonomy.txt",'r') as reffile:
+			for line in reffile:
+				id = line.split('\t')[0]
+				refdict[id] = line.strip().split('\t')[1]
+		
+		with open(input.infile,'r') as infile:
+			with open(output.outfile,'w') as outfile:
+				for line in infile:
+					subject = line.split('\t')[1]
+					addline = refdict[subject]
+					if('s__' in addline):
+						addline = addline + ';'
+					outfile.write(line.strip() + '\t' + addline + '\n')
+		
+		with open(output.f,'w') as f:
+			f.write("finished")
+
+rule ncbi_16S:
+	input:
+		gene=BASE+"/rnammer/metagenomes/{NAME}_16S.fasta"
+	params:
+		n="ncbi_16S_{NAME}",
+		j="4",
+		db="/workdir/blastdb/nt",
+		script="/workdir/users/agk85/CDC/scripts/blast_filter_size_noref.py",
+	resources:
+		mem_mb= lambda wildcards, attempt: attempt * 10
+	output:
+		blastout=BASE+"/rnammer/metagenomes/{NAME}_16S.ncbi.out",
+		blastbest=BASE+"/rnammer/metagenomes/{NAME}_16S.ncbi.out.best",
+		blastfilter=BASE+"/rnammer/metagenomes/{NAME}_16S.ncbi.out.best.filter",
+		final=BASE + "/logs/finals/{NAME}_final_16S_ncbi"
+	message:"""---16_ncbi"""
+	shell:
+		"""
+		/programs/ncbi-blast-2.3.0+/bin/blastn -task megablast -query {input.gene} -db {params.db} -out {output.blastout} -num_threads 4 -outfmt "6 qseqid sseqid pident length mismatch gapopen qstart qend sstart send evalue bitscore staxids"
+		sort -k1,1 -k12,12gr -k11,11g -k3,3gr {output.blastout} | sort -u -k1,1 --merge > {output.blastbest}
+		python2.7 {params.script} {input.gene} {output.blastbest} {output.blastfilter} 95 80 0	
+		touch {output.final}
+		""" 	
+
+rule trnascan:
+	input:
+		scf=BASE+"/prodigal_excise/metagenomes/{NAME}/{NAME}_scaffold.fasta"
+	params:
+		n="trnascan_{NAME}",
+		out=BASE+"/trnascan/metagenomes/",
+		j="1",
+	resources:
+		mem_mb= lambda wildcards, attempt: attempt * 10
+	output:
+		outfile=BASE+"/trnascan/metagenomes/{NAME}_trnascan.fasta",
+		final=BASE + "/logs/finals/{NAME}_final_trnascan"
+	message:"""---trnascan"""
+	shell:
+		"""
+		set +u
+		source /programs/tRNAscan-SE-1.3.1/setup.tRNAscan-SE
+		tRNAscan-SE -B -o {output.outfile} {input.scf}
+		touch {output.final}
+		set -u
+		"""
+
+rule maxbin:
+	input:
+		scf=BASE+"/prodigal_excise/metagenomes/{NAME}/{NAME}_scaffold.fasta",
+		R1=BASE2 + "/unzip/{NAME}.1.fastq",
+		R2=BASE2 + "/unzip/{NAME}.2.fastq"
+	params:
+		n="maxbin_{NAME}",
+		j="4",
+		out=BASE+"/maxbin/metagenomes/{NAME}",
+		outname=BASE+"/maxbin/metagenomes/{NAME}/{NAME}"
+	resources:
+		mem_mb= lambda wildcards, attempt: attempt * 15
+	output:
+		outfile=BASE+"/maxbin/metagenomes/{NAME}/{NAME}.summary",
+		final=BASE + "/logs/finals/{NAME}_final_maxbin"
+	message:"""---maxbin"""
+	shell:
+		"""
+		if [ ! -d {params.out} ]; then mkdir -p {params.out}; fi
+		export PATH=/programs/bowtie2-2.3.0:$PATH
+		export PATH=/programs/idba-1.1.1/bin:$PATH
+		
+		perl /programs/MaxBin-2.2.4/run_MaxBin.pl -contig {input.scf} -reads {input.R1} -reads2 {input.R2} -max_iteration 50 -thread 4 -out {params.outname}
+		touch {output.final}
+		"""
+
+rule plasmid_pfams:
+	input:
+		pfamfile=BASE +"/annotation/metagenomes/{NAME}_pfam.txt"
+	params:
+		script="/workdir/users/agk85/CDC/scripts/get_plasmid_pfams.py",
+		n = "plasmid_pfam_{NAME}",
+		j="1",
+		out=BASE+"/plasmids/metagenomes/{NAME}"
+	resources:
+		mem_mb= lambda wildcards, attempt: attempt * 3
+	output:
+		plasmidfile = BASE+"/plasmids/metagenomes/{NAME}/{NAME}_plasmid_pfam.txt",
+		otherfile = BASE+"/annotation/metagenomes/{NAME}_other_pfam.txt",
+		final=BASE + "/logs/finals/{NAME}_final_plasmid_pfams"
+	message:"""---plasmid_pfam"""
+	shell:
+		"""
+		python {params.script} {input.pfamfile} {output.plasmidfile} {output.otherfile}
+		touch {output.final}
+		"""
+
+rule chocophlan:
+	input:
+		scf=BASE+"/prodigal_excise/metagenomes/{NAME}/{NAME}_scaffold.fasta"
+	params:
+		n="chocophlan_{NAME}",
+		j="2",
+		db="/workdir/refdbs/chocophlan/chocophlan",
+		out=BASE+"/chocophlan/metagenomes/{NAME}",
+		ref="/workdir/refdbs/chocophlan/chocophlan.fasta"
+	resources:
+		mem_mb= lambda wildcards, attempt: attempt * 8
+	output:
+		outfile=BASE+"/chocophlan/metagenomes/{NAME}/{NAME}_choco.out",
+		outbest=BASE+"/chocophlan/metagenomes/{NAME}/{NAME}_choco.out.best",
+		outfilter=BASE+"/chocophlan/metagenomes/{NAME}/{NAME}_choco_filter.out",
+		final=BASE + "/logs/finals/{NAME}_final_chocophlan"
+	message:"""---chocophlan"""
+	shell:
+		"""
+		if [ ! -d {params.out} ]; then mkdir -p {params.out}; fi
+		/programs/ncbi-blast-2.3.0+/bin/blastn -query {input.scf} -db {params.db} -out {output.outfile} -num_threads 2 -outfmt 6
+		sort -k1,1 -k12,12gr -k11,11g -k3,3gr {output.outfile} | sort -u -k1,1 --merge > {output.outbest}
+		python /workdir/users/agk85/CDC/scripts/blast_filter_size.py {params.ref} {output.outbest} {output.outfilter} 80 0 1000 {input.scf}
+		touch {output.final}
+		"""
+
+rule chocophlan_gene:
+	input:
+		scf=BASE+"/prodigal_excise/metagenomes/{NAME}/{NAME}_proteins.fna"
+	params:
+		n="chocophlan_gene_{NAME}",
+		j="2",
+		db="/workdir/refdbs/chocophlan/chocophlan",
+		out=BASE+"/chocophlan/metagenomes/{NAME}",
+		ref="/workdir/refdbs/chocophlan/chocophlan.fasta"
+	resources:
+		mem_mb= lambda wildcards, attempt: attempt * 8
+	output:
+		outfile=BASE+"/chocophlan/metagenomes/{NAME}/{NAME}_choco_gene.out",
+		outbest=BASE+"/chocophlan/metagenomes/{NAME}/{NAME}_choco_gene.out.best",
+		outfilter=BASE+"/chocophlan/metagenomes/{NAME}/{NAME}_choco_gene_filter.out",
+		final=BASE + "/logs/finals/{NAME}_final_chocophlan_gene"
+	message:"""---choco_gene"""
+	shell:
+		"""
+		if [ ! -d {params.out} ]; then mkdir -p {params.out}; fi
+		/programs/ncbi-blast-2.3.0+/bin/blastn -query {input.scf} -db {params.db} -out {output.outfile} -num_threads 2 -outfmt 6
+		sort -k1,1 -k12,12gr -k11,11g -k3,3gr {output.outfile} | sort -u -k1,1 --merge > {output.outbest}
+		python /workdir/users/agk85/CDC/scripts/blast_filter_size.py {params.ref} {output.outbest} {output.outfilter} 80 0 1000 {input.scf}
+		touch {output.final}
+		"""
+
+		
+rule mtphln:
+	input:
+		query=BASE+"/prodigal_excise/metagenomes/{NAME}/{NAME}_proteins.fna"
+	params:
+		n="mtphln_{NAME}",
+		j="4",
+		db="/workdir/refdbs/metaphlan/metaphlan_db",
+		out=BASE+"/mtphln/metagenomes/{NAME}",
+		script="/workdir/users/agk85/CDC/scripts/blast_filter_size_noref.py",
+		ref="/workdir/refdbs/metaphlan/metaphlan_refs.fasta"
+	resources:
+		mem_mb= lambda wildcards, attempt: attempt * 30
+	output:
+		blastout=BASE+"/mtphln/metagenomes/{NAME}/{NAME}_metaphlan.out",
+		blastbest=BASE+"/mtphln/metagenomes/{NAME}/{NAME}_metaphlan.out.best",
+		blastfilter=BASE+"/mtphln/metagenomes/{NAME}/{NAME}_metaphlan.out.best.filter",
+		final=BASE+"/logs/finals/{NAME}_final_mtphln"
+	message:"""---mtphln"""
+	shell:
+		"""
+		if [ ! -d {params.out} ]; then mkdir -p {params.out}; fi
+		/programs/bin/blast/megablast -i {input.query} -d {params.db} -o {output.blastout} -a 4 -m 8
+		sort -k1,1 -k12,12gr -k11,11g -k3,3gr {output.blastout} | sort -u -k1,1 --merge > {output.blastbest}
+		python {params.script} {input.query} {output.blastbest} {output.blastfilter} 95 80 0
+		touch {output.final}
+		"""
+
+rule gsmer:
+	input:
+		query=BASE+"/prodigal_excise/metagenomes/{NAME}/{NAME}_scaffold.fasta"
+	params:
+		n="gsmer_{NAME}",
+		j="4",
+		db="/workdir/refdbs/GSMer/gsm_species",
+		out=BASE+"/gsmer/metagenomes/{NAME}",
+		script="/workdir/users/agk85/CDC/scripts/link_gsm_taxonomy.py",
+		ref="/workdir/refdbs/GSMer/gsm_species.fasta"
+	resources:
+		mem_mb= lambda wildcards, attempt: attempt * 30
+	output:
+		blastout=BASE+"/gsmer/metagenomes/{NAME}/{NAME}_gsmer.out",
+		blastbest=BASE+"/gsmer/metagenomes/{NAME}/{NAME}_gsmer.out.best",
+		blastfilter=BASE+"/gsmer/metagenomes/{NAME}/{NAME}_gsmer.out.filter",
+		blasttaxonomy=BASE+"/gsmer/metagenomes/{NAME}/{NAME}_gsmer.out.filter.taxonomy",
+		final=BASE+"/logs/finals/{NAME}_final_gsmer"
+	message:"""---gsmer"""
+	shell:
+		"""
+		if [ ! -d {params.out} ]; then mkdir -p {params.out}; fi
+		/programs/bin/blast/megablast -i {input.query} -d {params.db} -o {output.blastout} -a 4 -m 8
+		sort -k1,1 -k12,12gr -k11,11g -k3,3gr {output.blastout} | sort -u -k1,1 --merge > {output.blastbest}
+		python2.7 /workdir/users/agk85/CDC/scripts/blast_filter_pid.py {output.blastout} {output.blastfilter} 100
+		python2.7 {params.script} {output.blastfilter} {output.blasttaxonomy}
+		touch {output.final}
+		"""
+
+rule amphora_blast:
+	input:
+		outfile=BASE+"/amphora/metagenomes/{NAME}/{NAME}_phylotype.txt",
+		prots=BASE+"/prodigal_excise/metagenomes/{NAME}/{NAME}_proteins.fna"
+	params:
+		n="amphora_blast_{NAME}",
+		j="4",
+		db="/workdir/blastdb/nt",
+		query=BASE+"/amphora/metagenomes/{NAME}/{NAME}_amphora.fna",
+		name="{NAME}",
+		out=BASE+"/amphora/metagenomes/{NAME}",
+		script="/workdir/users/agk85/CDC/scripts/blast_filter_size_noref.py",
+		gene_ids=BASE+"/amphora/metagenomes/{NAME}/gene_ids.txt"
+	resources:
+		mem_mb= lambda wildcards, attempt: attempt * 30
+	output:
+		blastout=BASE+"/amphora/metagenomes/{NAME}/{NAME}_amphora.out",
+		blastbest=BASE+"/amphora/metagenomes/{NAME}/{NAME}_amphora.out.best",
+		blastfilter=BASE+"/amphora/metagenomes/{NAME}/{NAME}_amphora.out.best.filter",
+		final=BASE+"/logs/finals/{NAME}_final_amphora_blast"
+	message:"""---amphora_blast"""
+	shell:
+		"""
+		if [ ! -d {params.out} ]; then mkdir -p {params.out}; fi
+		grep '>' {params.out}/*.pep | cut -d'>' -f2 | cut -d' ' -f1 > {params.gene_ids}
+		python2.7 /workdir/users/agk85/CDC/scripts/general_getseqs.py {input.prots} {params.gene_ids} {params.query} 0 {params.name}
+		/programs/ncbi-blast-2.3.0+/bin/blastn -task megablast -query {params.query} -db {params.db} -out {output.blastout} -num_threads 4 -outfmt "6 qseqid sseqid pident length mismatch gapopen qstart qend sstart send evalue bitscore staxids"
+		sort -k1,1 -k12,12gr -k11,11g -k3,3gr {output.blastout} | sort -u -k1,1 --merge > {output.blastbest}
+		python2.7 {params.script} {params.query} {output.blastbest} {output.blastfilter} 95 80 0
+		touch {output.final}
+		"""
+
+rule plasflow:
+	input:
+		scfs=BASE+"/prodigal_excise/metagenomes/{NAME}/{NAME}_scaffold.fasta",
+	params:
+		n="plasflow_{NAME}",
+		j="1",
+		threshold="0.95",
+		out=BASE+"/plasmids/metagenomes/{NAME}",
+	resources:
+		mem_mb= lambda wildcards, attempt: attempt*20
+	output:
+		plasflow=BASE+"/plasmids/metagenomes/{NAME}/{NAME}_plasflow.txt",
+		final=BASE+"/logs/finals/{NAME}_final_plasflow",
+	message:"""---plasflow"""
+	shell:
+		"""
+		if [ ! -d {params.out} ]; then mkdir -p {params.out}; fi
+		set +u
+		export PATH=/programs/Anaconda2/bin:$PATH
+		export LD_LIBRARY_PATH=/programs/Anaconda2/lib:$LD_LIBRARY_PATH
+		source activate plasflow
+		PlasFlow.py --input {input.scfs} --output {output.plasflow} --threshold {params.threshold}
+		conda deactivate
+		touch {output.final}
+		set -u
+		"""
+
+rule campbell:
+	input:
+		pfamfile=BASE +"/annotation/metagenomes/{NAME}_pfam.txt",
+		prots=BASE+"/prodigal_excise/metagenomes/{NAME}/{NAME}_proteins.fna"
+	params:
+		script="/workdir/users/agk85/CDC/scripts/get_campbell_pfams.py",
+		n = "campbell_{NAME}",
+		j="4",
+		name="{NAME}",
+		db="/workdir/blastdb/nt",
+		script2="/workdir/users/agk85/CDC/scripts/blast_filter_size_noref.py",
+		query=BASE+"/campbell/metagenomes/{NAME}/{NAME}_campbell.fna",
+		out=BASE+"/campbell/metagenomes/{NAME}"
+	resources:
+		mem_mb= lambda wildcards, attempt: attempt * 20
+	output:
+		campbellfile = BASE+"/campbell/metagenomes/{NAME}/{NAME}_campbell_pfams.txt",
+		uniqueids =BASE+"/campbell/metagenomes/{NAME}/{NAME}_campbell_uniq.txt",
+		blastout=BASE+"/campbell/metagenomes/{NAME}/{NAME}_campbell.out",
+		blastbest=BASE+"/campbell/metagenomes/{NAME}/{NAME}_campbell.out.best",
+		blastfilter=BASE+"/campbell/metagenomes/{NAME}/{NAME}_campbell.out.best.filter",
+		final=BASE + "/logs/finals/{NAME}_final_campbell"
+	message:"""---campbell"""
+	shell:
+		"""
+		if [ ! -d {params.out} ]; then mkdir -p {params.out}; fi
+		python {params.script} {input.pfamfile} {output.campbellfile}
+		cat {output.campbellfile} | sort | uniq	> {output.uniqueids}
+		python2.7 /workdir/users/agk85/CDC/scripts/general_getseqs.py {input.prots} {output.uniqueids} {params.query} 0 {params.name}
+		/programs/ncbi-blast-2.3.0+/bin/blastn -task megablast -query {params.query} -db {params.db} -out {output.blastout} -num_threads 4 -outfmt "6 qseqid sseqid pident length mismatch gapopen qstart qend sstart send evalue bitscore staxids"
+                sort -k1,1 -k12,12gr -k11,11g -k3,3gr {output.blastout} | sort -u -k1,1 --merge > {output.blastbest}
+                python2.7 {params.script2} {params.query} {output.blastbest} {output.blastfilter} 95 80 0
+		touch {output.final}
+		"""
+		
+
+rule ribosomes:
+	input:
+		scf = PRODIGAL + "/{NAME}/{NAME}_scaffold.fasta",
+	params:
+		n="ribosome_{NAME}",
+		j="4",
+		out=BASE+"/ribosomes/metagenomes/",
+		db="/workdir/blastdb/nt",
+		tool="/workdir/users/agk85/tools/barrnap/",
+		script2="/workdir/users/agk85/CDC/scripts/blast_filter_size_noref.py"
+	resources:
+		mem_mb= lambda wildcards, attempt: attempt * 16
+	output:
+		ribofile=BASE+"/ribosomes/metagenomes/{NAME}_ribosomes.fasta",
+		blastout=BASE+"/ribosomes/metagenomes/{NAME}_ribosomes.out",
+		blastbest=BASE+"/ribosomes/metagenomes/{NAME}_ribosomes.out.best",
+		blastfilter=BASE+"/ribosomes/metagenomes/{NAME}_ribosomes.out.best.filter",
+		final = BASE + "/logs/finals/{NAME}_final_ribosomes"
+	message:"""---ribosomes"""
+	shell:
+		"""
+		if [ ! -d {params.out} ]; then mkdir -p {params.out}; fi
+		cd {params.tool}
+		export PATH=/programs/hmmer-3.1b2-linux-intel-x86_64/binaries:$PATH
+		export PATH=/programs/bedtools-2.27.1/bin:$PATH
+		./bin/barrnap --reject .8 --outseq {output.ribofile} {input.scf}
+		/programs/ncbi-blast-2.3.0+/bin/blastn -task megablast -query {output.ribofile} -db {params.db} -out {output.blastout} -num_threads 4 -outfmt "6 qseqid sseqid pident length mismatch gapopen qstart qend sstart send evalue bitscore staxids"
+		sort -k1,1 -k12,12gr -k11,11g -k3,3gr {output.blastout} | sort -u -k1,1 --merge > {output.blastbest}
+		python2.7 {params.script2} {output.ribofile} {output.blastbest} {output.blastfilter} 95 80 0
+		touch {output.final}
+		"""
+
+rule mobile_pfams:
+	input:
+		pfams = BASE+"/annotation/metagenomes/{NAME}_pfam.txt",
+	params:
+		n="mobile_pfams_{NAME}",
+		j="1",
+		folder=FOLDER,
+		name="{NAME}",
+		script="/workdir/users/agk85/press/scripts/get_mobile_pfams.py",
+	resources:
+		mem_mb=lambda wildcards, attempt: attempt*2
+	output:
+		pfams = BASE+"/annotation/metagenomes/{NAME}_mobilegenes.txt",
+		final = BASE+"/logs/finals/{NAME}_final_mobile_pfams"
+	message:"""---mobile_pfams"""
+	shell:
+		"""
+		python {params.script} {params.folder} {params.name}
+		touch {output.final}
+		"""
+
+rule gaemr:
+	input:
+		scaffolds=BASE+"/prodigal_excise/metagenomes/{NAME}/{NAME}_scaffold.fasta"
+	params:
+		n="gaemr_{NAME}",
+		j="4",
+		name="{NAME}",
+		script="/programs/GAEMR-1.0.1/bin/GAEMR.py",
+		out=BASE+"/gaemr/metagenomes/{NAME}",
+	resources:
+		mem_mb=lambda wildcards, attempt: attempt*60
+	output:
+		final=BASE+"/logs/finals/{NAME}_final_gaemr"
+	message:"""---gaemr"""
+	shell:
+		"""
+		export PATH=/programs/GAEMR-1.0.1/bin:$PATH
+		export PYTHONPATH=/programs/GAEMR-1.0.1/
+		export PATH=/programs/ncbi-blast-2.3.0+/bin:$PATH
+		if [ ! -d {params.out} ]; then mkdir -p {params.out}; fi
+		cd {params.out}
+		python {params.script} -s {input.scaffolds} -t 4 -m IDBA_UD -o {params.name} --force
+		touch {output.final}
+		"""
+
+
+rule combo_tables:
+	input:
+		a=BASE+"/logs/finals/{NAME}_final_isescan",
+		b=BASE+"/logs/finals/{NAME}_final_phaster",
+		c=BASE+"/logs/finals/{NAME}_final_fullplasmids",
+		d=BASE+"/logs/finals/{NAME}_final_perfect",
+		e=BASE+"/logs/finals/{NAME}_final_aclame",
+		f=BASE+"/logs/finals/{NAME}_final_imme",
+		g=BASE+"/logs/finals/{NAME}_final_rnammer",
+		h=BASE+"/logs/finals/{NAME}_final_greengenes",
+		i=BASE+"/logs/finals/{NAME}_final_greengenes_taxa",
+		j=BASE+"/logs/finals/{NAME}_final_16S_ncbi",
+		k=BASE+"/logs/finals/{NAME}_final_ribosomes",
+		l=BASE+"/logs/finals/{NAME}_final_plasmidfinder",
+		m=BASE+"/logs/finals/{NAME}_final_card",
+		ae=BASE+"/logs/finals/{NAME}_final_plasmid_pfams",
+		o=BASE+"/logs/finals/{NAME}_final_mtphln",
+		p=BASE+"/logs/finals/{NAME}_final_gsmer",
+		q=BASE+"/logs/finals/{NAME}_final_amphora_blast",
+		r=BASE+"/logs/finals/{NAME}_final_campbell",
+		s=BASE+"/logs/finals/{NAME}_final_phaster_50",
+		t=BASE+"/logs/finals/{NAME}_final_aclame_50",
+		u=BASE+"/logs/finals/{NAME}_final_mobile_pfams",
+		v=BASE+"/logs/finals/{NAME}_final_vf",
+		w=BASE+"/logs/finals/{NAME}_final_pfam",
+		x=BASE+"/logs/finals/{NAME}_final_tigrfam",
+		y=BASE+"/logs/finals/{NAME}_final_resfams",
+		z=BASE+"/logs/finals/{NAME}_final_relaxase",
+		aa=BASE+"/logs/finals/{NAME}_final_tigrfam",
+		ab=BASE+"/logs/finals/{NAME}_final_amphora",
+		#ac=BASE+"/gaemr/metagenomes/{NAME}/gaemr/table/{NAME}.blast_hit_taxonomy.table.txt",
+		ad=BASE+"/logs/finals/{NAME}_final_prodigal",
+		af=BASE+"/logs/finals/{NAME}_final_plasflow",
+	params:
+		n="combo_tables_{NAME}",
+		j="1",
+		name="{NAME}",
+		folder=FOLDER,
+		script="/workdir/users/agk85/CDC2/scripts/master_scf_table18.py",
+		script2="/workdir/users/agk85/press/scripts/master_scf_table_binary.py",
+	resources:
+		mem_mb=lambda wildcards, attempt: attempt*5
+	output:
+		combo_table=BASE+"/combo_tables/metagenomes/{NAME}_master_scf_table.txt",
+		final=BASE+"/logs/finals/{NAME}_final_combo_tables"
+	message:"""---combo_tables"""
+	shell:	
+		"""
+		patient=$(echo {params.name}|cut -d'-' -f1)
+		python {params.script} {params.folder} {params.name} $patient
+		python {params.script2} {params.folder} {params.name}
+		touch {output.final}
+		"""

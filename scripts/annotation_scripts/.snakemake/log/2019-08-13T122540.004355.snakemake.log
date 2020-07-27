@@ -1,0 +1,14 @@
+Building DAG of jobs...
+MissingInputException in line 16 of /local/workdir/users/agk85/CDC2/scripts/snakes/snake_combo_table:
+Missing input files for rule combo_tables:
+/workdir/users/agk85/CDC2/logs/finals/US8-3_final_plasmid_pfams
+/workdir/users/agk85/CDC2/logs/finals/US8-3_final_mobile_pfams
+/workdir/users/agk85/CDC2/logs/finals/US8-3_final_phaster_50
+/workdir/users/agk85/CDC2/logs/finals/US8-3_final_resfams
+/workdir/users/agk85/CDC2/logs/finals/US8-3_final_phaster
+/workdir/users/agk85/CDC2/logs/finals/US8-3_final_tigrfam
+/workdir/users/agk85/CDC2/logs/finals/US8-3_final_aclame_50
+/workdir/users/agk85/CDC2/logs/finals/US8-3_final_relaxase
+/workdir/users/agk85/CDC2/logs/finals/US8-3_final_aclame
+/workdir/users/agk85/CDC2/logs/finals/US8-3_final_card
+/workdir/users/agk85/CDC2/logs/finals/US8-3_final_isescan

@@ -1,0 +1,183 @@
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cluster nodes: 5
+Unlimited resources: mem_mb
+Job counts:
+	count	jobs
+	4	convert
+	1	final
+	4	phageblast
+	4	phagefinder
+	4	prodigal
+	4	trim500
+	21
+
+[Mon Aug 12 14:57:52 2019]
+Job 180: ---convert to idba format
+
+Submitted job 180 with external jobid 'Your job 440547 ("convert_B331-2") has been submitted'.
+
+[Mon Aug 12 14:57:52 2019]
+Job 179: ---convert to idba format
+
+Submitted job 179 with external jobid 'Your job 440548 ("convert_US3-10") has been submitted'.
+
+[Mon Aug 12 14:57:53 2019]
+Job 178: ---convert to idba format
+
+Submitted job 178 with external jobid 'Your job 440549 ("convert_US3-8") has been submitted'.
+
+[Mon Aug 12 14:57:53 2019]
+Job 177: ---convert to idba format
+
+Submitted job 177 with external jobid 'Your job 440550 ("convert_US3-12") has been submitted'.
+[Mon Aug 12 14:58:02 2019]
+Finished job 180.
+1 of 21 steps (5%) done
+
+[Mon Aug 12 14:58:02 2019]
+Job 36: --- trim scaffolds
+
+Submitted job 36 with external jobid 'Your job 440551 ("trim_B331-2") has been submitted'.
+[Mon Aug 12 14:58:12 2019]
+Finished job 179.
+2 of 21 steps (10%) done
+
+[Mon Aug 12 14:58:12 2019]
+Job 35: --- trim scaffolds
+
+Submitted job 35 with external jobid 'Your job 440552 ("trim_US3-10") has been submitted'.
+[Mon Aug 12 14:58:32 2019]
+Finished job 178.
+3 of 21 steps (14%) done
+
+[Mon Aug 12 14:58:32 2019]
+Job 34: --- trim scaffolds
+
+Submitted job 34 with external jobid 'Your job 440553 ("trim_US3-8") has been submitted'.
+[Mon Aug 12 14:58:42 2019]
+Finished job 177.
+4 of 21 steps (19%) done
+
+[Mon Aug 12 14:58:42 2019]
+Job 33: --- trim scaffolds
+
+Submitted job 33 with external jobid 'Your job 440554 ("trim_US3-12") has been submitted'.
+[Mon Aug 12 14:59:03 2019]
+Finished job 36.
+5 of 21 steps (24%) done
+
+[Mon Aug 12 14:59:03 2019]
+Job 72: --- prodigal
+
+Submitted job 72 with external jobid 'Your job 440555 ("prodigal_B331-2") has been submitted'.
+[Mon Aug 12 14:59:23 2019]
+Finished job 35.
+6 of 21 steps (29%) done
+
+[Mon Aug 12 14:59:23 2019]
+Job 71: --- prodigal
+
+Submitted job 71 with external jobid 'Your job 440556 ("prodigal_US3-10") has been submitted'.
+[Mon Aug 12 14:59:33 2019]
+Finished job 34.
+7 of 21 steps (33%) done
+
+[Mon Aug 12 14:59:33 2019]
+Job 70: --- prodigal
+
+Submitted job 70 with external jobid 'Your job 440557 ("prodigal_US3-8") has been submitted'.
+[Mon Aug 12 14:59:53 2019]
+Finished job 33.
+8 of 21 steps (38%) done
+
+[Mon Aug 12 14:59:53 2019]
+Job 69: --- prodigal
+
+Submitted job 69 with external jobid 'Your job 440558 ("prodigal_US3-12") has been submitted'.
+[Mon Aug 12 15:10:53 2019]
+Finished job 72.
+9 of 21 steps (43%) done
+
+[Mon Aug 12 15:10:53 2019]
+Job 108: ---phage blast
+
+Submitted job 108 with external jobid 'Your job 440561 ("pb_B331-2") has been submitted'.
+[Mon Aug 12 15:18:34 2019]
+Finished job 69.
+10 of 21 steps (48%) done
+
+[Mon Aug 12 15:18:34 2019]
+Job 105: ---phage blast
+
+Submitted job 105 with external jobid 'Your job 440562 ("pb_US3-12") has been submitted'.
+[Mon Aug 12 15:21:44 2019]
+Finished job 71.
+11 of 21 steps (52%) done
+
+[Mon Aug 12 15:21:44 2019]
+Job 107: ---phage blast
+
+Submitted job 107 with external jobid 'Your job 440563 ("pb_US3-10") has been submitted'.
+[Mon Aug 12 15:21:54 2019]
+Finished job 70.
+12 of 21 steps (57%) done
+
+[Mon Aug 12 15:21:54 2019]
+Job 106: ---phage blast
+
+Submitted job 106 with external jobid 'Your job 440564 ("pb_US3-8") has been submitted'.
+[Mon Aug 12 16:17:27 2019]
+Finished job 108.
+13 of 21 steps (62%) done
+
+[Mon Aug 12 16:17:27 2019]
+Job 144: ---phage finder
+
+Submitted job 144 with external jobid 'Your job 440565 ("pf_B331-2") has been submitted'.
+[Mon Aug 12 17:05:50 2019]
+Finished job 144.
+14 of 21 steps (67%) done
+[Mon Aug 12 17:48:43 2019]
+Finished job 105.
+15 of 21 steps (71%) done
+
+[Mon Aug 12 17:48:43 2019]
+Job 141: ---phage finder
+
+Submitted job 141 with external jobid 'Your job 440568 ("pf_US3-12") has been submitted'.
+[Mon Aug 12 17:57:34 2019]
+Finished job 141.
+16 of 21 steps (76%) done
+[Mon Aug 12 18:59:07 2019]
+Finished job 106.
+17 of 21 steps (81%) done
+
+[Mon Aug 12 18:59:07 2019]
+Job 142: ---phage finder
+
+Submitted job 142 with external jobid 'Your job 440569 ("pf_US3-8") has been submitted'.
+[Mon Aug 12 19:08:28 2019]
+Finished job 107.
+18 of 21 steps (86%) done
+
+[Mon Aug 12 19:08:28 2019]
+Job 143: ---phage finder
+
+Submitted job 143 with external jobid 'Your job 440570 ("pf_US3-10") has been submitted'.
+[Mon Aug 12 19:09:28 2019]
+Finished job 142.
+19 of 21 steps (90%) done
+[Mon Aug 12 19:15:48 2019]
+Finished job 143.
+20 of 21 steps (95%) done
+
+[Mon Aug 12 19:15:50 2019]
+localrule final:
+    input: /workdir/users/agk85/CDC2/metaspades/metagenomes/scaffolds/B314-1_scaffold.fasta, /workdir/users/agk85/CDC2/metaspades/metagenomes/scaffolds/B314-2_scaffold.fasta, /workdir/users/agk85/CDC2/metaspades/metagenomes/scaffolds/B314-3_scaffold.fasta, /workdir/users/agk85/CDC2/metaspades/metagenomes/scaffolds/B316-4_scaffold.fasta, /workdir/users/agk85/CDC2/metaspades/metagenomes/scaffolds/B316-2_scaffold.fasta, /workdir/users/agk85/CDC2/metaspades/metagenomes/scaffolds/B335-2_scaffold.fasta, /workdir/users/agk85/CDC2/metaspades/metagenomes/scaffolds/B357-5_scaffold.fasta, /workdir/users/agk85/CDC2/metaspades/metagenomes/scaffolds/B357-4_scaffold.fasta, /workdir/users/agk85/CDC2/metaspades/metagenomes/scaffolds/B370-1_scaffold.fasta, /workdir/users/agk85/CDC2/metaspades/metagenomes/scaffolds/B370-3_scaffold.fasta, /workdir/users/agk85/CDC2/metaspades/metagenomes/scaffolds/B370-2_scaffold.fasta, /workdir/users/agk85/CDC2/metaspades/metagenomes/scaffolds/B314-4_scaffold.fasta, /workdir/users/agk85/CDC2/metaspades/metagenomes/scaffolds/B357-3_scaffold.fasta, /workdir/users/agk85/CDC2/metaspades/metagenomes/scaffolds/B316-1_scaffold.fasta, /workdir/users/agk85/CDC2/metaspades/metagenomes/scaffolds/B357-6_scaffold.fasta, /workdir/users/agk85/CDC2/metaspades/metagenomes/scaffolds/B316-3_scaffold.fasta, /workdir/users/agk85/CDC2/metaspades/metagenomes/scaffolds/B335-1_scaffold.fasta, /workdir/users/agk85/CDC2/metaspades/metagenomes/scaffolds/B320-1_scaffold.fasta, /workdir/users/agk85/CDC2/metaspades/metagenomes/scaffolds/B331-4_scaffold.fasta, /workdir/users/agk85/CDC2/metaspades/metagenomes/scaffolds/B335-3_scaffold.fasta, /workdir/users/agk85/CDC2/metaspades/metagenomes/scaffolds/B320-3_scaffold.fasta, /workdir/users/agk85/CDC2/metaspades/metagenomes/scaffolds/B331-3_scaffold.fasta, /workdir/users/agk85/CDC2/metaspades/metagenomes/scaffolds/B316-7_scaffold.fasta, /workdir/users/agk85/CDC2/metaspades/metagenomes/scaffolds/B320-5_scaffold.fasta, /workdir/users/agk85/CDC2/metaspades/metagenomes/scaffolds/B316-5_scaffold.fasta, /workdir/users/agk85/CDC2/metaspades/metagenomes/scaffolds/B331-1_scaffold.fasta, /workdir/users/agk85/CDC2/metaspades/metagenomes/scaffolds/B316-6_scaffold.fasta, /workdir/users/agk85/CDC2/metaspades/metagenomes/scaffolds/B320-4_scaffold.fasta, /workdir/users/agk85/CDC2/metaspades/metagenomes/scaffolds/B357-2_scaffold.fasta, /workdir/users/agk85/CDC2/metaspades/metagenomes/scaffolds/B320-2_scaffold.fasta, /workdir/users/agk85/CDC2/metaspades/metagenomes/scaffolds/US8-3_scaffold.fasta, /workdir/users/agk85/CDC2/metaspades/metagenomes/scaffolds/US8-4_scaffold.fasta, /workdir/users/agk85/CDC2/metaspades/metagenomes/scaffolds/US3-12_scaffold.fasta, /workdir/users/agk85/CDC2/metaspades/metagenomes/scaffolds/US3-8_scaffold.fasta, /workdir/users/agk85/CDC2/metaspades/metagenomes/scaffolds/US3-10_scaffold.fasta, /workdir/users/agk85/CDC2/metaspades/metagenomes/scaffolds/B331-2_scaffold.fasta, /workdir/users/agk85/CDC2/prodigal/metagenomes/B314-1/B314-1.gff3, /workdir/users/agk85/CDC2/prodigal/metagenomes/B314-2/B314-2.gff3, /workdir/users/agk85/CDC2/prodigal/metagenomes/B314-3/B314-3.gff3, /workdir/users/agk85/CDC2/prodigal/metagenomes/B316-4/B316-4.gff3, /workdir/users/agk85/CDC2/prodigal/metagenomes/B316-2/B316-2.gff3, /workdir/users/agk85/CDC2/prodigal/metagenomes/B335-2/B335-2.gff3, /workdir/users/agk85/CDC2/prodigal/metagenomes/B357-5/B357-5.gff3, /workdir/users/agk85/CDC2/prodigal/metagenomes/B357-4/B357-4.gff3, /workdir/users/agk85/CDC2/prodigal/metagenomes/B370-1/B370-1.gff3, /workdir/users/agk85/CDC2/prodigal/metagenomes/B370-3/B370-3.gff3, /workdir/users/agk85/CDC2/prodigal/metagenomes/B370-2/B370-2.gff3, /workdir/users/agk85/CDC2/prodigal/metagenomes/B314-4/B314-4.gff3, /workdir/users/agk85/CDC2/prodigal/metagenomes/B357-3/B357-3.gff3, /workdir/users/agk85/CDC2/prodigal/metagenomes/B316-1/B316-1.gff3, /workdir/users/agk85/CDC2/prodigal/metagenomes/B357-6/B357-6.gff3, /workdir/users/agk85/CDC2/prodigal/metagenomes/B316-3/B316-3.gff3, /workdir/users/agk85/CDC2/prodigal/metagenomes/B335-1/B335-1.gff3, /workdir/users/agk85/CDC2/prodigal/metagenomes/B320-1/B320-1.gff3, /workdir/users/agk85/CDC2/prodigal/metagenomes/B331-4/B331-4.gff3, /workdir/users/agk85/CDC2/prodigal/metagenomes/B335-3/B335-3.gff3, /workdir/users/agk85/CDC2/prodigal/metagenomes/B320-3/B320-3.gff3, /workdir/users/agk85/CDC2/prodigal/metagenomes/B331-3/B331-3.gff3, /workdir/users/agk85/CDC2/prodigal/metagenomes/B316-7/B316-7.gff3, /workdir/users/agk85/CDC2/prodigal/metagenomes/B320-5/B320-5.gff3, /workdir/users/agk85/CDC2/prodigal/metagenomes/B316-5/B316-5.gff3, /workdir/users/agk85/CDC2/prodigal/metagenomes/B331-1/B331-1.gff3, /workdir/users/agk85/CDC2/prodigal/metagenomes/B316-6/B316-6.gff3, /workdir/users/agk85/CDC2/prodigal/metagenomes/B320-4/B320-4.gff3, /workdir/users/agk85/CDC2/prodigal/metagenomes/B357-2/B357-2.gff3, /workdir/users/agk85/CDC2/prodigal/metagenomes/B320-2/B320-2.gff3, /workdir/users/agk85/CDC2/prodigal/metagenomes/US8-3/US8-3.gff3, /workdir/users/agk85/CDC2/prodigal/metagenomes/US8-4/US8-4.gff3, /workdir/users/agk85/CDC2/prodigal/metagenomes/US3-12/US3-12.gff3, /workdir/users/agk85/CDC2/prodigal/metagenomes/US3-8/US3-8.gff3, /workdir/users/agk85/CDC2/prodigal/metagenomes/US3-10/US3-10.gff3, /workdir/users/agk85/CDC2/prodigal/metagenomes/B331-2/B331-2.gff3, /workdir/users/agk85/CDC2/prodigal/metagenomes/B314-1/B314-1_proteins.faa, /workdir/users/agk85/CDC2/prodigal/metagenomes/B314-2/B314-2_proteins.faa, /workdir/users/agk85/CDC2/prodigal/metagenomes/B314-3/B314-3_proteins.faa, /workdir/users/agk85/CDC2/prodigal/metagenomes/B316-4/B316-4_proteins.faa, /workdir/users/agk85/CDC2/prodigal/metagenomes/B316-2/B316-2_proteins.faa, /workdir/users/agk85/CDC2/prodigal/metagenomes/B335-2/B335-2_proteins.faa, /workdir/users/agk85/CDC2/prodigal/metagenomes/B357-5/B357-5_proteins.faa, /workdir/users/agk85/CDC2/prodigal/metagenomes/B357-4/B357-4_proteins.faa, /workdir/users/agk85/CDC2/prodigal/metagenomes/B370-1/B370-1_proteins.faa, /workdir/users/agk85/CDC2/prodigal/metagenomes/B370-3/B370-3_proteins.faa, /workdir/users/agk85/CDC2/prodigal/metagenomes/B370-2/B370-2_proteins.faa, /workdir/users/agk85/CDC2/prodigal/metagenomes/B314-4/B314-4_proteins.faa, /workdir/users/agk85/CDC2/prodigal/metagenomes/B357-3/B357-3_proteins.faa, /workdir/users/agk85/CDC2/prodigal/metagenomes/B316-1/B316-1_proteins.faa, /workdir/users/agk85/CDC2/prodigal/metagenomes/B357-6/B357-6_proteins.faa, /workdir/users/agk85/CDC2/prodigal/metagenomes/B316-3/B316-3_proteins.faa, /workdir/users/agk85/CDC2/prodigal/metagenomes/B335-1/B335-1_proteins.faa, /workdir/users/agk85/CDC2/prodigal/metagenomes/B320-1/B320-1_proteins.faa, /workdir/users/agk85/CDC2/prodigal/metagenomes/B331-4/B331-4_proteins.faa, /workdir/users/agk85/CDC2/prodigal/metagenomes/B335-3/B335-3_proteins.faa, /workdir/users/agk85/CDC2/prodigal/metagenomes/B320-3/B320-3_proteins.faa, /workdir/users/agk85/CDC2/prodigal/metagenomes/B331-3/B331-3_proteins.faa, /workdir/users/agk85/CDC2/prodigal/metagenomes/B316-7/B316-7_proteins.faa, /workdir/users/agk85/CDC2/prodigal/metagenomes/B320-5/B320-5_proteins.faa, /workdir/users/agk85/CDC2/prodigal/metagenomes/B316-5/B316-5_proteins.faa, /workdir/users/agk85/CDC2/prodigal/metagenomes/B331-1/B331-1_proteins.faa, /workdir/users/agk85/CDC2/prodigal/metagenomes/B316-6/B316-6_proteins.faa, /workdir/users/agk85/CDC2/prodigal/metagenomes/B320-4/B320-4_proteins.faa, /workdir/users/agk85/CDC2/prodigal/metagenomes/B357-2/B357-2_proteins.faa, /workdir/users/agk85/CDC2/prodigal/metagenomes/B320-2/B320-2_proteins.faa, /workdir/users/agk85/CDC2/prodigal/metagenomes/US8-3/US8-3_proteins.faa, /workdir/users/agk85/CDC2/prodigal/metagenomes/US8-4/US8-4_proteins.faa, /workdir/users/agk85/CDC2/prodigal/metagenomes/US3-12/US3-12_proteins.faa, /workdir/users/agk85/CDC2/prodigal/metagenomes/US3-8/US3-8_proteins.faa, /workdir/users/agk85/CDC2/prodigal/metagenomes/US3-10/US3-10_proteins.faa, /workdir/users/agk85/CDC2/prodigal/metagenomes/B331-2/B331-2_proteins.faa, /workdir/users/agk85/CDC2/prodigal/metagenomes/B314-1/B314-1_proteins.out, /workdir/users/agk85/CDC2/prodigal/metagenomes/B314-2/B314-2_proteins.out, /workdir/users/agk85/CDC2/prodigal/metagenomes/B314-3/B314-3_proteins.out, /workdir/users/agk85/CDC2/prodigal/metagenomes/B316-4/B316-4_proteins.out, /workdir/users/agk85/CDC2/prodigal/metagenomes/B316-2/B316-2_proteins.out, /workdir/users/agk85/CDC2/prodigal/metagenomes/B335-2/B335-2_proteins.out, /workdir/users/agk85/CDC2/prodigal/metagenomes/B357-5/B357-5_proteins.out, /workdir/users/agk85/CDC2/prodigal/metagenomes/B357-4/B357-4_proteins.out, /workdir/users/agk85/CDC2/prodigal/metagenomes/B370-1/B370-1_proteins.out, /workdir/users/agk85/CDC2/prodigal/metagenomes/B370-3/B370-3_proteins.out, /workdir/users/agk85/CDC2/prodigal/metagenomes/B370-2/B370-2_proteins.out, /workdir/users/agk85/CDC2/prodigal/metagenomes/B314-4/B314-4_proteins.out, /workdir/users/agk85/CDC2/prodigal/metagenomes/B357-3/B357-3_proteins.out, /workdir/users/agk85/CDC2/prodigal/metagenomes/B316-1/B316-1_proteins.out, /workdir/users/agk85/CDC2/prodigal/metagenomes/B357-6/B357-6_proteins.out, /workdir/users/agk85/CDC2/prodigal/metagenomes/B316-3/B316-3_proteins.out, /workdir/users/agk85/CDC2/prodigal/metagenomes/B335-1/B335-1_proteins.out, /workdir/users/agk85/CDC2/prodigal/metagenomes/B320-1/B320-1_proteins.out, /workdir/users/agk85/CDC2/prodigal/metagenomes/B331-4/B331-4_proteins.out, /workdir/users/agk85/CDC2/prodigal/metagenomes/B335-3/B335-3_proteins.out, /workdir/users/agk85/CDC2/prodigal/metagenomes/B320-3/B320-3_proteins.out, /workdir/users/agk85/CDC2/prodigal/metagenomes/B331-3/B331-3_proteins.out, /workdir/users/agk85/CDC2/prodigal/metagenomes/B316-7/B316-7_proteins.out, /workdir/users/agk85/CDC2/prodigal/metagenomes/B320-5/B320-5_proteins.out, /workdir/users/agk85/CDC2/prodigal/metagenomes/B316-5/B316-5_proteins.out, /workdir/users/agk85/CDC2/prodigal/metagenomes/B331-1/B331-1_proteins.out, /workdir/users/agk85/CDC2/prodigal/metagenomes/B316-6/B316-6_proteins.out, /workdir/users/agk85/CDC2/prodigal/metagenomes/B320-4/B320-4_proteins.out, /workdir/users/agk85/CDC2/prodigal/metagenomes/B357-2/B357-2_proteins.out, /workdir/users/agk85/CDC2/prodigal/metagenomes/B320-2/B320-2_proteins.out, /workdir/users/agk85/CDC2/prodigal/metagenomes/US8-3/US8-3_proteins.out, /workdir/users/agk85/CDC2/prodigal/metagenomes/US8-4/US8-4_proteins.out, /workdir/users/agk85/CDC2/prodigal/metagenomes/US3-12/US3-12_proteins.out, /workdir/users/agk85/CDC2/prodigal/metagenomes/US3-8/US3-8_proteins.out, /workdir/users/agk85/CDC2/prodigal/metagenomes/US3-10/US3-10_proteins.out, /workdir/users/agk85/CDC2/prodigal/metagenomes/B331-2/B331-2_proteins.out, /workdir/users/agk85/CDC2/prodigal/metagenomes/B314-1/PFPR_tab.txt, /workdir/users/agk85/CDC2/prodigal/metagenomes/B314-2/PFPR_tab.txt, /workdir/users/agk85/CDC2/prodigal/metagenomes/B314-3/PFPR_tab.txt, /workdir/users/agk85/CDC2/prodigal/metagenomes/B316-4/PFPR_tab.txt, /workdir/users/agk85/CDC2/prodigal/metagenomes/B316-2/PFPR_tab.txt, /workdir/users/agk85/CDC2/prodigal/metagenomes/B335-2/PFPR_tab.txt, /workdir/users/agk85/CDC2/prodigal/metagenomes/B357-5/PFPR_tab.txt, /workdir/users/agk85/CDC2/prodigal/metagenomes/B357-4/PFPR_tab.txt, /workdir/users/agk85/CDC2/prodigal/metagenomes/B370-1/PFPR_tab.txt, /workdir/users/agk85/CDC2/prodigal/metagenomes/B370-3/PFPR_tab.txt, /workdir/users/agk85/CDC2/prodigal/metagenomes/B370-2/PFPR_tab.txt, /workdir/users/agk85/CDC2/prodigal/metagenomes/B314-4/PFPR_tab.txt, /workdir/users/agk85/CDC2/prodigal/metagenomes/B357-3/PFPR_tab.txt, /workdir/users/agk85/CDC2/prodigal/metagenomes/B316-1/PFPR_tab.txt, /workdir/users/agk85/CDC2/prodigal/metagenomes/B357-6/PFPR_tab.txt, /workdir/users/agk85/CDC2/prodigal/metagenomes/B316-3/PFPR_tab.txt, /workdir/users/agk85/CDC2/prodigal/metagenomes/B335-1/PFPR_tab.txt, /workdir/users/agk85/CDC2/prodigal/metagenomes/B320-1/PFPR_tab.txt, /workdir/users/agk85/CDC2/prodigal/metagenomes/B331-4/PFPR_tab.txt, /workdir/users/agk85/CDC2/prodigal/metagenomes/B335-3/PFPR_tab.txt, /workdir/users/agk85/CDC2/prodigal/metagenomes/B320-3/PFPR_tab.txt, /workdir/users/agk85/CDC2/prodigal/metagenomes/B331-3/PFPR_tab.txt, /workdir/users/agk85/CDC2/prodigal/metagenomes/B316-7/PFPR_tab.txt, /workdir/users/agk85/CDC2/prodigal/metagenomes/B320-5/PFPR_tab.txt, /workdir/users/agk85/CDC2/prodigal/metagenomes/B316-5/PFPR_tab.txt, /workdir/users/agk85/CDC2/prodigal/metagenomes/B331-1/PFPR_tab.txt, /workdir/users/agk85/CDC2/prodigal/metagenomes/B316-6/PFPR_tab.txt, /workdir/users/agk85/CDC2/prodigal/metagenomes/B320-4/PFPR_tab.txt, /workdir/users/agk85/CDC2/prodigal/metagenomes/B357-2/PFPR_tab.txt, /workdir/users/agk85/CDC2/prodigal/metagenomes/B320-2/PFPR_tab.txt, /workdir/users/agk85/CDC2/prodigal/metagenomes/US8-3/PFPR_tab.txt, /workdir/users/agk85/CDC2/prodigal/metagenomes/US8-4/PFPR_tab.txt, /workdir/users/agk85/CDC2/prodigal/metagenomes/US3-12/PFPR_tab.txt, /workdir/users/agk85/CDC2/prodigal/metagenomes/US3-8/PFPR_tab.txt, /workdir/users/agk85/CDC2/prodigal/metagenomes/US3-10/PFPR_tab.txt, /workdir/users/agk85/CDC2/prodigal/metagenomes/B331-2/PFPR_tab.txt
+    jobid: 0
+
+[Mon Aug 12 19:15:50 2019]
+Finished job 0.
+21 of 21 steps (100%) done
+Complete log: /local/workdir/users/agk85/CDC2/scripts/snakes/.snakemake/log/2019-08-12T145751.719721.snakemake.log

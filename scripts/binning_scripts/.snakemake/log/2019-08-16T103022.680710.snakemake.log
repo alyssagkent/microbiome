@@ -1,0 +1,117 @@
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 1
+Rules claiming more threads will be scaled down.
+Unlimited resources: mem_mb
+Job counts:
+	count	jobs
+	15	bwa
+	1	final
+	15	primary_filter
+	15	sam2bam
+	15	sorted
+	61
+
+[Fri Aug 16 10:30:22 2019]
+rule bwa:
+    input: /workdir/data/CDC/metagenomes/merged/unzip/B370-1.1.fastq, /workdir/data/CDC/metagenomes/merged/unzip/B370-1.2.fastq
+    output: /workdir/users/agk85/CDC2/mapping/mapping_t4/B370-1/B370-1.sam, /workdir/users/agk85/CDC2/mapping/mapping_t4/B370-1/mapped
+    jobid: 119
+    wildcards: NAME=B370-1
+    resources: mem_mb=30
+
+[Fri Aug 16 11:20:12 2019]
+Finished job 119.
+1 of 61 steps (2%) done
+
+[Fri Aug 16 11:20:12 2019]
+rule bwa:
+    input: /workdir/data/CDC/metagenomes/merged/unzip/B370-3.1.fastq, /workdir/data/CDC/metagenomes/merged/unzip/B370-3.2.fastq
+    output: /workdir/users/agk85/CDC2/mapping/mapping_t4/B370-3/B370-3.sam, /workdir/users/agk85/CDC2/mapping/mapping_t4/B370-3/mapped
+    jobid: 121
+    wildcards: NAME=B370-3
+    resources: mem_mb=30
+
+[Fri Aug 16 12:01:44 2019]
+Finished job 121.
+2 of 61 steps (3%) done
+
+[Fri Aug 16 12:01:44 2019]
+rule bwa:
+    input: /workdir/data/CDC/metagenomes/merged/unzip/B357-2.1.fastq, /workdir/data/CDC/metagenomes/merged/unzip/B357-2.2.fastq
+    output: /workdir/users/agk85/CDC2/mapping/mapping_t4/B357-2/B357-2.sam, /workdir/users/agk85/CDC2/mapping/mapping_t4/B357-2/mapped
+    jobid: 109
+    wildcards: NAME=B357-2
+    resources: mem_mb=30
+
+[Fri Aug 16 12:42:09 2019]
+Finished job 109.
+3 of 61 steps (5%) done
+
+[Fri Aug 16 12:42:09 2019]
+rule primary_filter:
+    input: /workdir/users/agk85/CDC2/mapping/mapping_t4/B357-2/B357-2.sam
+    output: /workdir/users/agk85/CDC2/mapping/mapping_t4/B357-2/B357-2.nss.sam, /workdir/users/agk85/CDC2/mapping/mapping_t4/B357-2/filtered
+    jobid: 78
+    wildcards: NAME=B357-2
+    resources: mem_mb=15
+
+[Fri Aug 16 12:50:42 2019]
+Finished job 78.
+4 of 61 steps (7%) done
+
+[Fri Aug 16 12:50:42 2019]
+rule bwa:
+    input: /workdir/data/CDC/metagenomes/merged/unzip/B370-2.1.fastq, /workdir/data/CDC/metagenomes/merged/unzip/B370-2.2.fastq
+    output: /workdir/users/agk85/CDC2/mapping/mapping_t4/B370-2/B370-2.sam, /workdir/users/agk85/CDC2/mapping/mapping_t4/B370-2/mapped
+    jobid: 120
+    wildcards: NAME=B370-2
+    resources: mem_mb=30
+
+[Fri Aug 16 13:34:17 2019]
+Finished job 120.
+5 of 61 steps (8%) done
+
+[Fri Aug 16 13:34:17 2019]
+rule primary_filter:
+    input: /workdir/users/agk85/CDC2/mapping/mapping_t4/B370-1/B370-1.sam
+    output: /workdir/users/agk85/CDC2/mapping/mapping_t4/B370-1/B370-1.nss.sam, /workdir/users/agk85/CDC2/mapping/mapping_t4/B370-1/filtered
+    jobid: 88
+    wildcards: NAME=B370-1
+    resources: mem_mb=15
+
+[Fri Aug 16 13:41:14 2019]
+Finished job 88.
+6 of 61 steps (10%) done
+
+[Fri Aug 16 13:41:14 2019]
+Job 47: ---SAM2BAM
+
+[Fri Aug 16 14:26:57 2019]
+Finished job 47.
+7 of 61 steps (11%) done
+
+[Fri Aug 16 14:26:57 2019]
+rule primary_filter:
+    input: /workdir/users/agk85/CDC2/mapping/mapping_t4/B370-3/B370-3.sam
+    output: /workdir/users/agk85/CDC2/mapping/mapping_t4/B370-3/B370-3.nss.sam, /workdir/users/agk85/CDC2/mapping/mapping_t4/B370-3/filtered
+    jobid: 90
+    wildcards: NAME=B370-3
+    resources: mem_mb=15
+
+Terminating processes on user request, this might take some time.
+[Fri Aug 16 14:31:46 2019]
+Error in rule primary_filter:
+    jobid: 90
+    output: /workdir/users/agk85/CDC2/mapping/mapping_t4/B370-3/B370-3.nss.sam, /workdir/users/agk85/CDC2/mapping/mapping_t4/B370-3/filtered
+
+RuleException:
+CalledProcessError in line 46 of /local/workdir/users/agk85/CDC2/scripts/binning_scripts/snake_bwa_scaffold_t4:
+Command 'set -euo pipefail;  /programs/samtools-1.3.2/bin/samtools view -h -F 2316 /workdir/users/agk85/CDC2/mapping/mapping_t4/B370-3/B370-3.sam > /workdir/users/agk85/CDC2/mapping/mapping_t4/B370-3/B370-3.nss.sam
+		rm /workdir/users/agk85/CDC2/mapping/mapping_t4/B370-3/B370-3.sam
+		touch /workdir/users/agk85/CDC2/mapping/mapping_t4/B370-3/filtered' died with <Signals.SIGINT: 2>.
+  File "/local/workdir/users/agk85/CDC2/scripts/binning_scripts/snake_bwa_scaffold_t4", line 46, in __rule_primary_filter
+  File "/usr/lib64/python3.6/concurrent/futures/thread.py", line 56, in run
+Removing output files of failed job primary_filter since they might be corrupted:
+/workdir/users/agk85/CDC2/mapping/mapping_t4/B370-3/B370-3.nss.sam
+Cancelling snakemake on user request.

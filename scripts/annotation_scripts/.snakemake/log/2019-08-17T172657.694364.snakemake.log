@@ -1,0 +1,652 @@
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 1
+Rules claiming more threads will be scaled down.
+Unlimited resources: mem_mb
+Job counts:
+	count	jobs
+	1	final
+	16	mobile_pfams
+	10	pfam
+	16	plasmid_pfams
+	11	plasmidfinder
+	16	relaxase
+	16	tigrfam
+	86
+
+[Sat Aug 17 17:26:59 2019]
+Job 263: ---pfam
+
+[Sat Aug 17 21:04:09 2019]
+Finished job 263.
+1 of 86 steps (1%) done
+
+[Sat Aug 17 21:04:09 2019]
+Job 258: ---pfam
+
+[Sun Aug 18 01:47:34 2019]
+Finished job 258.
+2 of 86 steps (2%) done
+
+[Sun Aug 18 01:47:34 2019]
+Job 87: ---plasmidfinder
+
+[Sun Aug 18 01:48:39 2019]
+Finished job 87.
+3 of 86 steps (3%) done
+
+[Sun Aug 18 01:48:39 2019]
+Job 262: ---pfam
+
+[Sun Aug 18 05:55:42 2019]
+Finished job 262.
+4 of 86 steps (5%) done
+
+[Sun Aug 18 05:55:42 2019]
+Job 86: ---plasmidfinder
+
+[Sun Aug 18 05:56:30 2019]
+Finished job 86.
+5 of 86 steps (6%) done
+
+[Sun Aug 18 05:56:30 2019]
+Job 61: ---plasmidfinder
+
+[Sun Aug 18 05:57:12 2019]
+Finished job 61.
+6 of 86 steps (7%) done
+
+[Sun Aug 18 05:57:12 2019]
+Job 257: ---pfam
+
+[Sun Aug 18 10:02:15 2019]
+Finished job 257.
+7 of 86 steps (8%) done
+
+[Sun Aug 18 10:02:15 2019]
+Job 64: ---plasmidfinder
+
+[Sun Aug 18 10:02:52 2019]
+Finished job 64.
+8 of 86 steps (9%) done
+
+[Sun Aug 18 10:02:52 2019]
+Job 81: ---plasmidfinder
+
+[Sun Aug 18 10:03:35 2019]
+Finished job 81.
+9 of 86 steps (10%) done
+
+[Sun Aug 18 10:03:35 2019]
+Job 259: ---pfam
+
+[Sun Aug 18 12:40:41 2019]
+Finished job 259.
+10 of 86 steps (12%) done
+
+[Sun Aug 18 12:40:41 2019]
+Job 238: ---pfam
+
+[Sun Aug 18 14:35:00 2019]
+Finished job 238.
+11 of 86 steps (13%) done
+
+[Sun Aug 18 14:35:00 2019]
+Job 83: ---plasmidfinder
+
+[Sun Aug 18 14:35:23 2019]
+Finished job 83.
+12 of 86 steps (14%) done
+
+[Sun Aug 18 14:35:23 2019]
+Job 62: ---plasmidfinder
+
+[Sun Aug 18 14:35:45 2019]
+Finished job 62.
+13 of 86 steps (15%) done
+
+[Sun Aug 18 14:35:45 2019]
+Job 241: ---pfam
+
+[Sun Aug 18 15:41:06 2019]
+Finished job 241.
+14 of 86 steps (16%) done
+
+[Sun Aug 18 15:41:06 2019]
+Job 65: ---plasmidfinder
+
+[Sun Aug 18 15:41:21 2019]
+Finished job 65.
+15 of 86 steps (17%) done
+
+[Sun Aug 18 15:41:21 2019]
+Job 361: ---relaxase
+
+Warning: the following output files of rule relaxase were not present when the DAG was created:
+{'/workdir/users/agk85/CDC2/logs/finals/US8-3_final_relaxase'}
+[Sun Aug 18 15:41:21 2019]
+Finished job 361.
+16 of 86 steps (19%) done
+
+[Sun Aug 18 15:41:21 2019]
+Job 273: ---tigrfam
+
+[Sun Aug 18 16:30:05 2019]
+Finished job 273.
+17 of 86 steps (20%) done
+
+[Sun Aug 18 16:30:05 2019]
+Job 390: ---relaxase
+
+Warning: the following output files of rule relaxase were not present when the DAG was created:
+{'/workdir/users/agk85/CDC2/logs/finals/US8-2_final_relaxase'}
+[Sun Aug 18 16:30:05 2019]
+Finished job 390.
+18 of 86 steps (21%) done
+
+[Sun Aug 18 16:30:05 2019]
+Job 302: ---tigrfam
+
+[Sun Aug 18 17:29:02 2019]
+Finished job 302.
+19 of 86 steps (22%) done
+
+[Sun Aug 18 17:29:02 2019]
+Job 307: ---tigrfam
+
+[Sun Aug 18 18:32:56 2019]
+Finished job 307.
+20 of 86 steps (23%) done
+
+[Sun Aug 18 18:32:56 2019]
+Job 395: ---relaxase
+
+Warning: the following output files of rule relaxase were not present when the DAG was created:
+{'/workdir/users/agk85/CDC2/logs/finals/US8-1_final_relaxase'}
+[Sun Aug 18 18:32:57 2019]
+Finished job 395.
+21 of 86 steps (24%) done
+
+[Sun Aug 18 18:32:57 2019]
+Job 278: ---tigrfam
+
+[Sun Aug 18 19:35:51 2019]
+Finished job 278.
+22 of 86 steps (26%) done
+
+[Sun Aug 18 19:35:51 2019]
+Job 366: ---relaxase
+
+Warning: the following output files of rule relaxase were not present when the DAG was created:
+{'/workdir/users/agk85/CDC2/logs/finals/US3-10_final_relaxase'}
+[Sun Aug 18 19:35:51 2019]
+Finished job 366.
+23 of 86 steps (27%) done
+
+[Sun Aug 18 19:35:51 2019]
+Job 264: ---pfam
+
+[Sun Aug 18 21:01:23 2019]
+Finished job 264.
+24 of 86 steps (28%) done
+
+[Sun Aug 18 21:01:23 2019]
+Job 368: ---relaxase
+
+Warning: the following output files of rule relaxase were not present when the DAG was created:
+{'/workdir/users/agk85/CDC2/logs/finals/B357-2_final_relaxase'}
+[Sun Aug 18 21:01:25 2019]
+Finished job 368.
+25 of 86 steps (29%) done
+
+[Sun Aug 18 21:01:25 2019]
+Job 280: ---tigrfam
+
+[Sun Aug 18 22:04:32 2019]
+Finished job 280.
+26 of 86 steps (30%) done
+
+[Sun Aug 18 22:04:32 2019]
+Job 371: ---relaxase
+
+Warning: the following output files of rule relaxase were not present when the DAG was created:
+{'/workdir/users/agk85/CDC2/logs/finals/US3-8_final_relaxase'}
+[Sun Aug 18 22:04:33 2019]
+Finished job 371.
+27 of 86 steps (31%) done
+
+[Sun Aug 18 22:04:33 2019]
+Job 283: ---tigrfam
+
+[Sun Aug 18 22:58:51 2019]
+Finished job 283.
+28 of 86 steps (33%) done
+
+[Sun Aug 18 22:58:51 2019]
+Job 88: ---plasmidfinder
+
+[Sun Aug 18 22:59:05 2019]
+Finished job 88.
+29 of 86 steps (34%) done
+
+[Sun Aug 18 22:59:05 2019]
+Job 306: ---tigrfam
+
+[Sun Aug 18 23:53:48 2019]
+Finished job 306.
+30 of 86 steps (35%) done
+
+[Sun Aug 18 23:53:48 2019]
+Job 394: ---relaxase
+
+Warning: the following output files of rule relaxase were not present when the DAG was created:
+{'/workdir/users/agk85/CDC2/logs/finals/US8-5_final_relaxase'}
+[Sun Aug 18 23:53:48 2019]
+Finished job 394.
+31 of 86 steps (36%) done
+
+[Sun Aug 18 23:53:48 2019]
+Job 260: ---pfam
+
+[Mon Aug 19 00:50:54 2019]
+Finished job 260.
+32 of 86 steps (37%) done
+
+[Mon Aug 19 00:50:54 2019]
+Job 281: ---tigrfam
+
+[Mon Aug 19 01:32:57 2019]
+Finished job 281.
+33 of 86 steps (38%) done
+
+[Mon Aug 19 01:32:57 2019]
+Job 369: ---relaxase
+
+Warning: the following output files of rule relaxase were not present when the DAG was created:
+{'/workdir/users/agk85/CDC2/logs/finals/US8-4_final_relaxase'}
+[Mon Aug 19 01:32:58 2019]
+Finished job 369.
+34 of 86 steps (40%) done
+
+[Mon Aug 19 01:32:58 2019]
+Job 84: ---plasmidfinder
+
+[Mon Aug 19 01:33:09 2019]
+Finished job 84.
+35 of 86 steps (41%) done
+
+[Mon Aug 19 01:33:09 2019]
+Job 284: ---tigrfam
+
+[Mon Aug 19 02:10:36 2019]
+Finished job 284.
+36 of 86 steps (42%) done
+
+[Mon Aug 19 02:10:36 2019]
+Job 372: ---relaxase
+
+Warning: the following output files of rule relaxase were not present when the DAG was created:
+{'/workdir/users/agk85/CDC2/logs/finals/US3-12_final_relaxase'}
+[Mon Aug 19 02:10:37 2019]
+Finished job 372.
+37 of 86 steps (43%) done
+
+[Mon Aug 19 02:10:37 2019]
+Job 389: ---relaxase
+
+Warning: the following output files of rule relaxase were not present when the DAG was created:
+{'/workdir/users/agk85/CDC2/logs/finals/US3-14_final_relaxase'}
+[Mon Aug 19 02:10:37 2019]
+Finished job 389.
+38 of 86 steps (44%) done
+
+[Mon Aug 19 02:10:37 2019]
+Job 301: ---tigrfam
+
+[Mon Aug 19 02:47:02 2019]
+Finished job 301.
+39 of 86 steps (45%) done
+
+[Mon Aug 19 02:47:02 2019]
+Job 391: ---relaxase
+
+Warning: the following output files of rule relaxase were not present when the DAG was created:
+{'/workdir/users/agk85/CDC2/logs/finals/US3-16_final_relaxase'}
+[Mon Aug 19 02:47:03 2019]
+Finished job 391.
+40 of 86 steps (47%) done
+
+[Mon Aug 19 02:47:03 2019]
+Job 303: ---tigrfam
+
+[Mon Aug 19 03:19:35 2019]
+Finished job 303.
+41 of 86 steps (48%) done
+
+[Mon Aug 19 03:19:35 2019]
+Job 282: ---tigrfam
+
+[Mon Aug 19 03:52:52 2019]
+Finished job 282.
+42 of 86 steps (49%) done
+
+[Mon Aug 19 03:52:52 2019]
+Job 370: ---relaxase
+
+Warning: the following output files of rule relaxase were not present when the DAG was created:
+{'/workdir/users/agk85/CDC2/logs/finals/B320-2_final_relaxase'}
+[Mon Aug 19 03:52:53 2019]
+Finished job 370.
+43 of 86 steps (50%) done
+
+[Mon Aug 19 03:52:53 2019]
+Job 285: ---tigrfam
+
+[Mon Aug 19 04:18:58 2019]
+Finished job 285.
+44 of 86 steps (51%) done
+
+[Mon Aug 19 04:18:58 2019]
+Job 373: ---relaxase
+
+Warning: the following output files of rule relaxase were not present when the DAG was created:
+{'/workdir/users/agk85/CDC2/logs/finals/B331-2_final_relaxase'}
+[Mon Aug 19 04:18:59 2019]
+Finished job 373.
+45 of 86 steps (52%) done
+
+[Mon Aug 19 04:18:59 2019]
+Job 396: ---relaxase
+
+Warning: the following output files of rule relaxase were not present when the DAG was created:
+{'/workdir/users/agk85/CDC2/logs/finals/B370-4_final_relaxase'}
+[Mon Aug 19 04:18:59 2019]
+Finished job 396.
+46 of 86 steps (53%) done
+
+[Mon Aug 19 04:18:59 2019]
+Job 308: ---tigrfam
+
+[Mon Aug 19 04:41:33 2019]
+Finished job 308.
+47 of 86 steps (55%) done
+
+[Mon Aug 19 04:41:33 2019]
+Job 304: ---tigrfam
+
+[Mon Aug 19 05:02:34 2019]
+Finished job 304.
+48 of 86 steps (56%) done
+
+[Mon Aug 19 05:02:34 2019]
+Job 392: ---relaxase
+
+Warning: the following output files of rule relaxase were not present when the DAG was created:
+{'/workdir/users/agk85/CDC2/logs/finals/B357-1_final_relaxase'}
+[Mon Aug 19 05:02:34 2019]
+Finished job 392.
+49 of 86 steps (57%) done
+
+[Mon Aug 19 05:02:34 2019]
+Job 261: ---pfam
+
+[Mon Aug 19 05:21:39 2019]
+Finished job 261.
+50 of 86 steps (58%) done
+
+[Mon Aug 19 05:21:39 2019]
+Job 85: ---plasmidfinder
+
+[Mon Aug 19 05:21:43 2019]
+Finished job 85.
+51 of 86 steps (59%) done
+
+[Mon Aug 19 05:21:43 2019]
+Job 141: ---plasmid_pfam
+
+[Mon Aug 19 05:21:44 2019]
+Finished job 141.
+52 of 86 steps (60%) done
+
+[Mon Aug 19 05:21:44 2019]
+Job 185: ---mobile_pfams
+
+[Mon Aug 19 05:21:48 2019]
+Finished job 185.
+53 of 86 steps (62%) done
+
+[Mon Aug 19 05:21:48 2019]
+Job 170: ---plasmid_pfam
+
+[Mon Aug 19 05:21:48 2019]
+Finished job 170.
+54 of 86 steps (63%) done
+
+[Mon Aug 19 05:21:48 2019]
+Job 214: ---mobile_pfams
+
+[Mon Aug 19 05:21:52 2019]
+Finished job 214.
+55 of 86 steps (64%) done
+
+[Mon Aug 19 05:21:52 2019]
+Job 219: ---mobile_pfams
+
+[Mon Aug 19 05:21:55 2019]
+Finished job 219.
+56 of 86 steps (65%) done
+
+[Mon Aug 19 05:21:55 2019]
+Job 175: ---plasmid_pfam
+
+[Mon Aug 19 05:21:56 2019]
+Finished job 175.
+57 of 86 steps (66%) done
+
+[Mon Aug 19 05:21:56 2019]
+Job 190: ---mobile_pfams
+
+[Mon Aug 19 05:21:59 2019]
+Finished job 190.
+58 of 86 steps (67%) done
+
+[Mon Aug 19 05:21:59 2019]
+Job 146: ---plasmid_pfam
+
+[Mon Aug 19 05:21:59 2019]
+Finished job 146.
+59 of 86 steps (69%) done
+
+[Mon Aug 19 05:21:59 2019]
+Job 148: ---plasmid_pfam
+
+[Mon Aug 19 05:22:00 2019]
+Finished job 148.
+60 of 86 steps (70%) done
+
+[Mon Aug 19 05:22:00 2019]
+Job 192: ---mobile_pfams
+
+[Mon Aug 19 05:22:03 2019]
+Finished job 192.
+61 of 86 steps (71%) done
+
+[Mon Aug 19 05:22:03 2019]
+Job 151: ---plasmid_pfam
+
+[Mon Aug 19 05:22:04 2019]
+Finished job 151.
+62 of 86 steps (72%) done
+
+[Mon Aug 19 05:22:04 2019]
+Job 195: ---mobile_pfams
+
+[Mon Aug 19 05:22:07 2019]
+Finished job 195.
+63 of 86 steps (73%) done
+
+[Mon Aug 19 05:22:07 2019]
+Job 218: ---mobile_pfams
+
+[Mon Aug 19 05:22:09 2019]
+Finished job 218.
+64 of 86 steps (74%) done
+
+[Mon Aug 19 05:22:09 2019]
+Job 174: ---plasmid_pfam
+
+[Mon Aug 19 05:22:10 2019]
+Finished job 174.
+65 of 86 steps (76%) done
+
+[Mon Aug 19 05:22:10 2019]
+Job 193: ---mobile_pfams
+
+[Mon Aug 19 05:22:13 2019]
+Finished job 193.
+66 of 86 steps (77%) done
+
+[Mon Aug 19 05:22:13 2019]
+Job 149: ---plasmid_pfam
+
+[Mon Aug 19 05:22:13 2019]
+Finished job 149.
+67 of 86 steps (78%) done
+
+[Mon Aug 19 05:22:13 2019]
+Job 196: ---mobile_pfams
+
+[Mon Aug 19 05:22:16 2019]
+Finished job 196.
+68 of 86 steps (79%) done
+
+[Mon Aug 19 05:22:16 2019]
+Job 152: ---plasmid_pfam
+
+[Mon Aug 19 05:22:16 2019]
+Finished job 152.
+69 of 86 steps (80%) done
+
+[Mon Aug 19 05:22:16 2019]
+Job 169: ---plasmid_pfam
+
+[Mon Aug 19 05:22:17 2019]
+Finished job 169.
+70 of 86 steps (81%) done
+
+[Mon Aug 19 05:22:17 2019]
+Job 213: ---mobile_pfams
+
+[Mon Aug 19 05:22:19 2019]
+Finished job 213.
+71 of 86 steps (83%) done
+
+[Mon Aug 19 05:22:19 2019]
+Job 194: ---mobile_pfams
+
+[Mon Aug 19 05:22:22 2019]
+Finished job 194.
+72 of 86 steps (84%) done
+
+[Mon Aug 19 05:22:22 2019]
+Job 150: ---plasmid_pfam
+
+[Mon Aug 19 05:22:22 2019]
+Finished job 150.
+73 of 86 steps (85%) done
+
+[Mon Aug 19 05:22:22 2019]
+Job 171: ---plasmid_pfam
+
+[Mon Aug 19 05:22:22 2019]
+Finished job 171.
+74 of 86 steps (86%) done
+
+[Mon Aug 19 05:22:22 2019]
+Job 215: ---mobile_pfams
+
+[Mon Aug 19 05:22:25 2019]
+Finished job 215.
+75 of 86 steps (87%) done
+
+[Mon Aug 19 05:22:25 2019]
+Job 393: ---relaxase
+
+Warning: the following output files of rule relaxase were not present when the DAG was created:
+{'/workdir/users/agk85/CDC2/logs/finals/B370-5_final_relaxase'}
+[Mon Aug 19 05:22:25 2019]
+Finished job 393.
+76 of 86 steps (88%) done
+
+[Mon Aug 19 05:22:25 2019]
+Job 305: ---tigrfam
+
+[Mon Aug 19 05:28:44 2019]
+Finished job 305.
+77 of 86 steps (90%) done
+
+[Mon Aug 19 05:28:44 2019]
+Job 197: ---mobile_pfams
+
+[Mon Aug 19 05:28:46 2019]
+Finished job 197.
+78 of 86 steps (91%) done
+
+[Mon Aug 19 05:28:46 2019]
+Job 153: ---plasmid_pfam
+
+[Mon Aug 19 05:28:46 2019]
+Finished job 153.
+79 of 86 steps (92%) done
+
+[Mon Aug 19 05:28:46 2019]
+Job 176: ---plasmid_pfam
+
+[Mon Aug 19 05:28:46 2019]
+Finished job 176.
+80 of 86 steps (93%) done
+
+[Mon Aug 19 05:28:46 2019]
+Job 220: ---mobile_pfams
+
+[Mon Aug 19 05:28:48 2019]
+Finished job 220.
+81 of 86 steps (94%) done
+
+[Mon Aug 19 05:28:48 2019]
+Job 216: ---mobile_pfams
+
+[Mon Aug 19 05:28:49 2019]
+Finished job 216.
+82 of 86 steps (95%) done
+
+[Mon Aug 19 05:28:49 2019]
+Job 172: ---plasmid_pfam
+
+[Mon Aug 19 05:28:49 2019]
+Finished job 172.
+83 of 86 steps (97%) done
+
+[Mon Aug 19 05:28:49 2019]
+Job 173: ---plasmid_pfam
+
+[Mon Aug 19 05:28:49 2019]
+Finished job 173.
+84 of 86 steps (98%) done
+
+[Mon Aug 19 05:28:49 2019]
+Job 217: ---mobile_pfams
+
+[Mon Aug 19 05:28:50 2019]
+Finished job 217.
+85 of 86 steps (99%) done
+
+[Mon Aug 19 05:28:50 2019]
+localrule final:
+    input: /workdir/users/agk85/CDC2/logs/finals/B370-1_final_plasflow, /workdir/users/agk85/CDC2/logs/finals/B316-2_final_plasflow, /workdir/users/agk85/CDC2/logs/finals/B316-4_final_plasflow, /workdir/users/agk85/CDC2/logs/finals/B357-5_final_plasflow, /workdir/users/agk85/CDC2/logs/finals/B357-4_final_plasflow, /workdir/users/agk85/CDC2/logs/finals/B370-2_final_plasflow, /workdir/users/agk85/CDC2/logs/finals/B357-3_final_plasflow, /workdir/users/agk85/CDC2/logs/finals/B370-3_final_plasflow, /workdir/users/agk85/CDC2/logs/finals/US8-3_final_plasflow, /workdir/users/agk85/CDC2/logs/finals/B314-3_final_plasflow, /workdir/users/agk85/CDC2/logs/finals/B314-2_final_plasflow, /workdir/users/agk85/CDC2/logs/finals/B314-1_final_plasflow, /workdir/users/agk85/CDC2/logs/finals/B314-4_final_plasflow, /workdir/users/agk85/CDC2/logs/finals/US3-10_final_plasflow, /workdir/users/agk85/CDC2/logs/finals/B335-2_final_plasflow, /workdir/users/agk85/CDC2/logs/finals/B357-2_final_plasflow, /workdir/users/agk85/CDC2/logs/finals/US8-4_final_plasflow, /workdir/users/agk85/CDC2/logs/finals/B320-2_final_plasflow, /workdir/users/agk85/CDC2/logs/finals/US3-8_final_plasflow, /workdir/users/agk85/CDC2/logs/finals/US3-12_final_plasflow, /workdir/users/agk85/CDC2/logs/finals/B331-2_final_plasflow, /workdir/users/agk85/CDC2/logs/finals/B320-1_final_plasflow, /workdir/users/agk85/CDC2/logs/finals/B316-1_final_plasflow, /workdir/users/agk85/CDC2/logs/finals/B316-3_final_plasflow, /workdir/users/agk85/CDC2/logs/finals/B357-6_final_plasflow, /workdir/users/agk85/CDC2/logs/finals/B335-1_final_plasflow, /workdir/users/agk85/CDC2/logs/finals/B316-5_final_plasflow, /workdir/users/agk85/CDC2/logs/finals/B316-6_final_plasflow, /workdir/users/agk85/CDC2/logs/finals/B320-5_final_plasflow, /workdir/users/agk85/CDC2/logs/finals/B331-4_final_plasflow, /workdir/users/agk85/CDC2/logs/finals/B320-3_final_plasflow, /workdir/users/agk85/CDC2/logs/finals/B331-3_final_plasflow, /workdir/users/agk85/CDC2/logs/finals/B331-1_final_plasflow, /workdir/users/agk85/CDC2/logs/finals/B320-4_final_plasflow, /workdir/users/agk85/CDC2/logs/finals/B316-7_final_plasflow, /workdir/users/agk85/CDC2/logs/finals/B335-3_final_plasflow, /workdir/users/agk85/CDC2/logs/finals/US3-14_final_plasflow, /workdir/users/agk85/CDC2/logs/finals/US8-2_final_plasflow, /workdir/users/agk85/CDC2/logs/finals/US3-16_final_plasflow, /workdir/users/agk85/CDC2/logs/finals/B357-1_final_plasflow, /workdir/users/agk85/CDC2/logs/finals/B370-5_final_plasflow, /workdir/users/agk85/CDC2/logs/finals/US8-5_final_plasflow, /workdir/users/agk85/CDC2/logs/finals/US8-1_final_plasflow, /workdir/users/agk85/CDC2/logs/finals/B370-4_final_plasflow, /workdir/users/agk85/CDC2/logs/finals/B370-1_final_plasmidfinder, /workdir/users/agk85/CDC2/logs/finals/B316-2_final_plasmidfinder, /workdir/users/agk85/CDC2/logs/finals/B316-4_final_plasmidfinder, /workdir/users/agk85/CDC2/logs/finals/B357-5_final_plasmidfinder, /workdir/users/agk85/CDC2/logs/finals/B357-4_final_plasmidfinder, /workdir/users/agk85/CDC2/logs/finals/B370-2_final_plasmidfinder, /workdir/users/agk85/CDC2/logs/finals/B357-3_final_plasmidfinder, /workdir/users/agk85/CDC2/logs/finals/B370-3_final_plasmidfinder, /workdir/users/agk85/CDC2/logs/finals/US8-3_final_plasmidfinder, /workdir/users/agk85/CDC2/logs/finals/B314-3_final_plasmidfinder, /workdir/users/agk85/CDC2/logs/finals/B314-2_final_plasmidfinder, /workdir/users/agk85/CDC2/logs/finals/B314-1_final_plasmidfinder, /workdir/users/agk85/CDC2/logs/finals/B314-4_final_plasmidfinder, /workdir/users/agk85/CDC2/logs/finals/US3-10_final_plasmidfinder, /workdir/users/agk85/CDC2/logs/finals/B335-2_final_plasmidfinder, /workdir/users/agk85/CDC2/logs/finals/B357-2_final_plasmidfinder, /workdir/users/agk85/CDC2/logs/finals/US8-4_final_plasmidfinder, /workdir/users/agk85/CDC2/logs/finals/B320-2_final_plasmidfinder, /workdir/users/agk85/CDC2/logs/finals/US3-8_final_plasmidfinder, /workdir/users/agk85/CDC2/logs/finals/US3-12_final_plasmidfinder, /workdir/users/agk85/CDC2/logs/finals/B331-2_final_plasmidfinder, /workdir/users/agk85/CDC2/logs/finals/B320-1_final_plasmidfinder, /workdir/users/agk85/CDC2/logs/finals/B316-1_final_plasmidfinder, /workdir/users/agk85/CDC2/logs/finals/B316-3_final_plasmidfinder, /workdir/users/agk85/CDC2/logs/finals/B357-6_final_plasmidfinder, /workdir/users/agk85/CDC2/logs/finals/B335-1_final_plasmidfinder, /workdir/users/agk85/CDC2/logs/finals/B316-5_final_plasmidfinder, /workdir/users/agk85/CDC2/logs/finals/B316-6_final_plasmidfinder, /workdir/users/agk85/CDC2/logs/finals/B320-5_final_plasmidfinder, /workdir/users/agk85/CDC2/logs/finals/B331-4_final_plasmidfinder, /workdir/users/agk85/CDC2/logs/finals/B320-3_final_plasmidfinder, /workdir/users/agk85/CDC2/logs/finals/B331-3_final_plasmidfinder, /workdir/users/agk85/CDC2/logs/finals/B331-1_final_plasmidfinder, /workdir/users/agk85/CDC2/logs/finals/B320-4_final_plasmidfinder, /workdir/users/agk85/CDC2/logs/finals/B316-7_final_plasmidfinder, /workdir/users/agk85/CDC2/logs/finals/B335-3_final_plasmidfinder, /workdir/users/agk85/CDC2/logs/finals/US3-14_final_plasmidfinder, /workdir/users/agk85/CDC2/logs/finals/US8-2_final_plasmidfinder, /workdir/users/agk85/CDC2/logs/finals/US3-16_final_plasmidfinder, /workdir/users/agk85/CDC2/logs/finals/B357-1_final_plasmidfinder, /workdir/users/agk85/CDC2/logs/finals/B370-5_final_plasmidfinder, /workdir/users/agk85/CDC2/logs/finals/US8-5_final_plasmidfinder, /workdir/users/agk85/CDC2/logs/finals/US8-1_final_plasmidfinder, /workdir/users/agk85/CDC2/logs/finals/B370-4_final_plasmidfinder, /workdir/users/agk85/CDC2/logs/finals/B370-1_final_card, /workdir/users/agk85/CDC2/logs/finals/B316-2_final_card, /workdir/users/agk85/CDC2/logs/finals/B316-4_final_card, /workdir/users/agk85/CDC2/logs/finals/B357-5_final_card, /workdir/users/agk85/CDC2/logs/finals/B357-4_final_card, /workdir/users/agk85/CDC2/logs/finals/B370-2_final_card, /workdir/users/agk85/CDC2/logs/finals/B357-3_final_card, /workdir/users/agk85/CDC2/logs/finals/B370-3_final_card, /workdir/users/agk85/CDC2/logs/finals/US8-3_final_card, /workdir/users/agk85/CDC2/logs/finals/B314-3_final_card, /workdir/users/agk85/CDC2/logs/finals/B314-2_final_card, /workdir/users/agk85/CDC2/logs/finals/B314-1_final_card, /workdir/users/agk85/CDC2/logs/finals/B314-4_final_card, /workdir/users/agk85/CDC2/logs/finals/US3-10_final_card, /workdir/users/agk85/CDC2/logs/finals/B335-2_final_card, /workdir/users/agk85/CDC2/logs/finals/B357-2_final_card, /workdir/users/agk85/CDC2/logs/finals/US8-4_final_card, /workdir/users/agk85/CDC2/logs/finals/B320-2_final_card, /workdir/users/agk85/CDC2/logs/finals/US3-8_final_card, /workdir/users/agk85/CDC2/logs/finals/US3-12_final_card, /workdir/users/agk85/CDC2/logs/finals/B331-2_final_card, /workdir/users/agk85/CDC2/logs/finals/B320-1_final_card, /workdir/users/agk85/CDC2/logs/finals/B316-1_final_card, /workdir/users/agk85/CDC2/logs/finals/B316-3_final_card, /workdir/users/agk85/CDC2/logs/finals/B357-6_final_card, /workdir/users/agk85/CDC2/logs/finals/B335-1_final_card, /workdir/users/agk85/CDC2/logs/finals/B316-5_final_card, /workdir/users/agk85/CDC2/logs/finals/B316-6_final_card, /workdir/users/agk85/CDC2/logs/finals/B320-5_final_card, /workdir/users/agk85/CDC2/logs/finals/B331-4_final_card, /workdir/users/agk85/CDC2/logs/finals/B320-3_final_card, /workdir/users/agk85/CDC2/logs/finals/B331-3_final_card, /workdir/users/agk85/CDC2/logs/finals/B331-1_final_card, /workdir/users/agk85/CDC2/logs/finals/B320-4_final_card, /workdir/users/agk85/CDC2/logs/finals/B316-7_final_card, /workdir/users/agk85/CDC2/logs/finals/B335-3_final_card, /workdir/users/agk85/CDC2/logs/finals/US3-14_final_card, /workdir/users/agk85/CDC2/logs/finals/US8-2_final_card, /workdir/users/agk85/CDC2/logs/finals/US3-16_final_card, /workdir/users/agk85/CDC2/logs/finals/B357-1_final_card, /workdir/users/agk85/CDC2/logs/finals/B370-5_final_card, /workdir/users/agk85/CDC2/logs/finals/US8-5_final_card, /workdir/users/agk85/CDC2/logs/finals/US8-1_final_card, /workdir/users/agk85/CDC2/logs/finals/B370-4_final_card, /workdir/users/agk85/CDC2/logs/finals/B370-1_final_plasmid_pfams, /workdir/users/agk85/CDC2/logs/finals/B316-2_final_plasmid_pfams, /workdir/users/agk85/CDC2/logs/finals/B316-4_final_plasmid_pfams, /workdir/users/agk85/CDC2/logs/finals/B357-5_final_plasmid_pfams, /workdir/users/agk85/CDC2/logs/finals/B357-4_final_plasmid_pfams, /workdir/users/agk85/CDC2/logs/finals/B370-2_final_plasmid_pfams, /workdir/users/agk85/CDC2/logs/finals/B357-3_final_plasmid_pfams, /workdir/users/agk85/CDC2/logs/finals/B370-3_final_plasmid_pfams, /workdir/users/agk85/CDC2/logs/finals/US8-3_final_plasmid_pfams, /workdir/users/agk85/CDC2/logs/finals/B314-3_final_plasmid_pfams, /workdir/users/agk85/CDC2/logs/finals/B314-2_final_plasmid_pfams, /workdir/users/agk85/CDC2/logs/finals/B314-1_final_plasmid_pfams, /workdir/users/agk85/CDC2/logs/finals/B314-4_final_plasmid_pfams, /workdir/users/agk85/CDC2/logs/finals/US3-10_final_plasmid_pfams, /workdir/users/agk85/CDC2/logs/finals/B335-2_final_plasmid_pfams, /workdir/users/agk85/CDC2/logs/finals/B357-2_final_plasmid_pfams, /workdir/users/agk85/CDC2/logs/finals/US8-4_final_plasmid_pfams, /workdir/users/agk85/CDC2/logs/finals/B320-2_final_plasmid_pfams, /workdir/users/agk85/CDC2/logs/finals/US3-8_final_plasmid_pfams, /workdir/users/agk85/CDC2/logs/finals/US3-12_final_plasmid_pfams, /workdir/users/agk85/CDC2/logs/finals/B331-2_final_plasmid_pfams, /workdir/users/agk85/CDC2/logs/finals/B320-1_final_plasmid_pfams, /workdir/users/agk85/CDC2/logs/finals/B316-1_final_plasmid_pfams, /workdir/users/agk85/CDC2/logs/finals/B316-3_final_plasmid_pfams, /workdir/users/agk85/CDC2/logs/finals/B357-6_final_plasmid_pfams, /workdir/users/agk85/CDC2/logs/finals/B335-1_final_plasmid_pfams, /workdir/users/agk85/CDC2/logs/finals/B316-5_final_plasmid_pfams, /workdir/users/agk85/CDC2/logs/finals/B316-6_final_plasmid_pfams, /workdir/users/agk85/CDC2/logs/finals/B320-5_final_plasmid_pfams, /workdir/users/agk85/CDC2/logs/finals/B331-4_final_plasmid_pfams, /workdir/users/agk85/CDC2/logs/finals/B320-3_final_plasmid_pfams, /workdir/users/agk85/CDC2/logs/finals/B331-3_final_plasmid_pfams, /workdir/users/agk85/CDC2/logs/finals/B331-1_final_plasmid_pfams, /workdir/users/agk85/CDC2/logs/finals/B320-4_final_plasmid_pfams, /workdir/users/agk85/CDC2/logs/finals/B316-7_final_plasmid_pfams, /workdir/users/agk85/CDC2/logs/finals/B335-3_final_plasmid_pfams, /workdir/users/agk85/CDC2/logs/finals/US3-14_final_plasmid_pfams, /workdir/users/agk85/CDC2/logs/finals/US8-2_final_plasmid_pfams, /workdir/users/agk85/CDC2/logs/finals/US3-16_final_plasmid_pfams, /workdir/users/agk85/CDC2/logs/finals/B357-1_final_plasmid_pfams, /workdir/users/agk85/CDC2/logs/finals/B370-5_final_plasmid_pfams, /workdir/users/agk85/CDC2/logs/finals/US8-5_final_plasmid_pfams, /workdir/users/agk85/CDC2/logs/finals/US8-1_final_plasmid_pfams, /workdir/users/agk85/CDC2/logs/finals/B370-4_final_plasmid_pfams, /workdir/users/agk85/CDC2/logs/finals/B370-1_final_mobile_pfams, /workdir/users/agk85/CDC2/logs/finals/B316-2_final_mobile_pfams, /workdir/users/agk85/CDC2/logs/finals/B316-4_final_mobile_pfams, /workdir/users/agk85/CDC2/logs/finals/B357-5_final_mobile_pfams, /workdir/users/agk85/CDC2/logs/finals/B357-4_final_mobile_pfams, /workdir/users/agk85/CDC2/logs/finals/B370-2_final_mobile_pfams, /workdir/users/agk85/CDC2/logs/finals/B357-3_final_mobile_pfams, /workdir/users/agk85/CDC2/logs/finals/B370-3_final_mobile_pfams, /workdir/users/agk85/CDC2/logs/finals/US8-3_final_mobile_pfams, /workdir/users/agk85/CDC2/logs/finals/B314-3_final_mobile_pfams, /workdir/users/agk85/CDC2/logs/finals/B314-2_final_mobile_pfams, /workdir/users/agk85/CDC2/logs/finals/B314-1_final_mobile_pfams, /workdir/users/agk85/CDC2/logs/finals/B314-4_final_mobile_pfams, /workdir/users/agk85/CDC2/logs/finals/US3-10_final_mobile_pfams, /workdir/users/agk85/CDC2/logs/finals/B335-2_final_mobile_pfams, /workdir/users/agk85/CDC2/logs/finals/B357-2_final_mobile_pfams, /workdir/users/agk85/CDC2/logs/finals/US8-4_final_mobile_pfams, /workdir/users/agk85/CDC2/logs/finals/B320-2_final_mobile_pfams, /workdir/users/agk85/CDC2/logs/finals/US3-8_final_mobile_pfams, /workdir/users/agk85/CDC2/logs/finals/US3-12_final_mobile_pfams, /workdir/users/agk85/CDC2/logs/finals/B331-2_final_mobile_pfams, /workdir/users/agk85/CDC2/logs/finals/B320-1_final_mobile_pfams, /workdir/users/agk85/CDC2/logs/finals/B316-1_final_mobile_pfams, /workdir/users/agk85/CDC2/logs/finals/B316-3_final_mobile_pfams, /workdir/users/agk85/CDC2/logs/finals/B357-6_final_mobile_pfams, /workdir/users/agk85/CDC2/logs/finals/B335-1_final_mobile_pfams, /workdir/users/agk85/CDC2/logs/finals/B316-5_final_mobile_pfams, /workdir/users/agk85/CDC2/logs/finals/B316-6_final_mobile_pfams, /workdir/users/agk85/CDC2/logs/finals/B320-5_final_mobile_pfams, /workdir/users/agk85/CDC2/logs/finals/B331-4_final_mobile_pfams, /workdir/users/agk85/CDC2/logs/finals/B320-3_final_mobile_pfams, /workdir/users/agk85/CDC2/logs/finals/B331-3_final_mobile_pfams, /workdir/users/agk85/CDC2/logs/finals/B331-1_final_mobile_pfams, /workdir/users/agk85/CDC2/logs/finals/B320-4_final_mobile_pfams, /workdir/users/agk85/CDC2/logs/finals/B316-7_final_mobile_pfams, /workdir/users/agk85/CDC2/logs/finals/B335-3_final_mobile_pfams, /workdir/users/agk85/CDC2/logs/finals/US3-14_final_mobile_pfams, /workdir/users/agk85/CDC2/logs/finals/US8-2_final_mobile_pfams, /workdir/users/agk85/CDC2/logs/finals/US3-16_final_mobile_pfams, /workdir/users/agk85/CDC2/logs/finals/B357-1_final_mobile_pfams, /workdir/users/agk85/CDC2/logs/finals/B370-5_final_mobile_pfams, /workdir/users/agk85/CDC2/logs/finals/US8-5_final_mobile_pfams, /workdir/users/agk85/CDC2/logs/finals/US8-1_final_mobile_pfams, /workdir/users/agk85/CDC2/logs/finals/B370-4_final_mobile_pfams, /workdir/users/agk85/CDC2/logs/finals/B370-1_final_pfam, /workdir/users/agk85/CDC2/logs/finals/B316-2_final_pfam, /workdir/users/agk85/CDC2/logs/finals/B316-4_final_pfam, /workdir/users/agk85/CDC2/logs/finals/B357-5_final_pfam, /workdir/users/agk85/CDC2/logs/finals/B357-4_final_pfam, /workdir/users/agk85/CDC2/logs/finals/B370-2_final_pfam, /workdir/users/agk85/CDC2/logs/finals/B357-3_final_pfam, /workdir/users/agk85/CDC2/logs/finals/B370-3_final_pfam, /workdir/users/agk85/CDC2/logs/finals/US8-3_final_pfam, /workdir/users/agk85/CDC2/logs/finals/B314-3_final_pfam, /workdir/users/agk85/CDC2/logs/finals/B314-2_final_pfam, /workdir/users/agk85/CDC2/logs/finals/B314-1_final_pfam, /workdir/users/agk85/CDC2/logs/finals/B314-4_final_pfam, /workdir/users/agk85/CDC2/logs/finals/US3-10_final_pfam, /workdir/users/agk85/CDC2/logs/finals/B335-2_final_pfam, /workdir/users/agk85/CDC2/logs/finals/B357-2_final_pfam, /workdir/users/agk85/CDC2/logs/finals/US8-4_final_pfam, /workdir/users/agk85/CDC2/logs/finals/B320-2_final_pfam, /workdir/users/agk85/CDC2/logs/finals/US3-8_final_pfam, /workdir/users/agk85/CDC2/logs/finals/US3-12_final_pfam, /workdir/users/agk85/CDC2/logs/finals/B331-2_final_pfam, /workdir/users/agk85/CDC2/logs/finals/B320-1_final_pfam, /workdir/users/agk85/CDC2/logs/finals/B316-1_final_pfam, /workdir/users/agk85/CDC2/logs/finals/B316-3_final_pfam, /workdir/users/agk85/CDC2/logs/finals/B357-6_final_pfam, /workdir/users/agk85/CDC2/logs/finals/B335-1_final_pfam, /workdir/users/agk85/CDC2/logs/finals/B316-5_final_pfam, /workdir/users/agk85/CDC2/logs/finals/B316-6_final_pfam, /workdir/users/agk85/CDC2/logs/finals/B320-5_final_pfam, /workdir/users/agk85/CDC2/logs/finals/B331-4_final_pfam, /workdir/users/agk85/CDC2/logs/finals/B320-3_final_pfam, /workdir/users/agk85/CDC2/logs/finals/B331-3_final_pfam, /workdir/users/agk85/CDC2/logs/finals/B331-1_final_pfam, /workdir/users/agk85/CDC2/logs/finals/B320-4_final_pfam, /workdir/users/agk85/CDC2/logs/finals/B316-7_final_pfam, /workdir/users/agk85/CDC2/logs/finals/B335-3_final_pfam, /workdir/users/agk85/CDC2/logs/finals/US3-14_final_pfam, /workdir/users/agk85/CDC2/logs/finals/US8-2_final_pfam, /workdir/users/agk85/CDC2/logs/finals/US3-16_final_pfam, /workdir/users/agk85/CDC2/logs/finals/B357-1_final_pfam, /workdir/users/agk85/CDC2/logs/finals/B370-5_final_pfam, /workdir/users/agk85/CDC2/logs/finals/US8-5_final_pfam, /workdir/users/agk85/CDC2/logs/finals/US8-1_final_pfam, /workdir/users/agk85/CDC2/logs/finals/B370-4_final_pfam, /workdir/users/agk85/CDC2/logs/finals/B370-1_final_tigrfam, /workdir/users/agk85/CDC2/logs/finals/B316-2_final_tigrfam, /workdir/users/agk85/CDC2/logs/finals/B316-4_final_tigrfam, /workdir/users/agk85/CDC2/logs/finals/B357-5_final_tigrfam, /workdir/users/agk85/CDC2/logs/finals/B357-4_final_tigrfam, /workdir/users/agk85/CDC2/logs/finals/B370-2_final_tigrfam, /workdir/users/agk85/CDC2/logs/finals/B357-3_final_tigrfam, /workdir/users/agk85/CDC2/logs/finals/B370-3_final_tigrfam, /workdir/users/agk85/CDC2/logs/finals/US8-3_final_tigrfam, /workdir/users/agk85/CDC2/logs/finals/B314-3_final_tigrfam, /workdir/users/agk85/CDC2/logs/finals/B314-2_final_tigrfam, /workdir/users/agk85/CDC2/logs/finals/B314-1_final_tigrfam, /workdir/users/agk85/CDC2/logs/finals/B314-4_final_tigrfam, /workdir/users/agk85/CDC2/logs/finals/US3-10_final_tigrfam, /workdir/users/agk85/CDC2/logs/finals/B335-2_final_tigrfam, /workdir/users/agk85/CDC2/logs/finals/B357-2_final_tigrfam, /workdir/users/agk85/CDC2/logs/finals/US8-4_final_tigrfam, /workdir/users/agk85/CDC2/logs/finals/B320-2_final_tigrfam, /workdir/users/agk85/CDC2/logs/finals/US3-8_final_tigrfam, /workdir/users/agk85/CDC2/logs/finals/US3-12_final_tigrfam, /workdir/users/agk85/CDC2/logs/finals/B331-2_final_tigrfam, /workdir/users/agk85/CDC2/logs/finals/B320-1_final_tigrfam, /workdir/users/agk85/CDC2/logs/finals/B316-1_final_tigrfam, /workdir/users/agk85/CDC2/logs/finals/B316-3_final_tigrfam, /workdir/users/agk85/CDC2/logs/finals/B357-6_final_tigrfam, /workdir/users/agk85/CDC2/logs/finals/B335-1_final_tigrfam, /workdir/users/agk85/CDC2/logs/finals/B316-5_final_tigrfam, /workdir/users/agk85/CDC2/logs/finals/B316-6_final_tigrfam, /workdir/users/agk85/CDC2/logs/finals/B320-5_final_tigrfam, /workdir/users/agk85/CDC2/logs/finals/B331-4_final_tigrfam, /workdir/users/agk85/CDC2/logs/finals/B320-3_final_tigrfam, /workdir/users/agk85/CDC2/logs/finals/B331-3_final_tigrfam, /workdir/users/agk85/CDC2/logs/finals/B331-1_final_tigrfam, /workdir/users/agk85/CDC2/logs/finals/B320-4_final_tigrfam, /workdir/users/agk85/CDC2/logs/finals/B316-7_final_tigrfam, /workdir/users/agk85/CDC2/logs/finals/B335-3_final_tigrfam, /workdir/users/agk85/CDC2/logs/finals/US3-14_final_tigrfam, /workdir/users/agk85/CDC2/logs/finals/US8-2_final_tigrfam, /workdir/users/agk85/CDC2/logs/finals/US3-16_final_tigrfam, /workdir/users/agk85/CDC2/logs/finals/B357-1_final_tigrfam, /workdir/users/agk85/CDC2/logs/finals/B370-5_final_tigrfam, /workdir/users/agk85/CDC2/logs/finals/US8-5_final_tigrfam, /workdir/users/agk85/CDC2/logs/finals/US8-1_final_tigrfam, /workdir/users/agk85/CDC2/logs/finals/B370-4_final_tigrfam, /workdir/users/agk85/CDC2/logs/finals/B370-1_final_resfams, /workdir/users/agk85/CDC2/logs/finals/B316-2_final_resfams, /workdir/users/agk85/CDC2/logs/finals/B316-4_final_resfams, /workdir/users/agk85/CDC2/logs/finals/B357-5_final_resfams, /workdir/users/agk85/CDC2/logs/finals/B357-4_final_resfams, /workdir/users/agk85/CDC2/logs/finals/B370-2_final_resfams, /workdir/users/agk85/CDC2/logs/finals/B357-3_final_resfams, /workdir/users/agk85/CDC2/logs/finals/B370-3_final_resfams, /workdir/users/agk85/CDC2/logs/finals/US8-3_final_resfams, /workdir/users/agk85/CDC2/logs/finals/B314-3_final_resfams, /workdir/users/agk85/CDC2/logs/finals/B314-2_final_resfams, /workdir/users/agk85/CDC2/logs/finals/B314-1_final_resfams, /workdir/users/agk85/CDC2/logs/finals/B314-4_final_resfams, /workdir/users/agk85/CDC2/logs/finals/US3-10_final_resfams, /workdir/users/agk85/CDC2/logs/finals/B335-2_final_resfams, /workdir/users/agk85/CDC2/logs/finals/B357-2_final_resfams, /workdir/users/agk85/CDC2/logs/finals/US8-4_final_resfams, /workdir/users/agk85/CDC2/logs/finals/B320-2_final_resfams, /workdir/users/agk85/CDC2/logs/finals/US3-8_final_resfams, /workdir/users/agk85/CDC2/logs/finals/US3-12_final_resfams, /workdir/users/agk85/CDC2/logs/finals/B331-2_final_resfams, /workdir/users/agk85/CDC2/logs/finals/B320-1_final_resfams, /workdir/users/agk85/CDC2/logs/finals/B316-1_final_resfams, /workdir/users/agk85/CDC2/logs/finals/B316-3_final_resfams, /workdir/users/agk85/CDC2/logs/finals/B357-6_final_resfams, /workdir/users/agk85/CDC2/logs/finals/B335-1_final_resfams, /workdir/users/agk85/CDC2/logs/finals/B316-5_final_resfams, /workdir/users/agk85/CDC2/logs/finals/B316-6_final_resfams, /workdir/users/agk85/CDC2/logs/finals/B320-5_final_resfams, /workdir/users/agk85/CDC2/logs/finals/B331-4_final_resfams, /workdir/users/agk85/CDC2/logs/finals/B320-3_final_resfams, /workdir/users/agk85/CDC2/logs/finals/B331-3_final_resfams, /workdir/users/agk85/CDC2/logs/finals/B331-1_final_resfams, /workdir/users/agk85/CDC2/logs/finals/B320-4_final_resfams, /workdir/users/agk85/CDC2/logs/finals/B316-7_final_resfams, /workdir/users/agk85/CDC2/logs/finals/B335-3_final_resfams, /workdir/users/agk85/CDC2/logs/finals/US3-14_final_resfams, /workdir/users/agk85/CDC2/logs/finals/US8-2_final_resfams, /workdir/users/agk85/CDC2/logs/finals/US3-16_final_resfams, /workdir/users/agk85/CDC2/logs/finals/B357-1_final_resfams, /workdir/users/agk85/CDC2/logs/finals/B370-5_final_resfams, /workdir/users/agk85/CDC2/logs/finals/US8-5_final_resfams, /workdir/users/agk85/CDC2/logs/finals/US8-1_final_resfams, /workdir/users/agk85/CDC2/logs/finals/B370-4_final_resfams, /workdir/users/agk85/CDC2/logs/finals/B370-1_final_relaxase, /workdir/users/agk85/CDC2/logs/finals/B316-2_final_relaxase, /workdir/users/agk85/CDC2/logs/finals/B316-4_final_relaxase, /workdir/users/agk85/CDC2/logs/finals/B357-5_final_relaxase, /workdir/users/agk85/CDC2/logs/finals/B357-4_final_relaxase, /workdir/users/agk85/CDC2/logs/finals/B370-2_final_relaxase, /workdir/users/agk85/CDC2/logs/finals/B357-3_final_relaxase, /workdir/users/agk85/CDC2/logs/finals/B370-3_final_relaxase, /workdir/users/agk85/CDC2/logs/finals/US8-3_final_relaxase, /workdir/users/agk85/CDC2/logs/finals/B314-3_final_relaxase, /workdir/users/agk85/CDC2/logs/finals/B314-2_final_relaxase, /workdir/users/agk85/CDC2/logs/finals/B314-1_final_relaxase, /workdir/users/agk85/CDC2/logs/finals/B314-4_final_relaxase, /workdir/users/agk85/CDC2/logs/finals/US3-10_final_relaxase, /workdir/users/agk85/CDC2/logs/finals/B335-2_final_relaxase, /workdir/users/agk85/CDC2/logs/finals/B357-2_final_relaxase, /workdir/users/agk85/CDC2/logs/finals/US8-4_final_relaxase, /workdir/users/agk85/CDC2/logs/finals/B320-2_final_relaxase, /workdir/users/agk85/CDC2/logs/finals/US3-8_final_relaxase, /workdir/users/agk85/CDC2/logs/finals/US3-12_final_relaxase, /workdir/users/agk85/CDC2/logs/finals/B331-2_final_relaxase, /workdir/users/agk85/CDC2/logs/finals/B320-1_final_relaxase, /workdir/users/agk85/CDC2/logs/finals/B316-1_final_relaxase, /workdir/users/agk85/CDC2/logs/finals/B316-3_final_relaxase, /workdir/users/agk85/CDC2/logs/finals/B357-6_final_relaxase, /workdir/users/agk85/CDC2/logs/finals/B335-1_final_relaxase, /workdir/users/agk85/CDC2/logs/finals/B316-5_final_relaxase, /workdir/users/agk85/CDC2/logs/finals/B316-6_final_relaxase, /workdir/users/agk85/CDC2/logs/finals/B320-5_final_relaxase, /workdir/users/agk85/CDC2/logs/finals/B331-4_final_relaxase, /workdir/users/agk85/CDC2/logs/finals/B320-3_final_relaxase, /workdir/users/agk85/CDC2/logs/finals/B331-3_final_relaxase, /workdir/users/agk85/CDC2/logs/finals/B331-1_final_relaxase, /workdir/users/agk85/CDC2/logs/finals/B320-4_final_relaxase, /workdir/users/agk85/CDC2/logs/finals/B316-7_final_relaxase, /workdir/users/agk85/CDC2/logs/finals/B335-3_final_relaxase, /workdir/users/agk85/CDC2/logs/finals/US3-14_final_relaxase, /workdir/users/agk85/CDC2/logs/finals/US8-2_final_relaxase, /workdir/users/agk85/CDC2/logs/finals/US3-16_final_relaxase, /workdir/users/agk85/CDC2/logs/finals/B357-1_final_relaxase, /workdir/users/agk85/CDC2/logs/finals/B370-5_final_relaxase, /workdir/users/agk85/CDC2/logs/finals/US8-5_final_relaxase, /workdir/users/agk85/CDC2/logs/finals/US8-1_final_relaxase, /workdir/users/agk85/CDC2/logs/finals/B370-4_final_relaxase, /workdir/users/agk85/CDC2/logs/finals/B370-1_final_prodigal, /workdir/users/agk85/CDC2/logs/finals/B316-2_final_prodigal, /workdir/users/agk85/CDC2/logs/finals/B316-4_final_prodigal, /workdir/users/agk85/CDC2/logs/finals/B357-5_final_prodigal, /workdir/users/agk85/CDC2/logs/finals/B357-4_final_prodigal, /workdir/users/agk85/CDC2/logs/finals/B370-2_final_prodigal, /workdir/users/agk85/CDC2/logs/finals/B357-3_final_prodigal, /workdir/users/agk85/CDC2/logs/finals/B370-3_final_prodigal, /workdir/users/agk85/CDC2/logs/finals/US8-3_final_prodigal, /workdir/users/agk85/CDC2/logs/finals/B314-3_final_prodigal, /workdir/users/agk85/CDC2/logs/finals/B314-2_final_prodigal, /workdir/users/agk85/CDC2/logs/finals/B314-1_final_prodigal, /workdir/users/agk85/CDC2/logs/finals/B314-4_final_prodigal, /workdir/users/agk85/CDC2/logs/finals/US3-10_final_prodigal, /workdir/users/agk85/CDC2/logs/finals/B335-2_final_prodigal, /workdir/users/agk85/CDC2/logs/finals/B357-2_final_prodigal, /workdir/users/agk85/CDC2/logs/finals/US8-4_final_prodigal, /workdir/users/agk85/CDC2/logs/finals/B320-2_final_prodigal, /workdir/users/agk85/CDC2/logs/finals/US3-8_final_prodigal, /workdir/users/agk85/CDC2/logs/finals/US3-12_final_prodigal, /workdir/users/agk85/CDC2/logs/finals/B331-2_final_prodigal, /workdir/users/agk85/CDC2/logs/finals/B320-1_final_prodigal, /workdir/users/agk85/CDC2/logs/finals/B316-1_final_prodigal, /workdir/users/agk85/CDC2/logs/finals/B316-3_final_prodigal, /workdir/users/agk85/CDC2/logs/finals/B357-6_final_prodigal, /workdir/users/agk85/CDC2/logs/finals/B335-1_final_prodigal, /workdir/users/agk85/CDC2/logs/finals/B316-5_final_prodigal, /workdir/users/agk85/CDC2/logs/finals/B316-6_final_prodigal, /workdir/users/agk85/CDC2/logs/finals/B320-5_final_prodigal, /workdir/users/agk85/CDC2/logs/finals/B331-4_final_prodigal, /workdir/users/agk85/CDC2/logs/finals/B320-3_final_prodigal, /workdir/users/agk85/CDC2/logs/finals/B331-3_final_prodigal, /workdir/users/agk85/CDC2/logs/finals/B331-1_final_prodigal, /workdir/users/agk85/CDC2/logs/finals/B320-4_final_prodigal, /workdir/users/agk85/CDC2/logs/finals/B316-7_final_prodigal, /workdir/users/agk85/CDC2/logs/finals/B335-3_final_prodigal, /workdir/users/agk85/CDC2/logs/finals/US3-14_final_prodigal, /workdir/users/agk85/CDC2/logs/finals/US8-2_final_prodigal, /workdir/users/agk85/CDC2/logs/finals/US3-16_final_prodigal, /workdir/users/agk85/CDC2/logs/finals/B357-1_final_prodigal, /workdir/users/agk85/CDC2/logs/finals/B370-5_final_prodigal, /workdir/users/agk85/CDC2/logs/finals/US8-5_final_prodigal, /workdir/users/agk85/CDC2/logs/finals/US8-1_final_prodigal, /workdir/users/agk85/CDC2/logs/finals/B370-4_final_prodigal
+    jobid: 0
+
+[Mon Aug 19 05:28:50 2019]
+Finished job 0.
+86 of 86 steps (100%) done
+Complete log: /local/workdir/users/agk85/CDC2/scripts/snakes/.snakemake/log/2019-08-17T172657.694364.snakemake.log

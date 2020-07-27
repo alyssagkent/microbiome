@@ -1,0 +1,59 @@
+##--------------------------------------------------------------------------##
+## The list of samples to be processed
+##--------------------------------------------------------------------------##
+BASE="/workdir/users/agk85/CDC2"
+PRODIGAL=BASE + "/prodigal_excise/metagenomes"
+SAMPLES, = glob_wildcards(BASE + "/logs/finals/{NAME}_final_excise_phage")
+NB_SAMPLES = len(SAMPLES)
+print (SAMPLES)
+
+rule final:
+	input:
+		expand(BASE+"/logs/finals/{NAME}_final_trnascan",NAME=SAMPLES),
+		expand(BASE+"/logs/finals/{NAME}_final_prodigal",NAME=SAMPLES)
+
+rule prodigal:
+	input: 
+		FA=PRODIGAL + "/{NAME}/{NAME}_excise.fasta"
+	params:
+		out=PRODIGAL + "/{NAME}",
+		scf = PRODIGAL + "/{NAME}/{NAME}_scaffold.fasta",
+		scf_id= PRODIGAL + "/{NAME}/{NAME}_scfids.txt",
+		name="{NAME}",
+		n="prodigal_{NAME}",
+	resources: 
+		mem_mb = lambda wildcards, attempt: attempt * 5
+	output:
+		scf=PRODIGAL+ "/{NAME}/{NAME}_scaffold.fasta",
+		outfile=PRODIGAL + "/{NAME}/{NAME}.gff3",
+		outfna = PRODIGAL + "/{NAME}/{NAME}_proteins.fna",
+		outfaa = PRODIGAL + "/{NAME}/{NAME}_proteins.faa",
+		final = BASE + "/logs/finals/{NAME}_final_prodigal"
+	message: """--- prodigal"""
+	shell:
+		"""
+		cp {input.FA} {params.scf}
+		grep '>' {params.scf} | cut -d'>' -f2 > {params.scf_id}
+		/programs/prodigal-2.6.3/prodigal -i {params.scf} -o {output.outfile} -f gff -d {output.outfna} -a {output.outfaa} -p meta
+		touch {output.final}
+		"""
+
+rule trnascan:
+	input:
+		scf=BASE+"/prodigal_excise/metagenomes/{NAME}/{NAME}_scaffold.fasta"
+	params:
+		n="trnascan_{NAME}",
+		out=BASE+"/trnascan/metagenomes/"
+	resources:
+		mem_mb= lambda wildcards, attempt: attempt * 10
+	output:
+		outfile=BASE+"/trnascan/metagenomes/{NAME}_trnascan.txt",
+		final=BASE + "/logs/finals/{NAME}_final_trnascan"
+	message:"""---trnascan"""
+	shell:
+		"""
+		source /programs/tRNAscan-SE-1.3.1/setup.tRNAscan-SE
+		/programs/tRNAscan-SE-1.3.1/tRNAscan-SE -B -o {output.outfile} {input.scf}
+		touch {output.final}
+		"""
+

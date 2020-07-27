@@ -1,0 +1,23 @@
+Building DAG of jobs...
+Error: Directory cannot be locked. This usually means that another Snakemake instance is running on this directory. Another possibility is that a previous run exited unexpectedly.
+Job counts:
+	count	jobs
+	39	bwa
+	42	filter
+	1	final
+	39	primary_filter
+	42	rpkm
+	42	sam2bam
+	42	sortbam
+	247
+
+[Fri Oct 25 15:50:22 2019]
+rule bwa:
+    input: /workdir/data/CDC/metagenomes/merged/unzip/B357-6.1.fastq, /workdir/data/CDC/metagenomes/merged/unzip/B357-6.2.fastq
+    output: /workdir/users/agk85/CDC2/mapping/B357-6/B357-6.sam
+    jobid: 228
+    wildcards: NAME=B357-6
+    resources: mem_mb=40
+
+RuleException in line 19 of /local/workdir/users/agk85/CDC2/scripts/mapping/snake_bwa_rpkm:
+'OutputFiles' object has no attribute 'final'

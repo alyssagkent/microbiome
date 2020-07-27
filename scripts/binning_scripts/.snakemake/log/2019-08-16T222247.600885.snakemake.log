@@ -1,0 +1,27 @@
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 1
+Rules claiming more threads will be scaled down.
+Unlimited resources: mem_mb
+Job counts:
+	count	jobs
+	1	final
+	1	sorted
+	2
+
+[Fri Aug 16 22:22:48 2019]
+Job 32: ---SORTED
+
+[Fri Aug 16 22:24:40 2019]
+Finished job 32.
+1 of 2 steps (50%) done
+
+[Fri Aug 16 22:24:40 2019]
+localrule final:
+    input: /workdir/users/agk85/CDC2/mapping/mapping_t3/B314-1/done, /workdir/users/agk85/CDC2/mapping/mapping_t3/B314-2/done, /workdir/users/agk85/CDC2/mapping/mapping_t3/B314-3/done, /workdir/users/agk85/CDC2/mapping/mapping_t3/B314-4/done, /workdir/users/agk85/CDC2/mapping/mapping_t3/B316-1/done, /workdir/users/agk85/CDC2/mapping/mapping_t3/B316-2/done, /workdir/users/agk85/CDC2/mapping/mapping_t3/B316-3/done, /workdir/users/agk85/CDC2/mapping/mapping_t3/B316-4/done, /workdir/users/agk85/CDC2/mapping/mapping_t3/B316-5/done, /workdir/users/agk85/CDC2/mapping/mapping_t3/B316-6/done, /workdir/users/agk85/CDC2/mapping/mapping_t3/B316-7/done, /workdir/users/agk85/CDC2/mapping/mapping_t3/B320-1/done, /workdir/users/agk85/CDC2/mapping/mapping_t3/B320-2/done, /workdir/users/agk85/CDC2/mapping/mapping_t3/B320-3/done, /workdir/users/agk85/CDC2/mapping/mapping_t3/B320-5/done, /workdir/users/agk85/CDC2/mapping/mapping_t3/B331-1/done, /workdir/users/agk85/CDC2/mapping/mapping_t3/B331-3/done, /workdir/users/agk85/CDC2/mapping/mapping_t3/B331-4/done, /workdir/users/agk85/CDC2/mapping/mapping_t3/B335-1/done, /workdir/users/agk85/CDC2/mapping/mapping_t3/B335-2/done, /workdir/users/agk85/CDC2/mapping/mapping_t3/B335-3/done, /workdir/users/agk85/CDC2/mapping/mapping_t3/B357-1/done, /workdir/users/agk85/CDC2/mapping/mapping_t3/B357-2/done, /workdir/users/agk85/CDC2/mapping/mapping_t3/B357-3/done, /workdir/users/agk85/CDC2/mapping/mapping_t3/B357-4/done, /workdir/users/agk85/CDC2/mapping/mapping_t3/B357-5/done, /workdir/users/agk85/CDC2/mapping/mapping_t3/B357-6/done, /workdir/users/agk85/CDC2/mapping/mapping_t3/B370-1/done, /workdir/users/agk85/CDC2/mapping/mapping_t3/B370-2/done, /workdir/users/agk85/CDC2/mapping/mapping_t3/B370-3/done, /workdir/users/agk85/CDC2/mapping/mapping_t3/B370-4/done, /workdir/users/agk85/CDC2/mapping/mapping_t3/B370-5/done, /workdir/users/agk85/CDC2/mapping/mapping_t3/US8-1/done, /workdir/users/agk85/CDC2/mapping/mapping_t3/US8-2/done, /workdir/users/agk85/CDC2/mapping/mapping_t3/US8-3/done, /workdir/users/agk85/CDC2/mapping/mapping_t3/US8-4/done, /workdir/users/agk85/CDC2/mapping/mapping_t3/US8-5/done, /workdir/users/agk85/CDC2/mapping/mapping_t3/B331-2/done
+    jobid: 0
+
+[Fri Aug 16 22:24:40 2019]
+Finished job 0.
+2 of 2 steps (100%) done
+Complete log: /local/workdir/users/agk85/CDC2/scripts/binning_scripts/.snakemake/log/2019-08-16T222247.600885.snakemake.log

@@ -1,0 +1,45 @@
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 1
+Rules claiming more threads will be scaled down.
+Unlimited resources: mem_mb
+Job counts:
+	count	jobs
+	16	aclame
+	16	aclame_50
+	1	final
+	12	fullplasmids
+	12	imme
+	11	isescan
+	16	mobile_pfams
+	10	pfam
+	16	phaster
+	16	phaster_50
+	16	plasmid_pfams
+	11	plasmidfinder
+	16	relaxase
+	16	tigrfam
+	185
+
+[Sat Aug 17 17:26:06 2019]
+Job 43: ---ISEScan
+
+Terminating processes on user request, this might take some time.
+[Sat Aug 17 17:26:08 2019]
+Error in rule isescan:
+    jobid: 43
+    output: /workdir/users/agk85/CDC2/logs/finals/US8-1_final_isescan
+
+RuleException:
+CalledProcessError in line 96 of /local/workdir/users/agk85/CDC2/scripts/snakes/snake_identify:
+Command 'set -euo pipefail;  cp /workdir/users/agk85/CDC2/prodigal_excise/metagenomes/US8-1/US8-1_scaffold.fasta /workdir/users/agk85/CDC2/iselements/metagenomes/US8-1_scaffold.fasta
+		cd /workdir/users/agk85/CDC2/iselements/metagenomes/
+		set +u
+		export PYTHONPATH=$PYTHONPATH:/programs/fastcluster_p3/lib/python3.6/site-packages:/workdir/users/agk85/tools/ISEScan/
+		export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/workdir/users/agk85/tools/ISEScan/
+		set -u
+		python3 /workdir/users/agk85/tools/ISEScan/isescan.py US8-1_scaffold.fasta proteome hmm
+		touch /workdir/users/agk85/CDC2/logs/finals/US8-1_final_isescan' returned non-zero exit status 1.
+  File "/local/workdir/users/agk85/CDC2/scripts/snakes/snake_identify", line 96, in __rule_isescan
+  File "/usr/lib64/python3.6/concurrent/futures/thread.py", line 56, in run
+Complete log: /local/workdir/users/agk85/CDC2/scripts/snakes/.snakemake/log/2019-08-17T172603.896788.snakemake.log

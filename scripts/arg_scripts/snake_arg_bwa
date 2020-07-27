@@ -1,0 +1,142 @@
+##-----------------------------------------------------------------------------------##
+## The list of samples to be processed
+##-----------------------------------------------------------------------------------##
+FOLDER="CDC2"
+BASE="/workdir/users/agk85/"+FOLDER
+BASE2="/workdir/data/CDC/metagenomes/merged/unzip"
+PERCENT="99"
+ALIGNMENTS=BASE+"/args/mapping/bwa_alignments_99_99"
+SAMPLES, = glob_wildcards(BASE + "/todo/{NAME}")
+
+
+NB_SAMPLES = len(SAMPLES)
+print (SAMPLES)
+
+rule final:
+	input:
+		expand(BASE+"/logs/finals/{NAME}_final_arg_bwa_99", NAME=SAMPLES),
+		expand(BASE+"/logs/finals/{NAME}_final_arg_filter_99", NAME=SAMPLES),
+		expand(BASE+"/logs/finals/{NAME}_final_arg_sortbam_99", NAME=SAMPLES),
+		expand(BASE+"/logs/finals/{NAME}_final_arg_rpkm_99", NAME=SAMPLES),
+		BASE+"/args/mapping/bwa_alignments_99_99/arg_v_samp_99_99.txt",
+rule bwa:
+	input:
+		r1=BASE2 + "/{NAME}.1.fastq",
+		r2=BASE2 + "/{NAME}.2.fastq"
+	params:
+		n="bwa_{NAME}",
+		refname=BASE+"/args/mapping/references/args_99_nr",
+		temp=ALIGNMENTS+"/{NAME}.temp.bam",
+		flagstats=ALIGNMENTS+"/flagstats",
+		out=ALIGNMENTS
+	resources:
+		mem_mb= lambda wildcards, attempt: attempt * 5
+	output:
+		outfile=ALIGNMENTS+"/{NAME}.sam",
+		flagfile=ALIGNMENTS+"/flagstats/{NAME}_prefilter_flagstats.txt",
+		final=BASE + "/logs/finals/{NAME}_final_arg_bwa_99"
+	message:"""---map_bwa"""
+	shell:
+		"""
+		if [ ! -d {params.out} ]; then mkdir -p {params.out}; fi
+		export PATH=/programs/bwa-0.7.13:$PATH
+		export PATH=/programs/samtools-1.6/bin:$PATH
+		/programs/bwa-0.7.8/bwa mem -a -t 4  {params.refname} {input.r1} {input.r2} > {output.outfile}
+		samtools view -bh {output.outfile}  > {params.temp}
+		samtools flagstat {params.temp} > {output.flagfile}
+		rm {params.temp}
+		touch {output.final}
+		"""
+
+rule filter:
+	input:
+		sam=ALIGNMENTS+"/{NAME}.sam"
+	params:
+		n="filter_{NAME}",
+		percent=PERCENT,
+	resources:
+		mem_mb= lambda wildcards, attempt: attempt * 20
+	output:
+		filtersam=ALIGNMENTS+"/{NAME}.filtered.sam",
+		filterbam=ALIGNMENTS+"/{NAME}.filtered.bam",
+		flagfile=ALIGNMENTS+"/flagstats/{NAME}_filter_flagstats.txt",
+		final=BASE + "/logs/finals/{NAME}_final_arg_filter_99"
+	message:"""---bwafilter"""
+	shell:
+		"""
+		export PATH=/programs/samtools-1.6/bin:$PATH
+		perl /workdir/scripts/analysing_alignments/filterSamByIdentity.pl {input.sam} {params.percent} 0 0 1 1 > {output.filtersam}
+		samtools view -b {output.filtersam} > {output.filterbam}
+		samtools flagstat {output.filterbam} > {output.flagfile}
+		rm {input.sam}
+		touch {output.final}
+		"""
+
+rule sortbam:
+	input:
+		filterbam=ALIGNMENTS+"/{NAME}.filtered.bam"
+	params:
+		n="sortbam_{NAME}",
+		name="{NAME}"
+	resources:
+		mem_mb= lambda wildcards, attempt: attempt * 20
+	output:
+		sortbam=ALIGNMENTS+"/{NAME}.sorted.bam",
+		idxstats=ALIGNMENTS+"/{NAME}.idxstats.txt",
+		depth=ALIGNMENTS+"/{NAME}.depth.txt",
+		flagfile=ALIGNMENTS+"/flagstats/{NAME}_sorted_flagstats.txt",
+		final=BASE + "/logs/finals/{NAME}_final_arg_sortbam_99"
+	message:"""---sortbam"""
+	shell:
+		"""
+		export PATH=/programs/samtools-1.6/bin:$PATH
+		samtools view -h -F 0x900 {input.filterbam} | samtools sort -m 5G -O BAM --threads 4 -o {output.sortbam} -T {params.name}
+		samtools index {output.sortbam}
+		samtools idxstats {output.sortbam} > {output.idxstats}
+		samtools depth -a {output.sortbam} > {output.depth}
+		samtools flagstat {output.sortbam} > {output.flagfile}
+		touch {output.final}
+		rm {input.filterbam}
+		"""
+
+rule rpkm:
+	input:
+                idxstats=ALIGNMENTS+"/{NAME}.idxstats.txt",
+                depth=ALIGNMENTS+"/{NAME}.depth.txt",
+		F1=BASE2+"/{NAME}.1.fastq",
+
+		F2=BASE2+"/{NAME}.2.fastq"
+	params:
+		n="rpkm_{NAME}"
+	resources:
+		mem_mb= lambda wildcards, attempt: attempt * 15
+	output:
+		depth=ALIGNMENTS+"/{NAME}.rpkm.txt",
+		final=BASE + "/logs/finals/{NAME}_final_arg_rpkm_99"
+	message:"""---rpkm"""
+	shell:
+		"""
+		a=($(wc -l {input.F1}))
+		b=($(wc -l {input.F2}))
+		python /workdir/scripts/analysing_alignments/rpkm_calculate.py -s {input.idxstats} -d {input.depth} -o {output.depth} -f1 $a -f2 $b
+		touch {output.final}
+		"""
+
+rule combine_rpkms:
+	input:
+		expand(BASE+"/logs/finals/{NAME}_final_arg_rpkm_99", NAME=SAMPLES),
+	params:
+		n="combine_rpkms",
+		script="/workdir/users/agk85/CDC2/scripts/arg_scripts/arg_sample_rpkm.py",
+		out=BASE+"/args/mapping/bwa_alignments_99_99",
+		folder=FOLDER,
+	resources:
+		mem_mb= lambda wildcards, attempt: attempt * 15
+	output:
+		outfile=BASE+"/args/mapping/bwa_alignments_99_99/arg_v_samp_99_99.txt",
+		outname=BASE+"/args/mapping/bwa_alignments_99_99/arg_v_samp_99_99_names.txt",
+	message:"""---combine_rpkms"""
+	shell:
+		"""
+		python {params.script} {params.out} {output.outfile} {output.outname} {params.folder}
+		"""	

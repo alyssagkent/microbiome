@@ -1,0 +1,130 @@
+##-----------------------------------------------------------------------------------##
+## The list of samples to be processed
+##-----------------------------------------------------------------------------------##
+BASE="/workdir/data/CDC/hic/merged"
+BASE2="/workdir/users/agk85/CDC2"
+SAMPLES, = glob_wildcards(BASE + "/{NAME}hic.1.fastq")
+NB_SAMPLES = len(SAMPLES)
+print (SAMPLES)
+
+rule final:
+	input:
+		expand(BASE2 + "/hic/mapping_newbwa/{NAME}/{NAME}_{NAME}_trans_primary_99.txt", NAME=SAMPLES),
+		expand(BASE2 + "/hic/mapping_newbwa/{NAME}/cleaned", NAME=SAMPLES),
+		expand(BASE2 + "/hic/mapping_newbwa/{NAME}/{NAME}.duplicatemetrics.txt", NAME=SAMPLES),
+rule bwa:
+	input: 
+		FQ1=BASE + "/{NAME}hic.1.fastq",
+		FQ2=BASE + "/{NAME}hic.2.fastq"
+	params: 
+		REF=BASE2 + "/hic/mapping/references/{NAME}_scaffold",
+		MAPFOLDER=BASE2 + "/hic/mapping_newbwa/{NAME}",
+		n="{NAME}_bwa"
+	resources:
+		mem_mb=lambda wildcards, attempt: attempt * 40
+	output:
+		OUT=BASE2 + "/hic/mapping_newbwa/{NAME}/{NAME}.sam",
+	shell: """ 
+		if [ ! -e {params.MAPFOLDER} ]; then mkdir -p {params.MAPFOLDER}; fi
+		/workdir/users/agk85/tools/bwa/bwa mem -t 8 -5SP {params.REF} {input.FQ1} {input.FQ2} > {output.OUT}
+		"""
+
+rule primary_filter:
+	input:
+		SAM=BASE2 + "/hic/mapping_newbwa/{NAME}/{NAME}.sam",
+	params:
+		n="{NAME}_primary_filter"
+	resources:
+		mem_mb=lambda wildcards, attempt: attempt * 15
+	output:
+		NSS=BASE2 + "/hic/mapping_newbwa/{NAME}/{NAME}.nss.sam",
+		SUPP=BASE2 + "/hic/mapping_newbwa/{NAME}/{NAME}.supp.sam",
+	shell:
+		"""
+		/programs/samtools-1.3.2/bin/samtools view -h -F 2316 {input.SAM} > {output.NSS}
+		/programs/samtools-1.3.2/bin/samtools view -h -f 2048 {input.SAM} > {output.SUPP}
+		"""
+rule filter:
+	input:
+		 NSS=BASE2 + "/hic/mapping_newbwa/{NAME}/{NAME}.nss.sam",
+	params:
+		n="{NAME}_filter"
+	resources:
+		mem_mb=lambda wildcards, attempt: attempt * 100
+	output:
+		FILTER_99=BASE2 + "/hic/mapping_newbwa/{NAME}/{NAME}.nss.filter_99.sam",
+	message: """--- FILTER"""
+	shell: """
+		perl /workdir/scripts/analysing_alignments/filterSamByIdentity.pl {input.NSS} 99 0 0 1 1 > {output.FILTER_99}
+		"""
+rule trans:
+	input:
+		FILTER_99=BASE2 + "/hic/mapping_newbwa/{NAME}/{NAME}.nss.filter_99.sam",
+	params:
+		n="{NAME}_trans"
+	resources:
+		mem_mb=lambda wildcards, attempt: attempt * 15
+	output:
+		TRANS_99=BASE2 + "/hic/mapping_newbwa/{NAME}/{NAME}_{NAME}_trans_primary_99.txt",
+	message: """--- TRANS"""
+	shell: """
+		grep -v '=' {input.FILTER_99}  > {output.TRANS_99}
+		"""
+
+rule sam2bam:
+	input:
+		TRANS_99=BASE2 + "/hic/mapping_newbwa/{NAME}/{NAME}_{NAME}_trans_primary_99.txt",
+		FILTER_99=BASE2 + "/hic/mapping_newbwa/{NAME}/{NAME}.nss.filter_99.sam",
+		NSS=BASE2 + "/hic/mapping_newbwa/{NAME}/{NAME}.nss.sam",
+		SAM=BASE2 + "/hic/mapping_newbwa/{NAME}/{NAME}.sam",
+	params:
+		n="{NAME}_sam2bam",
+	resources:
+		mem_mb=lambda wildcards, attempt: attempt * 15
+	output:
+		FILTERBAM=BASE2 + "/hic/mapping_newbwa/{NAME}/{NAME}.nss.filter_99.bam",
+		NSSBAM=BASE2 + "/hic/mapping_newbwa/{NAME}/{NAME}.nss.bam",
+		SAMBAM=BASE2 + "/hic/mapping_newbwa/{NAME}/{NAME}.bam",
+		final=BASE2 + "/hic/mapping_newbwa/{NAME}/cleaned",
+	message:"""---SAM2BAM"""
+	shell:"""
+		/programs/samtools-1.3.2/bin/samtools view -bh {input.SAM}  > {output.SAMBAM}
+		/programs/samtools-1.3.2/bin/samtools view -bh {input.NSS}  > {output.NSSBAM}
+		/programs/samtools-1.3.2/bin/samtools view -bh {input.FILTER_99}  > {output.FILTERBAM}
+		rm {input.SAM}
+		rm {input.NSS}
+		rm {input.FILTER_99}
+		touch {output.final}
+		"""
+
+rule sorted:
+	input:
+		BAM=BASE2 + "/hic/mapping_newbwa/{NAME}/{NAME}.bam",
+	params:
+		n="{NAME}_sort",
+		NAME="{NAME}",
+	resources:
+		mem_mb=lambda wildcards, attempt: attempt * 50
+	output:
+		SORTED=BASE2 + "/hic/mapping_newbwa/{NAME}/{NAME}.sorted.bam",
+	message:"""---SORTED"""
+	shell:"""
+		/programs/samtools-1.3.2/bin/samtools sort -O BAM --threads 8 -o {output.SORTED} -T {params.NAME} {input.BAM}
+		/programs/samtools-1.3.2/bin/samtools index {output.SORTED}
+		"""
+
+rule picard:
+	input:
+		SORTED=BASE2 + "/hic/mapping_newbwa/{NAME}/{NAME}.sorted.bam",
+	params:
+		n="{NAME}_picard",
+		NAME="{NAME}",
+	resources:
+		mem_mb=lambda wildcards, attempt: attempt * 200
+	output:
+		MARKED=BASE2 + "/hic/mapping_newbwa/{NAME}/{NAME}.sorted.marked.bam",
+		METRICS=BASE2 + "/hic/mapping_newbwa/{NAME}/{NAME}.duplicatemetrics.txt",
+	message:"""---PICARD"""
+	shell:"""
+		java -jar /programs/picard-tools-2.18.11/picard.jar MarkDuplicates I={input.SORTED} O={output.MARKED}  M={output.METRICS}
+		"""

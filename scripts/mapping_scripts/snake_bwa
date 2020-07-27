@@ -1,0 +1,93 @@
+##-----------------------------------------------------------------------------------##
+## The list of samples to be processed
+##-----------------------------------------------------------------------------------##
+BASE2="/workdir/data/CDC/metagenomes/merged"
+BASE="/workdir/users/agk85/CDC"
+BASE3=BASE+"/mapping/metagenomes3/bwa_alignments"
+SAMPLES, = glob_wildcards(BASE2 + "/unzip/{NAME}.1.fastq")
+NB_SAMPLES = len(SAMPLES)
+print (SAMPLES)
+
+rule final:
+	input:
+		expand(BASE+"/logs3/finals/{NAME}_final_map_filter", NAME=SAMPLES),
+		expand(BASE+"/logs3/finals/{NAME}_final_map_sortbam", NAME=SAMPLES),
+		expand(BASE+"/logs3/finals/{NAME}_final_map_rpkm_new", NAME=SAMPLES)
+		samtools flagstat {params.temp} > {output.flagfile}
+		rm {params.temp}
+		touch {output.final}
+		"""
+
+rule filter:
+	input:
+		sam=BASE+"/mapping/{NAME}/{NAME}.sorted.bam"
+	params:
+		n="filter_{NAME}"
+	resources:
+		mem_mb= lambda wildcards, attempt: attempt * 15
+	output:
+		filtersam=BASE+"/mapping/{NAME}/{NAME}.sorted.filtered.sam",
+		filterbam=BASE+"/mapping/{NAME}/{NAME}.sorted.filtered.bam",
+		flagfile=BASE+"/mapping/flagstats/{NAME}_filter_flagstats.txt",
+		final=BASE + "/logs/finals/{NAME}_final_map_filter"
+	message:"""---bwafilter"""
+	shell:
+		"""
+		export PATH=/programs/samtools-1.6/bin:$PATH
+		samtools view -h {input.bam}
+		perl /workdir/scripts/filterSamByIdentity.pl {input.sam} 90 0 0 1 1 > {output.filtersam}
+		samtools view -b {output.filtersam} > {output.filterbam}
+		samtools flagstat {output.filterbam} > {output.flagfile}
+		rm {input.sam}
+		touch {output.final}
+		"""
+
+rule sortbam:
+	input:
+		filterbam=BASE+"/mapping/metagenomes2/bwa_alignments/{NAME}.filtered.bam"
+	params:
+		n="sortbam_{NAME}",
+		name="{NAME}"
+	resources:
+		mem_mb= lambda wildcards, attempt: attempt * 30
+	output:
+		sortbam=BASE+"/mapping/metagenomes2/bwa_alignments/{NAME}.sorted.bam",
+		idxstats=BASE+"/mapping/metagenomes2/bwa_alignments/{NAME}.idxstats.txt",
+		depth=BASE+"/mapping/metagenomes2/bwa_alignments/{NAME}.depth.txt",
+		flagfile=BASE+"/mapping/metagenomes2/bwa_alignments/flagstats/{NAME}_sorted_flagstats.txt",
+		final=BASE + "/logs3/finals/{NAME}_final_map_sortbam"
+	message:"""---sortbam"""
+	shell:
+		"""
+		export PATH=/programs/samtools-1.6/bin:$PATH
+		samtools view -h -F 0x900 {input.filterbam} | samtools sort -m 3G -O BAM --threads 4 -o {output.sortbam} -T {params.name}
+		samtools index {output.sortbam}
+		samtools idxstats {output.sortbam} > {output.idxstats}
+		samtools depth -a {output.sortbam} > {output.depth}
+		samtools flagstat {output.sortbam} > {output.flagfile}
+		touch {output.final}
+		rm {input.filterbam}
+		"""
+
+rule rpkm:
+	input:
+                idxstats=BASE+"/mapping/metagenomes2/bwa_alignments/{NAME}.idxstats.txt",
+                depth=BASE+"/mapping/metagenomes2/bwa_alignments/{NAME}.depth.txt",
+		F1=BASE2+"/unzip/{NAME}.1.fastq",
+		F2=BASE2+"/unzip/{NAME}.2.fastq"
+	params:
+		n="rpkm_{NAME}"
+	resources:
+		mem_mb= lambda wildcards, attempt: attempt * 30
+	output:
+		depth=BASE+"/mapping/metagenomes2/bwa_alignments/{NAME}.rpkm.txt",
+		final=BASE + "/logs3/finals/{NAME}_final_map_rpkm_new"
+	message:"""---rpkm"""
+	shell:
+		"""
+		a=($(wc -l {input.F1}))
+		b=($(wc -l {input.F2}))
+		python /workdir/scripts/rpkm_calculate.py -s {input.idxstats} -d {input.depth} -o {output.depth} -f1 $a -f2 $b
+		touch {output.final}
+		"""
+		

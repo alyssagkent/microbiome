@@ -1,0 +1,12 @@
+#!/bin/sh
+# properties = {"type": "single", "rule": "bwa", "local": false, "input": ["/workdir/data/CDC/metagenomes/merged/unzip/US8-2.1.fastq", "/workdir/data/CDC/metagenomes/merged/unzip/US8-2.2.fastq"], "output": ["/workdir/users/agk85/CDC2/mapping/US8-2/US8-2.sam"], "wildcards": {"NAME": "US8-2"}, "params": {"REF": "/workdir/users/agk85/CDC2/hic/mapping/references/US8-2_scaffold", "MAPFOLDER": "/workdir/users/agk85/CDC2/mapping/US8-2", "n": "US8-2_bwa"}, "log": [], "threads": 1, "resources": {"mem_mb": 40}, "jobid": 50, "cluster": {}}
+cd /local/workdir/users/agk85/CDC2/scripts/mapping && \
+/usr/bin/python3.6 \
+-m snakemake /workdir/users/agk85/CDC2/mapping/US8-2/US8-2.sam --snakefile /workdir/users/agk85/CDC2/scripts/mapping/snake_bwa_scaffold \
+--force -j --keep-target-files --keep-remote \
+--wait-for-files /local/workdir/users/agk85/CDC2/scripts/mapping/.snakemake/tmp.4b049dmb /workdir/data/CDC/metagenomes/merged/unzip/US8-2.1.fastq /workdir/data/CDC/metagenomes/merged/unzip/US8-2.2.fastq --latency-wait 5 \
+ --attempt 1 --force-use-threads \
+--wrapper-prefix https://bitbucket.org/snakemake/snakemake-wrappers/raw/ \
+   --allowed-rules bwa --nocolor --notemp --no-hooks --nolock \
+--mode 2  && touch "/local/workdir/users/agk85/CDC2/scripts/mapping/.snakemake/tmp.4b049dmb/50.jobfinished" || (touch "/local/workdir/users/agk85/CDC2/scripts/mapping/.snakemake/tmp.4b049dmb/50.jobfailed"; exit 1)
+

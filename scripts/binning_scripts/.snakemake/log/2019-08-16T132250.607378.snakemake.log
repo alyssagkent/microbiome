@@ -1,0 +1,427 @@
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 1
+Rules claiming more threads will be scaled down.
+Unlimited resources: mem_mb
+Job counts:
+	count	jobs
+	9	bwa
+	1	final
+	11	primary_filter
+	11	sam2bam
+	12	sorted
+	44
+
+[Fri Aug 16 13:22:50 2019]
+rule primary_filter:
+    input: /workdir/users/agk85/CDC2/mapping/mapping_t3/B320-2/B320-2.sam
+    output: /workdir/users/agk85/CDC2/mapping/mapping_t3/B320-2/B320-2.nss.sam, /workdir/users/agk85/CDC2/mapping/mapping_t3/B320-2/filtered
+    jobid: 89
+    wildcards: NAME=B320-2
+    resources: mem_mb=15
+
+[Fri Aug 16 13:28:04 2019]
+Finished job 89.
+1 of 44 steps (2%) done
+
+[Fri Aug 16 13:28:04 2019]
+rule primary_filter:
+    input: /workdir/users/agk85/CDC2/mapping/mapping_t3/B370-4/B370-4.sam
+    output: /workdir/users/agk85/CDC2/mapping/mapping_t3/B370-4/B370-4.nss.sam, /workdir/users/agk85/CDC2/mapping/mapping_t3/B370-4/filtered
+    jobid: 107
+    wildcards: NAME=B370-4
+    resources: mem_mb=15
+
+[Fri Aug 16 13:33:32 2019]
+Finished job 107.
+2 of 44 steps (5%) done
+
+[Fri Aug 16 13:33:32 2019]
+Job 51: ---SAM2BAM
+
+[Fri Aug 16 14:10:16 2019]
+Finished job 51.
+3 of 44 steps (7%) done
+
+[Fri Aug 16 14:10:16 2019]
+rule bwa:
+    input: /workdir/data/CDC/metagenomes/merged/unzip/B370-5.1.fastq, /workdir/data/CDC/metagenomes/merged/unzip/B370-5.2.fastq
+    output: /workdir/users/agk85/CDC2/mapping/mapping_t3/B370-5/B370-5.sam, /workdir/users/agk85/CDC2/mapping/mapping_t3/B370-5/mapped
+    jobid: 146
+    wildcards: NAME=B370-5
+    resources: mem_mb=30
+
+[Fri Aug 16 14:54:13 2019]
+Finished job 146.
+4 of 44 steps (9%) done
+
+[Fri Aug 16 14:54:13 2019]
+rule primary_filter:
+    input: /workdir/users/agk85/CDC2/mapping/mapping_t3/B370-5/B370-5.sam
+    output: /workdir/users/agk85/CDC2/mapping/mapping_t3/B370-5/B370-5.nss.sam, /workdir/users/agk85/CDC2/mapping/mapping_t3/B370-5/filtered
+    jobid: 108
+    wildcards: NAME=B370-5
+    resources: mem_mb=15
+
+[Fri Aug 16 14:57:53 2019]
+Finished job 108.
+5 of 44 steps (11%) done
+
+[Fri Aug 16 14:57:53 2019]
+rule bwa:
+    input: /workdir/data/CDC/metagenomes/merged/unzip/B331-4.1.fastq, /workdir/data/CDC/metagenomes/merged/unzip/B331-4.2.fastq
+    output: /workdir/users/agk85/CDC2/mapping/mapping_t3/B331-4/B331-4.sam, /workdir/users/agk85/CDC2/mapping/mapping_t3/B331-4/mapped
+    jobid: 132
+    wildcards: NAME=B331-4
+    resources: mem_mb=30
+
+[Fri Aug 16 15:36:08 2019]
+Finished job 132.
+6 of 44 steps (14%) done
+
+[Fri Aug 16 15:36:08 2019]
+rule primary_filter:
+    input: /workdir/users/agk85/CDC2/mapping/mapping_t3/B331-4/B331-4.sam
+    output: /workdir/users/agk85/CDC2/mapping/mapping_t3/B331-4/B331-4.nss.sam, /workdir/users/agk85/CDC2/mapping/mapping_t3/B331-4/filtered
+    jobid: 94
+    wildcards: NAME=B331-4
+    resources: mem_mb=15
+
+[Fri Aug 16 15:42:12 2019]
+Finished job 94.
+7 of 44 steps (16%) done
+
+[Fri Aug 16 15:42:12 2019]
+Job 56: ---SAM2BAM
+
+[Fri Aug 16 16:17:00 2019]
+Finished job 56.
+8 of 44 steps (18%) done
+
+[Fri Aug 16 16:17:00 2019]
+rule bwa:
+    input: /workdir/data/CDC/metagenomes/merged/unzip/B331-2.1.fastq, /workdir/data/CDC/metagenomes/merged/unzip/B331-2.2.fastq
+    output: /workdir/users/agk85/CDC2/mapping/mapping_t3/B331-2/B331-2.sam, /workdir/users/agk85/CDC2/mapping/mapping_t3/B331-2/mapped
+    jobid: 152
+    wildcards: NAME=B331-2
+    resources: mem_mb=30
+
+[Fri Aug 16 16:35:49 2019]
+Finished job 152.
+9 of 44 steps (20%) done
+
+[Fri Aug 16 16:35:49 2019]
+rule primary_filter:
+    input: /workdir/users/agk85/CDC2/mapping/mapping_t3/B331-2/B331-2.sam
+    output: /workdir/users/agk85/CDC2/mapping/mapping_t3/B331-2/B331-2.nss.sam, /workdir/users/agk85/CDC2/mapping/mapping_t3/B331-2/filtered
+    jobid: 114
+    wildcards: NAME=B331-2
+    resources: mem_mb=15
+
+[Fri Aug 16 16:39:45 2019]
+Finished job 114.
+10 of 44 steps (23%) done
+
+[Fri Aug 16 16:39:45 2019]
+Job 76: ---SAM2BAM
+
+[Fri Aug 16 17:00:46 2019]
+Finished job 76.
+11 of 44 steps (25%) done
+
+[Fri Aug 16 17:00:46 2019]
+rule bwa:
+    input: /workdir/data/CDC/metagenomes/merged/unzip/B331-1.1.fastq, /workdir/data/CDC/metagenomes/merged/unzip/B331-1.2.fastq
+    output: /workdir/users/agk85/CDC2/mapping/mapping_t3/B331-1/B331-1.sam, /workdir/users/agk85/CDC2/mapping/mapping_t3/B331-1/mapped
+    jobid: 130
+    wildcards: NAME=B331-1
+    resources: mem_mb=30
+
+[Fri Aug 16 17:16:06 2019]
+Finished job 130.
+12 of 44 steps (27%) done
+
+[Fri Aug 16 17:16:06 2019]
+rule primary_filter:
+    input: /workdir/users/agk85/CDC2/mapping/mapping_t3/B331-1/B331-1.sam
+    output: /workdir/users/agk85/CDC2/mapping/mapping_t3/B331-1/B331-1.nss.sam, /workdir/users/agk85/CDC2/mapping/mapping_t3/B331-1/filtered
+    jobid: 92
+    wildcards: NAME=B331-1
+    resources: mem_mb=15
+
+[Fri Aug 16 17:19:13 2019]
+Finished job 92.
+13 of 44 steps (30%) done
+
+[Fri Aug 16 17:19:13 2019]
+Job 54: ---SAM2BAM
+
+[Fri Aug 16 17:37:06 2019]
+Finished job 54.
+14 of 44 steps (32%) done
+
+[Fri Aug 16 17:37:06 2019]
+rule bwa:
+    input: /workdir/data/CDC/metagenomes/merged/unzip/US8-5.1.fastq, /workdir/data/CDC/metagenomes/merged/unzip/US8-5.2.fastq
+    output: /workdir/users/agk85/CDC2/mapping/mapping_t3/US8-5/US8-5.sam, /workdir/users/agk85/CDC2/mapping/mapping_t3/US8-5/mapped
+    jobid: 151
+    wildcards: NAME=US8-5
+    resources: mem_mb=30
+
+[Fri Aug 16 17:51:40 2019]
+Finished job 151.
+15 of 44 steps (34%) done
+
+[Fri Aug 16 17:51:40 2019]
+rule primary_filter:
+    input: /workdir/users/agk85/CDC2/mapping/mapping_t3/US8-5/US8-5.sam
+    output: /workdir/users/agk85/CDC2/mapping/mapping_t3/US8-5/US8-5.nss.sam, /workdir/users/agk85/CDC2/mapping/mapping_t3/US8-5/filtered
+    jobid: 113
+    wildcards: NAME=US8-5
+    resources: mem_mb=15
+
+[Fri Aug 16 17:54:19 2019]
+Finished job 113.
+16 of 44 steps (36%) done
+
+[Fri Aug 16 17:54:19 2019]
+Job 75: ---SAM2BAM
+
+[Fri Aug 16 18:07:42 2019]
+Finished job 75.
+17 of 44 steps (39%) done
+
+[Fri Aug 16 18:07:42 2019]
+Job 69: ---SAM2BAM
+
+[Fri Aug 16 18:18:51 2019]
+Finished job 69.
+18 of 44 steps (41%) done
+
+[Fri Aug 16 18:18:51 2019]
+rule bwa:
+    input: /workdir/data/CDC/metagenomes/merged/unzip/US8-4.1.fastq, /workdir/data/CDC/metagenomes/merged/unzip/US8-4.2.fastq
+    output: /workdir/users/agk85/CDC2/mapping/mapping_t3/US8-4/US8-4.sam, /workdir/users/agk85/CDC2/mapping/mapping_t3/US8-4/mapped
+    jobid: 150
+    wildcards: NAME=US8-4
+    resources: mem_mb=30
+
+[Fri Aug 16 18:32:55 2019]
+Finished job 150.
+19 of 44 steps (43%) done
+
+[Fri Aug 16 18:32:55 2019]
+rule primary_filter:
+    input: /workdir/users/agk85/CDC2/mapping/mapping_t3/US8-4/US8-4.sam
+    output: /workdir/users/agk85/CDC2/mapping/mapping_t3/US8-4/US8-4.nss.sam, /workdir/users/agk85/CDC2/mapping/mapping_t3/US8-4/filtered
+    jobid: 112
+    wildcards: NAME=US8-4
+    resources: mem_mb=15
+
+[Fri Aug 16 18:34:59 2019]
+Finished job 112.
+20 of 44 steps (45%) done
+
+[Fri Aug 16 18:34:59 2019]
+Job 74: ---SAM2BAM
+
+[Fri Aug 16 18:52:39 2019]
+Finished job 74.
+21 of 44 steps (48%) done
+
+[Fri Aug 16 18:52:39 2019]
+rule bwa:
+    input: /workdir/data/CDC/metagenomes/merged/unzip/US8-2.1.fastq, /workdir/data/CDC/metagenomes/merged/unzip/US8-2.2.fastq
+    output: /workdir/users/agk85/CDC2/mapping/mapping_t3/US8-2/US8-2.sam, /workdir/users/agk85/CDC2/mapping/mapping_t3/US8-2/mapped
+    jobid: 148
+    wildcards: NAME=US8-2
+    resources: mem_mb=30
+
+[Fri Aug 16 19:14:44 2019]
+Finished job 148.
+22 of 44 steps (50%) done
+
+[Fri Aug 16 19:14:44 2019]
+rule primary_filter:
+    input: /workdir/users/agk85/CDC2/mapping/mapping_t3/US8-2/US8-2.sam
+    output: /workdir/users/agk85/CDC2/mapping/mapping_t3/US8-2/US8-2.nss.sam, /workdir/users/agk85/CDC2/mapping/mapping_t3/US8-2/filtered
+    jobid: 110
+    wildcards: NAME=US8-2
+    resources: mem_mb=15
+
+[Fri Aug 16 19:17:26 2019]
+Finished job 110.
+23 of 44 steps (52%) done
+
+[Fri Aug 16 19:17:26 2019]
+Job 72: ---SAM2BAM
+
+[Fri Aug 16 19:29:47 2019]
+Finished job 72.
+24 of 44 steps (55%) done
+
+[Fri Aug 16 19:29:47 2019]
+rule bwa:
+    input: /workdir/data/CDC/metagenomes/merged/unzip/US8-1.1.fastq, /workdir/data/CDC/metagenomes/merged/unzip/US8-1.2.fastq
+    output: /workdir/users/agk85/CDC2/mapping/mapping_t3/US8-1/US8-1.sam, /workdir/users/agk85/CDC2/mapping/mapping_t3/US8-1/mapped
+    jobid: 147
+    wildcards: NAME=US8-1
+    resources: mem_mb=30
+
+[Fri Aug 16 19:46:29 2019]
+Finished job 147.
+25 of 44 steps (57%) done
+
+[Fri Aug 16 19:46:29 2019]
+rule primary_filter:
+    input: /workdir/users/agk85/CDC2/mapping/mapping_t3/US8-1/US8-1.sam
+    output: /workdir/users/agk85/CDC2/mapping/mapping_t3/US8-1/US8-1.nss.sam, /workdir/users/agk85/CDC2/mapping/mapping_t3/US8-1/filtered
+    jobid: 109
+    wildcards: NAME=US8-1
+    resources: mem_mb=15
+
+[Fri Aug 16 19:48:52 2019]
+Finished job 109.
+26 of 44 steps (59%) done
+
+[Fri Aug 16 19:48:52 2019]
+Job 71: ---SAM2BAM
+
+[Fri Aug 16 20:00:47 2019]
+Finished job 71.
+27 of 44 steps (61%) done
+
+[Fri Aug 16 20:00:47 2019]
+Job 23: ---SORTED
+
+[Fri Aug 16 20:21:31 2019]
+Finished job 23.
+28 of 44 steps (64%) done
+
+[Fri Aug 16 20:21:31 2019]
+rule bwa:
+    input: /workdir/data/CDC/metagenomes/merged/unzip/B357-1.1.fastq, /workdir/data/CDC/metagenomes/merged/unzip/B357-1.2.fastq
+    output: /workdir/users/agk85/CDC2/mapping/mapping_t3/B357-1/B357-1.sam, /workdir/users/agk85/CDC2/mapping/mapping_t3/B357-1/mapped
+    jobid: 136
+    wildcards: NAME=B357-1
+    resources: mem_mb=30
+
+[Fri Aug 16 20:33:29 2019]
+Finished job 136.
+29 of 44 steps (66%) done
+
+[Fri Aug 16 20:33:29 2019]
+rule primary_filter:
+    input: /workdir/users/agk85/CDC2/mapping/mapping_t3/B357-1/B357-1.sam
+    output: /workdir/users/agk85/CDC2/mapping/mapping_t3/B357-1/B357-1.nss.sam, /workdir/users/agk85/CDC2/mapping/mapping_t3/B357-1/filtered
+    jobid: 98
+    wildcards: NAME=B357-1
+    resources: mem_mb=15
+
+[Fri Aug 16 20:35:50 2019]
+Finished job 98.
+30 of 44 steps (68%) done
+
+[Fri Aug 16 20:35:50 2019]
+Job 60: ---SAM2BAM
+
+[Fri Aug 16 20:45:36 2019]
+Finished job 60.
+31 of 44 steps (70%) done
+
+[Fri Aug 16 20:45:36 2019]
+Job 13: ---SORTED
+
+[Fri Aug 16 20:57:23 2019]
+Finished job 13.
+32 of 44 steps (73%) done
+
+[Fri Aug 16 20:57:23 2019]
+Job 18: ---SORTED
+
+[Fri Aug 16 21:09:30 2019]
+Finished job 18.
+33 of 44 steps (75%) done
+
+[Fri Aug 16 21:09:30 2019]
+Job 38: ---SORTED
+
+[Fri Aug 16 21:17:40 2019]
+Finished job 38.
+34 of 44 steps (77%) done
+
+[Fri Aug 16 21:17:40 2019]
+Job 70: ---SAM2BAM
+
+[Fri Aug 16 21:23:37 2019]
+Finished job 70.
+35 of 44 steps (80%) done
+
+[Fri Aug 16 21:23:37 2019]
+Job 16: ---SORTED
+
+[Fri Aug 16 21:29:47 2019]
+Finished job 16.
+36 of 44 steps (82%) done
+
+[Fri Aug 16 21:29:47 2019]
+Job 37: ---SORTED
+
+[Fri Aug 16 21:34:22 2019]
+Finished job 37.
+37 of 44 steps (84%) done
+
+[Fri Aug 16 21:34:22 2019]
+Job 36: ---SORTED
+
+[Fri Aug 16 21:38:31 2019]
+Finished job 36.
+38 of 44 steps (86%) done
+
+[Fri Aug 16 21:38:31 2019]
+Job 31: ---SORTED
+
+[Fri Aug 16 21:42:08 2019]
+Finished job 31.
+39 of 44 steps (89%) done
+
+[Fri Aug 16 21:42:08 2019]
+Job 34: ---SORTED
+
+[Fri Aug 16 21:45:46 2019]
+Finished job 34.
+40 of 44 steps (91%) done
+
+[Fri Aug 16 21:45:46 2019]
+Job 33: ---SORTED
+
+[Fri Aug 16 21:49:30 2019]
+Finished job 33.
+41 of 44 steps (93%) done
+
+[Fri Aug 16 21:49:30 2019]
+Job 22: ---SORTED
+
+[Fri Aug 16 21:53:04 2019]
+Finished job 22.
+42 of 44 steps (95%) done
+
+[Fri Aug 16 21:53:04 2019]
+Job 32: ---SORTED
+
+[Fri Aug 16 21:53:39 2019]
+Error in rule sorted:
+    jobid: 32
+    output: /workdir/users/agk85/CDC2/mapping/mapping_t3/B370-5/B370-5.sorted.bam, /workdir/users/agk85/CDC2/mapping/mapping_t3/B370-5/done
+
+RuleException:
+CalledProcessError in line 81 of /local/workdir/users/agk85/CDC2/scripts/binning_scripts/snake_bwa_scaffold_t3:
+Command 'set -euo pipefail;  /programs/samtools-1.3.2/bin/samtools sort -O BAM --threads 8 -o /workdir/users/agk85/CDC2/mapping/mapping_t3/B370-5/B370-5.sorted.bam -T B370-5 /workdir/users/agk85/CDC2/mapping/mapping_t3/B370-5/B370-5.nss.bam
+		/programs/samtools-1.3.2/bin/samtools index /workdir/users/agk85/CDC2/mapping/mapping_t3/B370-5/B370-5.sorted.bam
+		rm /workdir/users/agk85/CDC2/mapping/mapping_t3/B370-5/B370-5.nss.bam
+		touch /workdir/users/agk85/CDC2/mapping/mapping_t3/B370-5/done' returned non-zero exit status 1.
+  File "/local/workdir/users/agk85/CDC2/scripts/binning_scripts/snake_bwa_scaffold_t3", line 81, in __rule_sorted
+  File "/usr/lib64/python3.6/concurrent/futures/thread.py", line 56, in run
+Shutting down, this might take some time.
+Exiting because a job execution failed. Look above for error message
+Complete log: /local/workdir/users/agk85/CDC2/scripts/binning_scripts/.snakemake/log/2019-08-16T132250.607378.snakemake.log
